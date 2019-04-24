@@ -15,6 +15,15 @@ func Test_findMedianSortedArrays(t *testing.T) {
 	var nums1, nums2 []int
 	var m float64
 
+	nums1 = []int{1}
+	nums2 = []int{1}
+	m = findMedianSortedArrays(nums1, nums2)
+	if m == 1.0 {
+		t.Log(fmt.Sprintf("success: nums1=%v; nums2=%v; m=%f", nums1, nums2, m))
+	} else {
+		t.Error(fmt.Sprintf("fail: nums1=%v; nums2=%v; m=%f", nums1, nums2, m))
+	}
+
 	nums1 = []int{1, 3}
 	nums2 = []int{2, 4, 5, 6}
 	m = findMedianSortedArrays(nums1, nums2)
@@ -23,7 +32,7 @@ func Test_findMedianSortedArrays(t *testing.T) {
 	} else {
 		t.Error(fmt.Sprintf("fail: nums1=%v; nums2=%v; m=%f", nums1, nums2, m))
 	}
-	return
+	//return
 
 	nums1 = []int{1, 2}
 	nums2 = []int{3, 4, 5}
@@ -33,7 +42,7 @@ func Test_findMedianSortedArrays(t *testing.T) {
 	} else {
 		t.Error(fmt.Sprintf("fail: nums1=%v; nums2=%v; m=%f", nums1, nums2, m))
 	}
-	return
+	//return
 
 	nums1 = []int{1, 2}
 	nums2 = []int{3, 4, 5, 6}
@@ -88,7 +97,7 @@ func Test_findMedianSortedArrays(t *testing.T) {
 	} else {
 		t.Error(fmt.Sprintf("fail: nums1=%v; nums2=%v; m=%f", nums1, nums2, m))
 	}
-
+	//return
 	nums1 = []int{}
 	nums2 = []int{}
 	m = findMedianSortedArrays(nums1, nums2)
