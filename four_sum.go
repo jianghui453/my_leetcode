@@ -11,6 +11,7 @@ func fourSum(nums []int, target int) [][]int {
 	var i int
 	var ret [][]int
 	var rptMap = make(map[string]bool)
+	sort.Ints(nums)
 	for i = 1; i < len(nums) - 2; i ++ {
 		for j := i + 1; j < len(nums) - 1; j ++ {
 			left := i - 1
