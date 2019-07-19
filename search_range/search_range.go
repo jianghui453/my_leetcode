@@ -1,33 +1,35 @@
 package search_range
 
+import (
+	"fmt"
+)
+
 func searchRange(nums []int, target int) []int {
-    if len(nums) == 0 {
+	if len(nums) == 0 {
 		return []int{-1, -1}
 	}
 	var min, max = 0, len(nums) - 1
-	var half int
-	for min < max {
-		half = (min + max) / 2
-		if nums[min] < nums[half] {
-			if nums[(min + half) / 2 + 1] < target {
-				min = (min + half) / 2 + 1
-			} else {
-				min ++
+	for min <= max {
+		half := (min + max) / 2
+		fmt.Printf("min = %d; max = %d; half = %d\n", min, max, half)
+		if nums[half] < target {
+			min = half + 1
+		} else if nums[half] > target {
+			max = half - 1
+		} else {
+			left, right := -1, -1
+			for i := min; i <= max; i ++ {
+				if nums[i] == target {
+					if left == -1 {
+						left = i
+					}
+					right = i
+				} else if nums[i] > target {
+					break
+				}
 			}
-			continue
+			return []int{left, right}
 		}
-		if nums[max] > nums[half] {
-			if nums[(max + half) / 2] > target {
-				max = (max + half) / 2
-			} else {
-				max --
-			}
-			continue
-		}
-		return []int{min, max}
-	}
-	if min == max && nums[min] == target {
-		return []int{min, min}
 	}
 	return []int{-1, -1}
 }

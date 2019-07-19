@@ -1,12 +1,10 @@
-package leet_code
+package is_match
 
 import (
     "fmt"
 )
 
 var memo = make(map[string]map[string]bool)
-
-var Memo = &memo
 
 func isMatch(s string, p string) bool {
     if ret, ok := memo[s][p]; ok {

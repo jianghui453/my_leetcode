@@ -1,4 +1,4 @@
-package leet_code
+package is_match
 
 import (
 	"testing"
@@ -117,5 +117,4 @@ func TestIsMatch(t *testing.T) {
 	} else {
 		t.Errorf("fail: s=%s; p = %s; hope = %t; ret = %t", s, p, hope, ret)
 	}
-	t.Logf("memo = %v", Memo)
 }

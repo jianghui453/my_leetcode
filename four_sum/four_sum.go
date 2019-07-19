@@ -44,6 +44,43 @@ func fourSum(nums []int, target int) [][]int {
 	return ret
 }
 
+func fourSumV2(nums []int, target int) [][]int {
+	var i int
+	var ret [][]int
+	var rptMap = make(map[string]bool)
+	sort.Ints(nums)
+	for i = 1; i < len(nums) - 2; i ++ {
+		for j := i + 1; j < len(nums) - 1; j ++ {
+			left := i - 1
+			right := j + 1
+			for left >= 0 && right < len(nums) {
+				if nums[left]+nums[i]+nums[j]+nums[right] > target {
+					left--
+					continue
+				}
+				if nums[left]+nums[i]+nums[j]+nums[right] < target {
+					right++
+					continue
+				}
+				numSlice := []int{nums[left], nums[i], nums[j], nums[right]}
+				sort.Ints(numSlice)
+				sb := strings.Builder{}
+				for _, v := range numSlice {
+					sb.WriteString(strconv.Itoa(v))
+				}
+				key := sb.String()
+				if _, ok := rptMap[key]; !ok {
+					rptMap[key] = true
+					ret = append(ret, []int{nums[left], nums[i], nums[j], nums[right]})
+				}
+				left --
+				right ++
+			}
+		}
+	}
+	return ret
+}
+
 func fourSumV1(nums []int, target int) [][]int {
 	sort.Ints(nums)
 	var ret [][]int
