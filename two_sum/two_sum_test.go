@@ -1,4 +1,4 @@
-package leet_code
+package two_sum
 
 import (
 	"fmt"
