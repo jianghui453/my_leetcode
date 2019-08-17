@@ -1,4 +1,4 @@
-package leet_code
+package n_sum
 
 import (
 	"testing"

@@ -1,4 +1,4 @@
-package can_jump
+package jump
 
 import "testing"
 

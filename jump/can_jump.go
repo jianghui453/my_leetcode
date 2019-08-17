@@ -1,4 +1,4 @@
-package can_jump
+package jump
 
 func canJump(nums []int) bool {
     if len(nums) < 2 {
@@ -8,11 +8,11 @@ func canJump(nums []int) bool {
         if len(nums) < 2 {
             return true
         }
-        maxVal := nums[0] + 1
+        maxVal := nums[0]
         maxIdx := 0
         for i := 1; i <= nums[0]; i ++ {
-            canIdx := nums[i]+i+1
-            if canIdx >= len(nums) {
+            canIdx := nums[i]+i
+            if canIdx >= len(nums)-1 {
                 return true
             }
             if canIdx > maxVal {
@@ -23,7 +23,7 @@ func canJump(nums []int) bool {
         if maxIdx == 0 {
             return false
         }
-        nums = nums[maxIdx+1:]
+        nums = nums[maxIdx:]
     }
 }
 
