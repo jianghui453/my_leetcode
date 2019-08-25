@@ -6,11 +6,11 @@
 //
 //满足要求的三元组集合为：
 //[
-// [-1, 0, 1],
-// [-1, -1, 2]
+//  [-1, 0, 1],
+//  [-1, -1, 2]
 //]
 
-package n_sum
+package array
 
 func threeSum(nums []int) [][]int {
 	var ret [][]int

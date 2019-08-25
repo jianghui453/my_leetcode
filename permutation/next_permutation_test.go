@@ -1,4 +1,4 @@
-package next_permutation
+package permutation
 
 import(
 	"testing"

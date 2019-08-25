@@ -1,4 +1,4 @@
-package leet_code
+package array
 
 import (
 	"testing"

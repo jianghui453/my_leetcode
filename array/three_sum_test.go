@@ -1,4 +1,4 @@
-package n_sum
+package array
 
 import (
 	"testing"
