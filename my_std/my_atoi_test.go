@@ -1,4 +1,4 @@
-package leet_code
+package my_std
 
 import (
 	"testing"

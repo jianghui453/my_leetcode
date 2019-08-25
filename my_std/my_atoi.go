@@ -1,12 +1,12 @@
-package leet_code
+// 第一个非空字符必须为数字或者正负号
+// 正负号后面必须跟着非0数字
+package my_std
 
 import (
 	"math"
 	"fmt"
 )
 
-// 第一个非空字符必须为数字或者正负号
-// 正负号后面必须跟着非0数字
 func myAtoi(str string) int {
 	var ret, flag int
 	for i := 0; i < len(str); i ++ {

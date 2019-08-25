@@ -1,4 +1,4 @@
-package my_pow
+package my_std
 
 import "testing"
 
