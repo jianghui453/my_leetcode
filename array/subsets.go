@@ -25,8 +25,8 @@ func subSets(nums []int) [][]int {
 	if lenN < 1 {
 		return ret
 	}
-	for i := 0; i < lenN; i ++ {
-		getSubsets(nums[i: ], []int{}, &ret)
+	for i := 0; i < lenN; i++ {
+		getSubsets(nums[i:], []int{}, &ret)
 	}
 	return ret
 }
@@ -39,9 +39,9 @@ func getSubsets(nums, numsR []int, ret *[][]int) {
 	numsR = append(numsR, nums[0])
 	lenNR := len(numsR)
 	*ret = append(*ret, numsR)
-	for i := 1; i < lenN; i ++ {
+	for i := 1; i < lenN; i++ {
 		numsRNew := make([]int, lenNR)
 		copy(numsRNew, numsR)
-		getSubsets(nums[i: ], numsRNew, ret)
+		getSubsets(nums[i:], numsRNew, ret)
 	}
 }

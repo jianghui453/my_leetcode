@@ -41,22 +41,22 @@ func remove_duplicates2(nums []int) int {
 		return lenN
 	}
 	cnt := 1
-	for i := 1; i < lenN; i ++ {
+	for i := 1; i < lenN; i++ {
 		if nums[i] != nums[i-1] {
 			cnt = 1
 			continue
 		}
-		cnt ++
+		cnt++
 		if cnt < 3 {
 			continue
 		}
 		if i >= lenN-1 {
-			nums = nums[: i]
+			nums = nums[:i]
 			break
 		}
-		nums = append(nums[: i], nums[i+1: ]...)
+		nums = append(nums[:i], nums[i+1:]...)
 		cnt--
-		lenN --
+		lenN--
 		i--
 	}
 	return len(nums)

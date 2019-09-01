@@ -20,8 +20,8 @@ package array
 import (
 	"fmt"
 	"sort"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func fourSum(nums []int, target int) [][]int {
@@ -29,8 +29,8 @@ func fourSum(nums []int, target int) [][]int {
 	var ret [][]int
 	var rptMap = make(map[string]bool)
 	sort.Ints(nums)
-	for i = 1; i < len(nums) - 2; i ++ {
-		for j := i + 1; j < len(nums) - 1; j ++ {
+	for i = 1; i < len(nums)-2; i++ {
+		for j := i + 1; j < len(nums)-1; j++ {
 			left := i - 1
 			right := j + 1
 			for left >= 0 && right < len(nums) {
@@ -53,8 +53,8 @@ func fourSum(nums []int, target int) [][]int {
 					rptMap[key] = true
 					ret = append(ret, []int{nums[left], nums[i], nums[j], nums[right]})
 				}
-				left --
-				right ++
+				left--
+				right++
 			}
 		}
 	}
@@ -66,8 +66,8 @@ func fourSumV2(nums []int, target int) [][]int {
 	var ret [][]int
 	var rptMap = make(map[string]bool)
 	sort.Ints(nums)
-	for i = 1; i < len(nums) - 2; i ++ {
-		for j := i + 1; j < len(nums) - 1; j ++ {
+	for i = 1; i < len(nums)-2; i++ {
+		for j := i + 1; j < len(nums)-1; j++ {
 			left := i - 1
 			right := j + 1
 			for left >= 0 && right < len(nums) {
@@ -90,8 +90,8 @@ func fourSumV2(nums []int, target int) [][]int {
 					rptMap[key] = true
 					ret = append(ret, []int{nums[left], nums[i], nums[j], nums[right]})
 				}
-				left --
-				right ++
+				left--
+				right++
 			}
 		}
 	}
@@ -127,8 +127,8 @@ func fourSumV1(nums []int, target int) [][]int {
 					rptMap[key] = true
 					ret = append(ret, []int{nums[left], nums[i], nums[right], num})
 				}
-				left --
-				right ++
+				left--
+				right++
 				// fmt.Printf("rptMap = %v\n", rptMap)
 			}
 		}
@@ -139,7 +139,7 @@ func fourSumV1(nums []int, target int) [][]int {
 		for _, v := range nums[:k] {
 			numsNew = append(numsNew, v)
 		}
-		for _, v := range nums[k + 1:] {
+		for _, v := range nums[k+1:] {
 			numsNew = append(numsNew, v)
 		}
 		fmt.Printf("numsNew = %v; num = %d\n", numsNew, num)

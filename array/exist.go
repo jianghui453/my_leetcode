@@ -26,15 +26,15 @@ func exist(board [][]byte, word string) bool {
 	if lenJ < 1 {
 		return false
 	}
-	for i := 0; i < lenI; i ++ {
-		for j := 0; j < lenJ; j ++ {
+	for i := 0; i < lenI; i++ {
+		for j := 0; j < lenJ; j++ {
 			if board[i][j] == word[0] {
 				if len(word) < 2 {
 					return true
 				}
 				boardIJ := board[i][j]
 				board[i][j] = '0'
-				if searchByte(board, i, j, word[1: ]) {
+				if searchByte(board, i, j, word[1:]) {
 					return true
 				}
 				board[i][j] = boardIJ
@@ -51,7 +51,7 @@ func searchByte(board [][]byte, i, j int, word string) bool {
 		}
 		boardIJ := board[i-1][j]
 		board[i-1][j] = '0'
-		if searchByte(board, i-1, j, word[1: ]) {
+		if searchByte(board, i-1, j, word[1:]) {
 			return true
 		}
 		board[i-1][j] = boardIJ
@@ -62,7 +62,7 @@ func searchByte(board [][]byte, i, j int, word string) bool {
 		}
 		boardIJ := board[i+1][j]
 		board[i+1][j] = '0'
-		if searchByte(board, i+1, j, word[1: ]) {
+		if searchByte(board, i+1, j, word[1:]) {
 			return true
 		}
 		board[i+1][j] = boardIJ
@@ -73,7 +73,7 @@ func searchByte(board [][]byte, i, j int, word string) bool {
 		}
 		boardIJ := board[i][j-1]
 		board[i][j-1] = '0'
-		if searchByte(board, i, j-1, word[1: ]) {
+		if searchByte(board, i, j-1, word[1:]) {
 			return true
 		}
 		board[i][j-1] = boardIJ
@@ -84,7 +84,7 @@ func searchByte(board [][]byte, i, j int, word string) bool {
 		}
 		boardIJ := board[i][j+1]
 		board[i][j+1] = '0'
-		if searchByte(board, i, j+1, word[1: ]) {
+		if searchByte(board, i, j+1, word[1:]) {
 			return true
 		}
 		board[i][j+1] = boardIJ

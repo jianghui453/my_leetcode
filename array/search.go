@@ -27,11 +27,11 @@ func search(nums []int, target int) bool {
 		return false
 	}
 	left := 0
-	right := lenN-1
+	right := lenN - 1
 	start := 0
 	for left < lenN && right >= 0 && left < right {
 		if left < lenN-1 && nums[left] > nums[left+1] {
-			start = left+1
+			start = left + 1
 			break
 		}
 		if right > 0 && nums[right] < nums[right-1] {
@@ -43,25 +43,25 @@ func search(nums []int, target int) bool {
 	}
 	if start == 0 {
 		left = 0
-		right = lenN-1
+		right = lenN - 1
 	} else if target > nums[0] {
 		left = 0
-		right = start-1
+		right = start - 1
 	} else if target < nums[lenN-1] {
 		left = start
-		right = lenN-1
+		right = lenN - 1
 	} else {
 		return target == nums[0] || target == nums[lenN-1]
 	}
 	fmt.Printf("nums=%v target=%d start=%d left=%d right=%d\n", nums, target, start, left, right)
 	for left <= right {
-		mid := (left+right)/2
+		mid := (left + right) / 2
 		fmt.Printf("left=%d right=%d mid=%d\n", left, right, mid)
 		if nums[mid] < target {
-			left = mid+1
+			left = mid + 1
 		} else if nums[mid] > target {
 			if mid == right {
-				right --
+				right--
 			} else {
 				right = mid
 			}

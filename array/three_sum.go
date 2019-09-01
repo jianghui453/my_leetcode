@@ -18,8 +18,8 @@ func threeSum(nums []int) [][]int {
 	if nLen < 3 {
 		return ret
 	}
-	for i := 0; i < nLen - 2; i ++ {
-		if i + 2 < nLen && nums[i+2] == nums[i] {
+	for i := 0; i < nLen-2; i++ {
+		if i+2 < nLen && nums[i+2] == nums[i] {
 
 		}
 	}

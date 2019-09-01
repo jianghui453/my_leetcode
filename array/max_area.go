@@ -6,7 +6,7 @@
 //
 //图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
 //
-// 
+//
 //
 //示例:
 //
@@ -23,14 +23,14 @@ func maxArea(height []int) int {
 	var left, right, area int
 	left = 0
 	right = len(height) - 1
-	for left < right{
-		if int(math.Min(float64(height[left]), float64(height[right]))) * (right - left) > area {
+	for left < right {
+		if int(math.Min(float64(height[left]), float64(height[right])))*(right-left) > area {
 			area = int(math.Min(float64(height[left]), float64(height[right]))) * (right - left)
 		}
 		if height[left] > height[right] {
-			right --
+			right--
 		} else {
-			left ++
+			left++
 		}
 	}
 	return area

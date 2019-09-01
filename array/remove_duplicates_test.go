@@ -1,9 +1,9 @@
 package array
 
-import(
+import (
 	"testing"
 )
 
 func TestRemoveDuplicates(t *testing.T) {
-	
+
 }
