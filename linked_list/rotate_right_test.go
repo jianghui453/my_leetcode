@@ -1,4 +1,4 @@
-package list_node
+package linked_list
 
 import "testing"
 
@@ -7,7 +7,7 @@ func TestRotateRight(t *testing.T) {
 
 	head = new(ListNode)
 	h = head
-	for i := 1; i < 5; i ++ {
+	for i := 1; i < 5; i++ {
 		h.Val = i
 		h.Next = new(ListNode)
 		h = h.Next
@@ -22,7 +22,7 @@ func TestRotateRight(t *testing.T) {
 
 	head = new(ListNode)
 	h = head
-	for i := 1; i < 5; i ++ {
+	for i := 1; i < 5; i++ {
 		h.Val = i
 		h.Next = new(ListNode)
 		h = h.Next
@@ -37,7 +37,7 @@ func TestRotateRight(t *testing.T) {
 
 	head = new(ListNode)
 	h = head
-	for i := 1; i < 5; i ++ {
+	for i := 1; i < 5; i++ {
 		h.Val = i
 		h.Next = new(ListNode)
 		h = h.Next
@@ -52,7 +52,7 @@ func TestRotateRight(t *testing.T) {
 
 	head = new(ListNode)
 	h = head
-	for i := 1; i < 5; i ++ {
+	for i := 1; i < 5; i++ {
 		h.Val = i
 		h.Next = new(ListNode)
 		h = h.Next

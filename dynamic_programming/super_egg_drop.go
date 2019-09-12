@@ -10,7 +10,7 @@
 //
 //无论 F 的初始值如何，你确定 F 的值的最小移动次数是多少？
 //
-// 
+//
 //
 //示例 1：
 //
@@ -29,7 +29,7 @@
 //
 //输入：K = 3, N = 14
 //输出：4
-// 
+//
 //
 //提示：
 //
@@ -38,6 +38,84 @@
 
 package dynamic_programming
 
+//func superEggDrop(K int, N int) int {
+//   dp := make([][]int, K+1)
+//   for k := 0; k <= K; k ++ {
+//       dp[k] = make([]int, N+1)
+//       for n := 0; n <= N; n ++ {
+//           dp[k][n] = n
+//       }
+//   }
+//   for k := 2; k <= K; k ++ {
+//       for n := 2; n <= N; n ++ {
+//           min := dp[k][n]
+//           for n0 := 1; n0 < n; n0 ++ {
+//               max := dp[k-1][n-n0]+1
+//               if dp[k][n0-1]+1 > max {
+//                   max = dp[k][n0-1]+1
+//               }
+//               if max < min {
+//                   min = max
+//               }
+//           }
+//           dp[k][n] = min
+//       }
+//   }
+//   return dp[K][N]
+//}
+
+//func superEggDrop(K int, N int) int {
+//  dp := make([][]int, K+1)
+//  for k := 0; k <= K; k ++ {
+//      dp[k] = make([]int, N+1)
+//      for n := 0; n <= N; n ++ {
+//          dp[k][n] = n
+//      }
+//  }
+//  for k := 2; k <= K; k ++ {
+//      for n := 2; n <= N; n ++ {
+//          lo := 1
+//          hi := n-1
+//          mi := (lo+hi)/2
+//          for lo <= hi {
+//              mi = (lo+hi)/2
+//              if dp[k-1][mi-1] > dp[k][n-mi] {
+//                  if hi == mi {
+//                      hi--
+//                  } else {
+//                      hi = mi
+//                  }
+//              } else {
+//                  lo = mi+1
+//              }
+//          }
+//          max1 := dp[k-1][hi-1]+1
+//          if dp[k][n-hi]+1 > max1 {
+//             max1 = dp[k][n-hi] + 1
+//          }
+//          max2 := dp[k-1][lo-1]+1
+//          if dp[k][n-lo]+1 > max2 {
+//             max2 = dp[k][n-lo]+1
+//          }
+//          dp[k][n] = max1
+//          if max2 < max1 {
+//             dp[k][n] = max2
+//          }
+//      }
+//  }
+//  return dp[K][N]
+//}
+
 func superEggDrop(K int, N int) int {
+	if K == 1 || N < 2 {
+		return N
+	}
+	if K == 0 {
+		return 0
+	}
+	dp := make([][]int, K+1)
+	for i := 0; i <= K; i++ {
+		dp[i] = make([]int, N+1)
+	}
 
 }

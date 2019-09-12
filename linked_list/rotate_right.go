@@ -17,7 +17,7 @@
 //向右旋转 3 步: 0->1->2->NULL
 //向右旋转 4 步: 2->0->1->NULL
 
-package list_node
+package linked_list
 
 func rotateRight(head *ListNode, k int) *ListNode {
 	if head == nil || head.Next == nil {
@@ -31,7 +31,7 @@ func rotateRight(head *ListNode, k int) *ListNode {
 	}
 
 	qLen := len(listQ)
-	k = k%qLen
+	k = k % qLen
 	if k == 0 {
 		return listQ[0]
 	}

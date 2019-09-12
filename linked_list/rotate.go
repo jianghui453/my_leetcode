@@ -39,14 +39,14 @@
 //  [16, 7,10,11]
 //]
 
-package list_node
+package linked_list
 
 func rotate(matrix [][]int) {
 	var ret = [][]int{}
 	mLen := len(matrix)
-	for i := 0; i < mLen; i ++ {
+	for i := 0; i < mLen; i++ {
 		nums := []int{}
-		for j := mLen - 1; j >= 0; j -- {
+		for j := mLen - 1; j >= 0; j-- {
 			nums = append(nums, matrix[j][i])
 		}
 		ret = append(ret, nums)
