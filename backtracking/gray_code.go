@@ -46,7 +46,7 @@ func grayCode(n int) []int {
 			ret = append(ret, num-j)
 			his[num-j]++
 			i = -1
-			num = num-j
+			num = num - j
 		} else if num&j == 0 && his[num+j] == 0 {
 			ret = append(ret, num+j)
 			his[num+j]++

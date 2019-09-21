@@ -11,13 +11,13 @@ func TestRestoreIPAddress(t *testing.T) {
 	r = restoreIpAddresses(s)
 	t.Logf("s=%s \nh=%v \nr=%v", s, h, r)
 
-    s = "0000"
-    h = []string{"0.0.0.0"}
-    r = restoreIpAddresses(s)
-    t.Logf("s=%s \nh=%v \nr=%v", s, h, r)
+	s = "0000"
+	h = []string{"0.0.0.0"}
+	r = restoreIpAddresses(s)
+	t.Logf("s=%s \nh=%v \nr=%v", s, h, r)
 
-    s = "000"
-    h = []string{}
-    r = restoreIpAddresses(s)
-    t.Logf("s=%s \nh=%v \nr=%v", s, h, r)
+	s = "000"
+	h = []string{}
+	r = restoreIpAddresses(s)
+	t.Logf("s=%s \nh=%v \nr=%v", s, h, r)
 }

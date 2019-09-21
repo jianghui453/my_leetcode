@@ -11,8 +11,8 @@ func TestGrayCode(t *testing.T) {
 	//ret = grayCode(n)
 	//t.Logf("\nhope=%v \n ret=%v", hope, ret)
 
-    n = 3
-    hope = []int{0,1,3,2,6,7,5,4}
-    ret = grayCode(n)
-    t.Logf("\nhope=%v \n ret=%v", hope, ret)
+	n = 3
+	hope = []int{0, 1, 3, 2, 6, 7, 5, 4}
+	ret = grayCode(n)
+	t.Logf("\nhope=%v \n ret=%v", hope, ret)
 }
