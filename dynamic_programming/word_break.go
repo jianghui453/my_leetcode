@@ -22,6 +22,10 @@
 
 package dynamic_programming
 
+import (
+    "strings"
+)
+
 //func wordBreak(s string, wordDict []string) bool {
 //    lenS := len(s)
 //    dp := make([]bool, lenS+1)
@@ -166,35 +170,57 @@ package dynamic_programming
 //    return sentences(0);
 //}
 
-func wordBreak(s string, wordDict []string) []string {
-    memo := make([][]string, len(s)+1)
-    memo[len(s)] = []string{""}
-    var f func(j int) []string
-    f = func(j int) []string {
-        if len(memo[j]) == 0 {
-            for i := j+1; i <= len(s); i ++ {
-                var st string
-                if i < len(s) {
-                    st = s[j: i]
-                } else {
-                    st = s[j: ]
-                }
+//func wordBreak(s string, wordDict []string) []string {
+//    return wordBreakR(s, wordDict, map[string][]string{})
+//}
+//
+//func wordBreakR(s string, wordDict []string, cache map[string][]string) []string {
+//    if res, ok := cache[s]; ok {
+//        return res
+//    }
+//    if len(s) == 0 {
+//        return []string{""}
+//    }
+//
+//    var res []string
+//    for _, word := range wordDict {
+//        if len(word) <= len(s) && word == s[:len(word)] {
+//            for _, str := range wordBreakR(s[len(word):], wordDict, cache) {
+//                if len(str) == 0 {
+//                    res = append(res, word)
+//                } else {
+//                    res = append(res, word+" "+str)
+//                }
+//            }
+//        }
+//    }
+//    cache[s] = res
+//
+//    return res
+//}
 
-                for _, word := range wordDict {
-                    if st == word {
-                        for _, str := range f(i) {
-                            if str == "" {
-                                memo[j] = append(memo[j], s[j: i])
-                            } else {
-                                memo[j] = append(memo[j], s[j: i]+" "+str)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return memo[j]
-    }
-    r := f(0)
-    return r
+func wordBreak(s string, wordDict []string) []string {
+   lenS := len(s)
+   memo := make(map[int][]string)
+
+   var f func(j int) []string
+   f = func(j int) []string {
+       if _, ok := memo[j]; !ok {
+           memo[j] = make([]string, 0)
+           for _, word := range wordDict {
+               if strings.Index(s[j: ], word) == 0 {
+                   if len(word) == lenS-j {
+                       memo[j] = append(memo[j], s[j: ])
+                   } else {
+                       for _, str := range f(j+len(word)) {
+                           memo[j] = append(memo[j], word+" "+str)
+                       }
+                   }
+               }
+           }
+       }
+       return memo[j]
+   }
+   f(0)
+   return memo[0]
 }
