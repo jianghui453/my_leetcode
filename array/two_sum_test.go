@@ -1,21 +1,16 @@
 package array
 
 import (
-	"fmt"
 	"testing"
 )
 
 func Test_twoSum(t *testing.T) {
-	nums := []int{2, 7, 11, 15}
-	target := 22
-	res := twoSum(nums, target)
-	fmt.Printf("twoSum=%v\n", res)
-	for _, v := range res {
-		target -= nums[v]
-	}
-	if target == 0 {
-		t.Log("success")
-	} else {
-		t.Error("fail")
-	}
+	var nums, h, r []int
+	var target int
+
+	nums = []int{2, 7, 11, 15}
+	target = 9
+	h = []int{0, 1}
+	r = twoSum(nums, target)
+	t.Logf("nums=%v h=%d r=%d", nums, h, r)
 }

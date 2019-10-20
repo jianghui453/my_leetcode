@@ -9,16 +9,18 @@
 //因为 nums[0] + nums[1] = 2 + 7 = 9
 //所以返回 [0, 1]
 
+//标签：数组 哈希表
+
 package array
 
 func twoSum(nums []int, target int) []int {
 	nLen := len(nums)
-	for i := 0; i < nLen-1; i++ {
-		for j := i + 1; j < nLen; j++ {
-			if nums[i]+nums[j] == target {
-				return []int{i, j}
-			}
+	his := make(map[int]int)
+	for i := 0; i < nLen; i++ {
+		if idx, ok := his[target-nums[i]]; ok {
+			return []int{idx, i}
 		}
+		his[nums[i]] = i
 	}
 	return []int{}
 }

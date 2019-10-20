@@ -41,4 +41,9 @@ func TestLongestPalindrome(t *testing.T) {
 	hope = "ababababababa"
 	ret = longestPalindrome(s)
 	t.Logf("s=%s hope=%s ret=%s", s, hope, ret)
+
+	s = "abcba"
+	hope = "abcba"
+	ret = longestPalindrome(s)
+	t.Logf("s=%s hope=%s ret=%s", s, hope, ret)
 }

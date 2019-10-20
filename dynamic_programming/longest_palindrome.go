@@ -10,58 +10,98 @@
 //输入: "cbbd"
 //输出: "bb"
 
+//标签：字符串，动态规划
+
 package dynamic_programming
 
-import "fmt"
+// import "fmt"
 
 func longestPalindrome(s string) string {
-	lenS := len(s)
-	if lenS < 2 {
+	sLen := len(s)
+	if sLen < 2 {
 		return s
 	}
-	dp := make([][]bool, lenS)
-	for i := 0; i < lenS; i++ {
-		dp[i] = make([]bool, lenS)
+	dp := make([][]bool, sLen)
+	for i := 0; i < sLen; i ++ {
+		dp[i] = make([]bool, sLen)
 		dp[i][i] = true
 	}
-	maxLeft := 0
-	maxRight := 0
-	for i := 1; i < lenS; i++ {
-		if s[i] == s[i-1] {
-			dp[i-1][i] = true
-			if maxRight-maxLeft < 1 {
-				maxRight = i
-				maxLeft = i - 1
-			}
-		}
-	loop:
-		for j := i - 2; j >= 0; j-- {
-			if dp[j+1][i-1] == true && s[j] == s[i] {
+	min := 0
+	max := 0
+	for i := 1; i < sLen; i ++ {
+		j := i-1
+		for ; j >= 0; j -- {
+			if s[j] == s[i] {
 				dp[j][i] = true
-				if i-j > maxRight-maxLeft {
-					maxRight = i
-					maxLeft = j
+				if i-j > max-min {
+					min, max = j, i
 				}
-				continue
+			} else {
+				break
 			}
-			for k := j; k < i; k++ {
-				if s[k] != s[i] {
-					continue loop
+		}
+		for ; j >= 0; j -- {
+			if dp[j+1][i-1] && s[j] == s[i] {
+				dp[j][i] = true
+				if i-j > max-min {
+					min, max = j, i
 				}
-			}
-			dp[j][i] = true
-			if i-j > maxRight-maxLeft {
-				maxRight = i
-				maxLeft = j
 			}
 		}
 	}
-	fmt.Printf("dp=%v\n", dp)
-	if maxRight == lenS-1 {
-		return s[maxLeft:]
+	if max == sLen - 1 {
+		return s[min: ]
 	}
-	return s[maxLeft : maxRight+1]
+	return s[min: max+1]
 }
+
+// func longestPalindrome(s string) string {
+// 	lenS := len(s)
+// 	if lenS < 2 {
+// 		return s
+// 	}
+// 	dp := make([][]bool, lenS)
+// 	for i := 0; i < lenS; i++ {
+// 		dp[i] = make([]bool, lenS)
+// 		dp[i][i] = true
+// 	}
+// 	maxLeft := 0
+// 	maxRight := 0
+// 	for i := 1; i < lenS; i++ {
+// 		if s[i] == s[i-1] {
+// 			dp[i-1][i] = true
+// 			if maxRight-maxLeft < 1 {
+// 				maxRight = i
+// 				maxLeft = i - 1
+// 			}
+// 		}
+// 	loop:
+// 		for j := i - 2; j >= 0; j-- {
+// 			if dp[j+1][i-1] == true && s[j] == s[i] {
+// 				dp[j][i] = true
+// 				if i-j > maxRight-maxLeft {
+// 					maxRight = i
+// 					maxLeft = j
+// 				}
+// 				continue
+// 			}
+// 			for k := j; k < i; k++ {
+// 				if s[k] != s[i] {
+// 					continue loop
+// 				}
+// 			}
+// 			dp[j][i] = true
+// 			if i-j > maxRight-maxLeft {
+// 				maxRight = i
+// 				maxLeft = j
+// 			}
+// 		}
+// 	}
+// 	if maxRight == lenS-1 {
+// 		return s[maxLeft:]
+// 	}
+// 	return s[maxLeft : maxRight+1]
+// }
 
 //func longestPalindrome(s string) string {
 //	ret := ""
