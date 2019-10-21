@@ -48,50 +48,84 @@ package dynamic_programming
 import "fmt"
 
 func isMatch(s string, p string) bool {
-	lenS := len(s)
-	lenP := len(p)
-	if lenS == 0 {
-		cnt := 0
-		for i := 0; i < lenP; i++ {
-			if p[i] != '*' {
-				cnt++
-			} else if i > 0 && p[i-1] != '*' {
-				cnt--
+	sLen := len(s)
+	pLen := len(p)
+	if sLen == 0 {
+		for j := 0; j < pLen-1; j++ {
+			if p[j] != '*' && p[j+1] != '*' {
+				return false
 			}
 		}
-		return cnt == 0
+		return true
 	}
-	if lenP == 0 {
+	if pLen == 0 {
 		return false
 	}
-	dp := make([][]bool, lenS)
-	for i := 0; i < lenS; i++ {
-		dp[i] = make([]bool, lenP)
+	dp := make([][]bool, sLen+1)
+	for i := 0; i <= sLen; i++ {
+		dp[i] = make([]bool, pLen+1)
 	}
-	cnt := 0
-	for i := 0; i < lenP; i++ {
-		if (cnt == 0 && (p[i] == s[0] || p[i] == '.')) || ((i == 0 || dp[0][i-1]) && p[i] == '*') {
-			dp[0][i] = true
-		}
-		if p[i] != '*' {
-			cnt++
-		} else if i > 0 && p[i-1] != '*' {
-			cnt--
-		}
-	}
-	for i := 1; i < lenP; i++ {
-		for j := 0; j < lenS; j++ {
-			if (j > 0 && dp[j-1][i-1] && (s[j] == p[i] || p[i] == '.' || (p[i] == '*' && (p[i-1] == s[j] || p[i-1] == '.')))) ||
-				(j > 0 && dp[j-1][i] && (p[i] == '*' && (s[j] == p[i-1] || p[i-1] == '.'))) ||
-				(dp[j][i-1] && (p[i] == '*')) ||
-				(i > 1 && dp[j][i-2] && (p[i] == '*')) {
-				dp[j][i] = true
+	dp[0][0] = true
+
+	for i := 0; i <= sLen; i++ {
+		for j := 0; j <= pLen; j++ {
+			if i > 0 && j > 0 && dp[i-1][j-1] && (s[i-1] == p[j-1] || s[i-1] == '.' || (i > 1 && s[i-2] == p[j-1] && s[i-1] == '*')) ||
+				(i > 0 && dp[i-1][j] && s[i-1] == '*') ||
+				(i > 1 && j > 0 && dp[i][j-1] && s[i-2] == p[j-1] && s[i-1] == '*') ||
+				(i > 1 && dp[i-2][j] && s[i-1] == '*') {
+				dp[i][j] = true
 			}
 		}
 	}
 	fmt.Printf("dp=%v\n", dp)
-	return dp[lenS-1][lenP-1]
+	return dp[sLen][pLen]
 }
+
+// func isMatch(s string, p string) bool {
+// 	lenS := len(s)
+// 	lenP := len(p)
+// 	if lenS == 0 {
+// 		cnt := 0
+// 		for i := 0; i < lenP; i++ {
+// 			if p[i] != '*' {
+// 				cnt++
+// 			} else if i > 0 && p[i-1] != '*' {
+// 				cnt--
+// 			}
+// 		}
+// 		return cnt == 0
+// 	}
+// 	if lenP == 0 {
+// 		return false
+// 	}
+// 	dp := make([][]bool, lenS)
+// 	for i := 0; i < lenS; i++ {
+// 		dp[i] = make([]bool, lenP)
+// 	}
+// 	cnt := 0
+// 	for i := 0; i < lenP; i++ {
+// 		if (cnt == 0 && (p[i] == s[0] || p[i] == '.')) || ((i == 0 || dp[0][i-1]) && p[i] == '*') {
+// 			dp[0][i] = true
+// 		}
+// 		if p[i] != '*' {
+// 			cnt++
+// 		} else if i > 0 && p[i-1] != '*' {
+// 			cnt--
+// 		}
+// 	}
+// 	for i := 1; i < lenP; i++ {
+// 		for j := 0; j < lenS; j++ {
+// 			if (j > 0 && dp[j-1][i-1] && (s[j] == p[i] || p[i] == '.' || (p[i] == '*' && (p[i-1] == s[j] || p[i-1] == '.')))) ||
+// 				(j > 0 && dp[j-1][i] && (p[i] == '*' && (s[j] == p[i-1] || p[i-1] == '.'))) ||
+// 				(dp[j][i-1] && (p[i] == '*')) ||
+// 				(i > 1 && dp[j][i-2] && (p[i] == '*')) {
+// 				dp[j][i] = true
+// 			}
+// 		}
+// 	}
+// 	fmt.Printf("dp=%v\n", dp)
+// 	return dp[lenS-1][lenP-1]
+// }
 
 //var memo = make(map[string]map[string]bool)
 //

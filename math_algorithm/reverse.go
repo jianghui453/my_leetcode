@@ -18,25 +18,46 @@
 //
 //标签：数学
 
-package math
+package math_algorithm
+
+import "math"
+// import "fmt"
 
 func reverse(x int) int {
-	positive := x >= 0
-	num := 0
-	if !positive {
-		x = -x
+	if x == 0 {
+		return 0
 	}
-	for i := 10; i <= x*10; i *= 10 {
-		num = num*10 + (x%i)*10/i
-		if (positive && num > 1<<31-1) || (!positive && num > 1<<31-1) {
+	ret := 0
+	signed := x / int(math.Abs(float64(x)))
+	x = int(math.Abs(float64(x)))
+    for x != 0 {
+		reminder := x % 10
+		ret = ret * 10 + reminder
+		if ret > math.MaxInt32 || ret < math.MinInt32 {
 			return 0
 		}
+		x = x / 10
 	}
-	if positive {
-		return num
-	}
-	return 0 - num
+	return ret * signed
 }
+
+// func reverse(x int) int {
+// 	positive := x >= 0
+// 	num := 0
+// 	if !positive {
+// 		x = -x
+// 	}
+// 	for i := 10; i <= x * 10; i *= 10 {
+// 		num = num * 10 + (x % i) * 10 / i
+// 		if (positive && num > 1<<31 - 1) || (!positive && num > 1<<31 - 1) {
+// 			return 0
+// 		}
+// 	}
+// 	if positive {
+// 		return num
+// 	}
+// 	return 0 - num
+// }
 
 //func reverse(x int) int {
 //	var num int
