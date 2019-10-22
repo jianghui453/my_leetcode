@@ -17,24 +17,24 @@
 package tree
 
 func maxDepth(root *TreeNode) int {
-    if root == nil {
-        return 0
-    }
-    var f func(*TreeNode, int) int
-    f = func(node *TreeNode, r int) int {
-        rLeft := r+1
-        rRight := r+1
-        if node.Left != nil {
-            rLeft = f(node.Left, r+1)
-        }
-        if node.Right != nil {
-            rRight = f(node.Right, r+1)
-        }
-        if rLeft > rRight {
-            return rLeft
-        }
-        return rRight
-    }
-    r := f(root, 0)
-    return r
+	if root == nil {
+		return 0
+	}
+	var f func(*TreeNode, int) int
+	f = func(node *TreeNode, r int) int {
+		rLeft := r + 1
+		rRight := r + 1
+		if node.Left != nil {
+			rLeft = f(node.Left, r+1)
+		}
+		if node.Right != nil {
+			rRight = f(node.Right, r+1)
+		}
+		if rLeft > rRight {
+			return rLeft
+		}
+		return rRight
+	}
+	r := f(root, 0)
+	return r
 }

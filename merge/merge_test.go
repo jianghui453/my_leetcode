@@ -24,21 +24,21 @@ func TestMerge(t *testing.T) {
 	ret = merge(intervals)
 	t.Logf("intervals=%v \nhope=%v \nret=%v", intervals, hope, ret)
 
-    intervals = [][]int{
-        {2,3},{4,5},{6,7},{8,9},{1,10},
-    }
-    hope = [][]int{
-        {1, 10},
-    }
-    ret = merge(intervals)
-    t.Logf("intervals=%v \nhope=%v \nret=%v", intervals, hope, ret)
+	intervals = [][]int{
+		{2, 3}, {4, 5}, {6, 7}, {8, 9}, {1, 10},
+	}
+	hope = [][]int{
+		{1, 10},
+	}
+	ret = merge(intervals)
+	t.Logf("intervals=%v \nhope=%v \nret=%v", intervals, hope, ret)
 
-    intervals = [][]int{
-        {2,3},{6,7},{4,5},{8,9},{1,10},
-    }
-    hope = [][]int{
-        {1, 10},
-    }
-    ret = merge(intervals)
-    t.Logf("intervals=%v \nhope=%v \nret=%v", intervals, hope, ret)
+	intervals = [][]int{
+		{2, 3}, {6, 7}, {4, 5}, {8, 9}, {1, 10},
+	}
+	hope = [][]int{
+		{1, 10},
+	}
+	ret = merge(intervals)
+	t.Logf("intervals=%v \nhope=%v \nret=%v", intervals, hope, ret)
 }

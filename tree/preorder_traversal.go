@@ -14,16 +14,16 @@
 package tree
 
 func preorderTraversal(root *TreeNode) []int {
-    ret := make([]int, 0)
-    var f func(node *TreeNode)
-    f = func(node *TreeNode) {
-        if node == nil {
-            return
-        }
-        ret = append(ret, node.Val)
-        f(node.Left)
-        f(node.Right)
-    }
-    f(root)
-    return ret
+	ret := make([]int, 0)
+	var f func(node *TreeNode)
+	f = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		ret = append(ret, node.Val)
+		f(node.Left)
+		f(node.Right)
+	}
+	f(root)
+	return ret
 }

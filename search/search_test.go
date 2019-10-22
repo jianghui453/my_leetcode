@@ -13,17 +13,17 @@ func TestSearch(t *testing.T) {
 	hope = 4
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 6
 	hope = 2
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 4
 	hope = 0
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 2
 	hope = 6
 	ret = search(nums, target)
@@ -39,12 +39,12 @@ func TestSearch(t *testing.T) {
 	hope = 0
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 0
 	hope = 4
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 6
 	hope = 2
 	ret = search(nums, target)
@@ -55,7 +55,7 @@ func TestSearch(t *testing.T) {
 	hope = -1
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 0
 	hope = 0
 	ret = search(nums, target)
@@ -66,7 +66,7 @@ func TestSearch(t *testing.T) {
 	hope = -1
 	ret = search(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d\n", nums, target, hope, ret)
-	
+
 	target = 3
 	hope = 1
 	ret = search(nums, target)

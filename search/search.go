@@ -8,8 +8,8 @@ func search(nums []int, target int) int {
 	if len(nums) == 0 {
 		return -1
 	}
-	min, max := 0, len(nums) - 1
-	for min <= max{
+	min, max := 0, len(nums)-1
+	for min <= max {
 		fmt.Printf("min = %d; max = %d\n", min, max)
 		if min == max {
 			if target == nums[min] {

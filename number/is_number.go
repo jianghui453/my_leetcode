@@ -44,7 +44,7 @@ func isNumber(s string) bool {
 	}
 	idxE := strings.Index(s, "e")
 	if idxE != -1 {
-		if idxE == len(s) - 1 || idxE == 0 {
+		if idxE == len(s)-1 || idxE == 0 {
 			return false
 		}
 		return isFloat(s[:idxE]) && isSignedInt(s[idxE+1:])
@@ -59,7 +59,7 @@ func isFloat(s string) bool {
 	} else {
 		if idxDot == 0 {
 			return isInt(s[1:])
-		} else if idxDot == len(s) - 1 {
+		} else if idxDot == len(s)-1 {
 			return isInt(s[:idxDot])
 		} else {
 			return isInt(s[:idxDot]) && isInt(s[idxDot+1:])

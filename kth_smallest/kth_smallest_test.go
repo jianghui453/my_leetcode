@@ -25,7 +25,7 @@ func TestKthSmallest(t *testing.T) {
 				nil,
 			},
 		},
-	 	&BinTree{
+		&BinTree{
 			6,
 			nil,
 			nil,

@@ -17,28 +17,28 @@
 package tree
 
 func sortedArrayToBST(nums []int) *TreeNode {
-    var r *TreeNode
-    if len(nums) == 0 {
-        return r
-    }
-    var f func(n *TreeNode, ns []int)
-    f = func (n *TreeNode, ns []int) {
-        if len(ns) == 1 {
-            n.Val = ns[0]
-            return
-        }
-        m := len(ns)/2
-        n.Val = ns[m]
-        if m > 0 {
-            n.Left = new(TreeNode)
-            f(n.Left, ns[: m])
-        }
-        if m < len(ns) - 1 {
-            n.Right = new(TreeNode)
-            f(n.Right, ns[m+1: ])
-        }
-    }
-    r = new(TreeNode)
-    f(r, nums)
-    return r
+	var r *TreeNode
+	if len(nums) == 0 {
+		return r
+	}
+	var f func(n *TreeNode, ns []int)
+	f = func(n *TreeNode, ns []int) {
+		if len(ns) == 1 {
+			n.Val = ns[0]
+			return
+		}
+		m := len(ns) / 2
+		n.Val = ns[m]
+		if m > 0 {
+			n.Left = new(TreeNode)
+			f(n.Left, ns[:m])
+		}
+		if m < len(ns)-1 {
+			n.Right = new(TreeNode)
+			f(n.Right, ns[m+1:])
+		}
+	}
+	r = new(TreeNode)
+	f(r, nums)
+	return r
 }

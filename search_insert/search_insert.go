@@ -3,16 +3,17 @@ package search_insert
 import (
 	"fmt"
 )
+
 func searchInsert(nums []int, target int) int {
 	if len(nums) == 0 {
 		return 0
 	}
-	for i := 0; i < len(nums); i ++ {
+	for i := 0; i < len(nums); i++ {
 		if nums[i] >= target {
 			return i
 		}
-		if i + 1 < len(nums) {
-			if nums[i + 1] > target {
+		if i+1 < len(nums) {
+			if nums[i+1] > target {
 				return i + 1
 			} else {
 				continue
@@ -28,7 +29,7 @@ func searchInsertV1(nums []int, target int) int {
 	if len(nums) == 0 {
 		return 0
 	}
-	min, max := 0, len(nums) - 1
+	min, max := 0, len(nums)-1
 	var half int
 	for min <= max {
 		half = (min + max) / 2

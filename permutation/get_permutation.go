@@ -38,20 +38,20 @@ import (
 
 func getPermutation(n int, k int) string {
 	nums := make([]int, n)
-	for i := 1; i <= n; i ++ {
+	for i := 1; i <= n; i++ {
 		nums[i-1] = i
 	}
-	for ; k > 1; k --{
+	for ; k > 1; k-- {
 		fmt.Printf("nums=%v\n", nums)
-		for i := n-1; i > 0; i -- {
+		for i := n - 1; i > 0; i-- {
 			if nums[i] > nums[i-1] {
 
 			}
 		}
 	}
 	sb := strings.Builder{}
-	for i := 0; i < n; i ++ {
-		sb.WriteByte(byte(nums[i]+'0'))
+	for i := 0; i < n; i++ {
+		sb.WriteByte(byte(nums[i] + '0'))
 	}
 	return sb.String()
 }

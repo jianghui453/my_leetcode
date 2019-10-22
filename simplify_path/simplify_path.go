@@ -4,7 +4,7 @@
 //
 //请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须只有一个斜杠 /。最后一个目录名（如果存在）不能以 / 结尾。此外，规范路径必须是表示绝对路径的最短字符串。
 //
-// 
+//
 //
 //示例 1：
 //
@@ -39,28 +39,28 @@ package simplify_path
 import "strings"
 
 func simplifyPath(path string) string {
-    slicePath := strings.Split(path, "/")
-    lenSlicePath := len(slicePath)
-    slicePathRet := make([]string, 0)
-    for i := 0; i < lenSlicePath; i ++ {
-        switch slicePath[i] {
-        case "..":
-            if len(slicePathRet) > 0 {
-                slicePathRet = slicePathRet[:len(slicePathRet)-1]
-            }
-            break
-        case "/":
-            break
-        case ".":
-            break
-        case " ":
-            break
-        case "":
-            break
-        default:
-            slicePathRet = append(slicePathRet, slicePath[i])
-            break
-        }
-    }
-    return "/" + strings.Join(slicePathRet, "/")
+	slicePath := strings.Split(path, "/")
+	lenSlicePath := len(slicePath)
+	slicePathRet := make([]string, 0)
+	for i := 0; i < lenSlicePath; i++ {
+		switch slicePath[i] {
+		case "..":
+			if len(slicePathRet) > 0 {
+				slicePathRet = slicePathRet[:len(slicePathRet)-1]
+			}
+			break
+		case "/":
+			break
+		case ".":
+			break
+		case " ":
+			break
+		case "":
+			break
+		default:
+			slicePathRet = append(slicePathRet, slicePath[i])
+			break
+		}
+	}
+	return "/" + strings.Join(slicePathRet, "/")
 }

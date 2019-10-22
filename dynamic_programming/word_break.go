@@ -23,7 +23,7 @@
 package dynamic_programming
 
 import (
-    "strings"
+	"strings"
 )
 
 //func wordBreak(s string, wordDict []string) bool {
@@ -200,27 +200,27 @@ import (
 //}
 
 func wordBreak(s string, wordDict []string) []string {
-   lenS := len(s)
-   memo := make(map[int][]string)
+	lenS := len(s)
+	memo := make(map[int][]string)
 
-   var f func(j int) []string
-   f = func(j int) []string {
-       if _, ok := memo[j]; !ok {
-           memo[j] = make([]string, 0)
-           for _, word := range wordDict {
-               if strings.Index(s[j: ], word) == 0 {
-                   if len(word) == lenS-j {
-                       memo[j] = append(memo[j], s[j: ])
-                   } else {
-                       for _, str := range f(j+len(word)) {
-                           memo[j] = append(memo[j], word+" "+str)
-                       }
-                   }
-               }
-           }
-       }
-       return memo[j]
-   }
-   f(0)
-   return memo[0]
+	var f func(j int) []string
+	f = func(j int) []string {
+		if _, ok := memo[j]; !ok {
+			memo[j] = make([]string, 0)
+			for _, word := range wordDict {
+				if strings.Index(s[j:], word) == 0 {
+					if len(word) == lenS-j {
+						memo[j] = append(memo[j], s[j:])
+					} else {
+						for _, str := range f(j + len(word)) {
+							memo[j] = append(memo[j], word+" "+str)
+						}
+					}
+				}
+			}
+		}
+		return memo[j]
+	}
+	f(0)
+	return memo[0]
 }

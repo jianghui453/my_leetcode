@@ -6,14 +6,10 @@ import (
 
 func TestMaxArea(t *testing.T) {
 	var height []int
-	var hope, ret int
+	var h, r int
 
 	height = []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
-	hope = 49
-	ret = maxArea(height)
-	if hope == ret {
-		t.Logf("success: height = %v; hope = %d; ret = %d\n", height, hope, ret)
-	} else {
-		t.Errorf("fail: height = %v; hope = %d; ret = %d\n", height, hope, ret)
-	}
+	h = 49
+	r = maxArea(height)
+	t.Logf("%t height=%v h=%d r=%d", r == h, height, h, r)
 }

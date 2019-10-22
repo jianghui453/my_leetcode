@@ -11,7 +11,7 @@
 //输入: "race a car"
 //输出: false
 
-package two_pointer
+package two_pointers
 
 import (
     "strings"

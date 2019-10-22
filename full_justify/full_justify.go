@@ -108,8 +108,8 @@ func fullJustify(words []string, maxWidth int) []string {
 		for i := 0; i < lenWordsT; i++ {
 			sb.WriteString(wordsT[i])
 			if i < lenWordsT-1 {
-                sb.WriteString(" ")
-            }
+				sb.WriteString(" ")
+			}
 		}
 		for i := 0; i < maxWidth-lenWordsTCont-lenWordsT+1; i++ {
 			sb.WriteString(" ")

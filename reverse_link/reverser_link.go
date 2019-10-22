@@ -3,7 +3,7 @@
 package reverse_link
 
 type ListNode struct {
-	val int
+	val  int
 	next *ListNode
 }
 

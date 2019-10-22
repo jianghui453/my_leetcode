@@ -107,19 +107,19 @@ func ladderLength(beginWord string, endWord string, wordList []string) int {
 	for {
 		newWords := make([]int, 0)
 		for wordsIdx := range words {
-            if len(nextWords[words[wordsIdx]]) == 0 {
-                continue
-            }
-            for i := range nextWords[words[wordsIdx]] {
-                if his[nextWords[words[wordsIdx]][i]] {
-                    continue
-                }
-                if wordList[nextWords[words[wordsIdx]][i]] == endWord {
-                    return min+1
-                }
-                newWords = append(newWords, nextWords[words[wordsIdx]][i])
-                his[nextWords[words[wordsIdx]][i]] = true
-            }
+			if len(nextWords[words[wordsIdx]]) == 0 {
+				continue
+			}
+			for i := range nextWords[words[wordsIdx]] {
+				if his[nextWords[words[wordsIdx]][i]] {
+					continue
+				}
+				if wordList[nextWords[words[wordsIdx]][i]] == endWord {
+					return min + 1
+				}
+				newWords = append(newWords, nextWords[words[wordsIdx]][i])
+				his[nextWords[words[wordsIdx]][i]] = true
+			}
 		}
 
 		if len(newWords) == 0 {
@@ -140,7 +140,7 @@ func _isNext(s1, s2 string) bool {
 					return true
 				}
 			} else if s1[:i] == s2[:i] {
-                return true
+				return true
 			}
 			if cnt > 1 {
 				return false

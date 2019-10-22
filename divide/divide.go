@@ -1,6 +1,6 @@
 package divide
 
-import(
+import (
 	"math"
 )
 
@@ -21,7 +21,7 @@ func divide(dividend int, divisor int) int {
 				dividend = dividend - (divisor << (logn - 1))
 				break
 			}
-			logn ++
+			logn++
 		}
 	}
 	if !signBool {
@@ -31,7 +31,7 @@ func divide(dividend int, divisor int) int {
 		return math.MaxInt32
 	}
 	if ret < math.MinInt32 {
-		return math.MinInt32 
+		return math.MinInt32
 	}
 	return ret
 }

@@ -5,16 +5,16 @@ import "testing"
 func TestCombinationSum(t *testing.T) {
 	var (
 		candidates []int
-		target int
-		hope [][]int
-		ret [][]int
+		target     int
+		hope       [][]int
+		ret        [][]int
 	)
 
-	candidates = []int{2,3,6,7}
+	candidates = []int{2, 3, 6, 7}
 	target = 7
 	hope = [][]int{
 		[]int{7},
-		[]int{2,2,3},
+		[]int{2, 2, 3},
 	}
 	ret = combinationSum(candidates, target)
 	t.Logf("candidate = %v\ntarget = %d\nhope = %v\nret = %v\n\n", candidates, target, hope, ret)

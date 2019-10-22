@@ -34,9 +34,9 @@ func TestFullJustify(t *testing.T) {
 	ret = fullJustify(words, maxWidth)
 	t.Logf("\nwords=%v maxWidth=%d \nhope=%v \n ret=%v", words, maxWidth, hope, ret)
 
-    words = []string{"ask","not","what","your","country","can","do","for","you","ask","what","you","can","do","for","your","country"}
-    maxWidth = 16
-    hope = []string{"ask   not   what","your country can","do  for  you ask","what  you can do","for your country"}
-    ret = fullJustify(words, maxWidth)
-    t.Logf("\nwords=%v maxWidth=%d \nhope=%v \n ret=%v", words, maxWidth, hope, ret)
+	words = []string{"ask", "not", "what", "your", "country", "can", "do", "for", "you", "ask", "what", "you", "can", "do", "for", "your", "country"}
+	maxWidth = 16
+	hope = []string{"ask   not   what", "your country can", "do  for  you ask", "what  you can do", "for your country"}
+	ret = fullJustify(words, maxWidth)
+	t.Logf("\nwords=%v maxWidth=%d \nhope=%v \n ret=%v", words, maxWidth, hope, ret)
 }

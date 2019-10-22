@@ -26,9 +26,9 @@ func reverse(x int) int {
 	if !positive {
 		x = -x
 	}
-	for i := 10; i <= x * 10; i *= 10 {
-		num = num * 10 + (x % i) * 10 / i
-		if (positive && num > 1<<31 - 1) || (!positive && num > 1<<31 - 1) {
+	for i := 10; i <= x*10; i *= 10 {
+		num = num*10 + (x%i)*10/i
+		if (positive && num > 1<<31-1) || (!positive && num > 1<<31-1) {
 			return 0
 		}
 	}

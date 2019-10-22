@@ -13,18 +13,18 @@ package reverse_k_group
  */
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-    if k == 1 {
+	if k == 1 {
 		return head
 	}
 	listLen := 0
 	current, tail := head, head
 	for current != nil {
-		listLen ++
+		listLen++
 		current = current.Next
 	}
 	for listLen >= k {
@@ -34,7 +34,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 		} else {
 			subHead, subTail = tail.Next, tail.Next
 		}
-		for i := 0; i < k - 1; i ++ {
+		for i := 0; i < k-1; i++ {
 			temp := subTail.Next
 			subTail.Next = temp.Next
 			temp.Next = subHead

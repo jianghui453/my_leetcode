@@ -15,22 +15,22 @@
 package tree
 
 func inorderTraversal(root *TreeNode) []int {
-    r := make([]int, 0)
-    if root == nil {
-        return r
-    }
-    var f func(*TreeNode)
-    f = func (n *TreeNode) {
-        if n.Left != nil {
-            f(n.Left)
-        }
-        r = append(r, n.Val)
-        if n.Right != nil {
-            f(n.Right)
-        }
-    }
-    f(root)
-    return r
+	r := make([]int, 0)
+	if root == nil {
+		return r
+	}
+	var f func(*TreeNode)
+	f = func(n *TreeNode) {
+		if n.Left != nil {
+			f(n.Left)
+		}
+		r = append(r, n.Val)
+		if n.Right != nil {
+			f(n.Right)
+		}
+	}
+	f(root)
+	return r
 }
 
 //func inorderTraversal(root *TreeNode) []int {

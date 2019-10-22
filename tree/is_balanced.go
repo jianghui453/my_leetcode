@@ -31,42 +31,42 @@
 package tree
 
 func isBalanced(root *TreeNode) bool {
-   if root == nil {
-       return true
-   }
-   if !isBalanced(root.Left) || !isBalanced(root.Right) {
-       return false
-   }
-   var f func(node *TreeNode) int
-   f = func(node *TreeNode) int {
-       if node == nil {
-           return 0
-       }
-       left := 1
-       right := 1
-       if node.Left != nil {
-           left += f(node.Left)
-       }
-       if node.Right != nil {
-           right += f(node.Right)
-       }
-       if left > right {
-           return left
-       }
-       return right
-   }
-   dLeft := 0
-   dRight := 0
-   if root.Left != nil {
-       dLeft = f(root.Left)
-   }
-   if root.Right != nil {
-       dRight = f(root.Right)
-   }
-   if dLeft >= dRight {
-       return dLeft-dRight<2
-   }
-   return dRight-dLeft<2
+	if root == nil {
+		return true
+	}
+	if !isBalanced(root.Left) || !isBalanced(root.Right) {
+		return false
+	}
+	var f func(node *TreeNode) int
+	f = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+		left := 1
+		right := 1
+		if node.Left != nil {
+			left += f(node.Left)
+		}
+		if node.Right != nil {
+			right += f(node.Right)
+		}
+		if left > right {
+			return left
+		}
+		return right
+	}
+	dLeft := 0
+	dRight := 0
+	if root.Left != nil {
+		dLeft = f(root.Left)
+	}
+	if root.Right != nil {
+		dRight = f(root.Right)
+	}
+	if dLeft >= dRight {
+		return dLeft-dRight < 2
+	}
+	return dRight-dLeft < 2
 }
 
 //func isBalanced(root *TreeNode) bool {

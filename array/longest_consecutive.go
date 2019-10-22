@@ -11,23 +11,23 @@
 package array
 
 func longestConsecutive(nums []int) int {
-    hash := make(map[int]int)
-    var max int
+	hash := make(map[int]int)
+	var max int
 
-    for _, v := range nums {
-        if _, ok := hash[v]; !ok {
-            left := hash[v-1]
-            right := hash[v+1]
-            curry := 1 + left + right
-            if curry > max {
-                max = curry
-            }
-            hash[v] = curry
-            hash[v-left] = curry
-            hash[v+right] = curry
-        }
-    }
-    return max
+	for _, v := range nums {
+		if _, ok := hash[v]; !ok {
+			left := hash[v-1]
+			right := hash[v+1]
+			curry := 1 + left + right
+			if curry > max {
+				max = curry
+			}
+			hash[v] = curry
+			hash[v-left] = curry
+			hash[v+right] = curry
+		}
+	}
+	return max
 }
 
 //func longestConsecutive(nums []int) int {

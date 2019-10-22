@@ -18,25 +18,25 @@
 package plus_one
 
 func plusOne(digits []int) []int {
-    dlen := len(digits)
+	dlen := len(digits)
 
-    if dlen < 1 {
-        return []int{}
-    }
-    if digits[0] == 0 {
-        return []int{1}
-    }
+	if dlen < 1 {
+		return []int{}
+	}
+	if digits[0] == 0 {
+		return []int{1}
+	}
 
-    for i := dlen-1; i >= 0; i -- {
-        if digits[i] < 9 {
-            digits[i] ++
-            break
-        } else {
-            digits[i] = 0
-            if i == 0 {
-                digits = append([]int{1}, digits...)
-            }
-        }
-    }
-    return digits
+	for i := dlen - 1; i >= 0; i-- {
+		if digits[i] < 9 {
+			digits[i]++
+			break
+		} else {
+			digits[i] = 0
+			if i == 0 {
+				digits = append([]int{1}, digits...)
+			}
+		}
+	}
+	return digits
 }

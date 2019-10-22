@@ -35,6 +35,6 @@ func TestSolveSudoku(t *testing.T) {
 		ret = append(ret, vs)
 	}
 	t.Logf("after = %v", ret)
-	
+
 	// t.Logf("%d", -9 / 8)
 }

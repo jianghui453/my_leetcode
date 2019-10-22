@@ -1,6 +1,6 @@
 package swap_pairs
 
-import(
+import (
 	"testing"
 )
 

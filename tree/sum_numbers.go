@@ -35,32 +35,32 @@
 package tree
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 func sumNumbers(root *TreeNode) int {
-    if root == nil {
-        return 0
-    }
-    r := 0
-    var f func(node *TreeNode, sum int)
-    f = func(node *TreeNode, sum int) {
-        if r >= math.MaxInt64 || r <= math.MinInt64 {
-            return
-        }
-        sum = sum*10+node.Val
-        if node.Left != nil {
-            f(node.Left, sum)
-        }
-        if node.Right != nil {
-            f(node.Right, sum)
-        }
-        if node.Right == nil && node.Left == nil {
-            fmt.Printf("sum=%d node.Val=%d\n", sum, node.Val)
-            r += sum
-        }
-    }
-    f(root, 0)
-    return r
+	if root == nil {
+		return 0
+	}
+	r := 0
+	var f func(node *TreeNode, sum int)
+	f = func(node *TreeNode, sum int) {
+		if r >= math.MaxInt64 || r <= math.MinInt64 {
+			return
+		}
+		sum = sum*10 + node.Val
+		if node.Left != nil {
+			f(node.Left, sum)
+		}
+		if node.Right != nil {
+			f(node.Right, sum)
+		}
+		if node.Right == nil && node.Left == nil {
+			fmt.Printf("sum=%d node.Val=%d\n", sum, node.Val)
+			r += sum
+		}
+	}
+	f(root, 0)
+	return r
 }

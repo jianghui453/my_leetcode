@@ -66,11 +66,11 @@ func singleNumber(nums []int) int {
 	// 0 1  0        0 1
 	// 0 0  1        0 1
 	var a, b int
-	for i := 0; i < lenNums; i ++ {
+	for i := 0; i < lenNums; i++ {
 		c := nums[i]
-		_a := (a^b)&(a^c)
-		b = (a^-1)&(b^c)
+		_a := (a ^ b) & (a ^ c)
+		b = (a ^ -1) & (b ^ c)
 		a = _a
 	}
-	return a|b
+	return a | b
 }

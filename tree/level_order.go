@@ -34,105 +34,104 @@
 //  [15,7]
 //]
 
-
 package tree
 
 func levelOrder(root *TreeNode) [][]int {
-    r := make([][]int, 0)
-    if root == nil {
-        return r
-    }
-    s := []*TreeNode{root}
-    lenS := 1
-    for lenS > 0 {
-        rItem := make([]int, 0)
-        sNew := make([]*TreeNode, 0)
-        lenSNew := 0
-        for i := 0; i < lenS; i ++ {
-            rItem = append(rItem, s[i].Val)
-            if s[i].Left != nil {
-                sNew = append(sNew, s[i].Left)
-                lenSNew ++
-            }
-            if s[i].Right != nil {
-                sNew = append(sNew, s[i].Right)
-                lenSNew ++
-            }
-        }
-        r = append(r, rItem)
-        s = sNew
-        lenS = lenSNew
-    }
-    return r
+	r := make([][]int, 0)
+	if root == nil {
+		return r
+	}
+	s := []*TreeNode{root}
+	lenS := 1
+	for lenS > 0 {
+		rItem := make([]int, 0)
+		sNew := make([]*TreeNode, 0)
+		lenSNew := 0
+		for i := 0; i < lenS; i++ {
+			rItem = append(rItem, s[i].Val)
+			if s[i].Left != nil {
+				sNew = append(sNew, s[i].Left)
+				lenSNew++
+			}
+			if s[i].Right != nil {
+				sNew = append(sNew, s[i].Right)
+				lenSNew++
+			}
+		}
+		r = append(r, rItem)
+		s = sNew
+		lenS = lenSNew
+	}
+	return r
 }
 
 func zigzagLevelOrder(root *TreeNode) [][]int {
-    r := make([][]int, 0)
-    if root == nil {
-        return r
-    }
-    s := []*TreeNode{root}
-    z := true
-    lenS := 1
-    for lenS > 0 {
-        rItem := make([]int, 0)
-        sNew := make([]*TreeNode, 0)
-        lenSNew := 0
-        for i := 0; i < lenS; i ++ {
-            rItem = append(rItem, s[i].Val)
-            if z {
-                if s[i].Left != nil {
-                    sNew = append([]*TreeNode{s[i].Left}, sNew...)
-                    lenSNew ++
-                }
-                if s[i].Right != nil {
-                    sNew = append([]*TreeNode{s[i].Right}, sNew...)
-                    lenSNew ++
-                }
-            } else {
-                if s[i].Right != nil {
-                    sNew = append([]*TreeNode{s[i].Right}, sNew...)
-                    lenSNew ++
-                }
-                if s[i].Left != nil {
-                    sNew = append([]*TreeNode{s[i].Left}, sNew...)
-                    lenSNew ++
-                }
-            }
-        }
-        z = !z
-        r = append(r, rItem)
-        s = sNew
-        lenS = lenSNew
-    }
-    return r
+	r := make([][]int, 0)
+	if root == nil {
+		return r
+	}
+	s := []*TreeNode{root}
+	z := true
+	lenS := 1
+	for lenS > 0 {
+		rItem := make([]int, 0)
+		sNew := make([]*TreeNode, 0)
+		lenSNew := 0
+		for i := 0; i < lenS; i++ {
+			rItem = append(rItem, s[i].Val)
+			if z {
+				if s[i].Left != nil {
+					sNew = append([]*TreeNode{s[i].Left}, sNew...)
+					lenSNew++
+				}
+				if s[i].Right != nil {
+					sNew = append([]*TreeNode{s[i].Right}, sNew...)
+					lenSNew++
+				}
+			} else {
+				if s[i].Right != nil {
+					sNew = append([]*TreeNode{s[i].Right}, sNew...)
+					lenSNew++
+				}
+				if s[i].Left != nil {
+					sNew = append([]*TreeNode{s[i].Left}, sNew...)
+					lenSNew++
+				}
+			}
+		}
+		z = !z
+		r = append(r, rItem)
+		s = sNew
+		lenS = lenSNew
+	}
+	return r
 }
 
 func levelOrderBottom(root *TreeNode) [][]int {
-    r := make([][]int, 0)
-    if root == nil {
-        return r
-    }
-    s := []*TreeNode{root}
-    lenS := 1
-    for lenS > 0 {
-        rItem := make([]int, 0)
-        sNew := make([]*TreeNode, 0)
-        lenSNew := 0
-        for i := 0; i < lenS; i ++ {
-            rItem = append(rItem, s[i].Val)
-            if s[i].Left != nil {
-                sNew = append(sNew, s[i].Left)
-                lenSNew ++
-            }
-            if s[i].Right != nil {
-                sNew = append(sNew, s[i].Right)
-                lenSNew ++
-            }
-        }
-        r = append([][]int{rItem}, r...)
-        s = sNew
-        lenS = lenSNew
-    }
-    return r
+	r := make([][]int, 0)
+	if root == nil {
+		return r
+	}
+	s := []*TreeNode{root}
+	lenS := 1
+	for lenS > 0 {
+		rItem := make([]int, 0)
+		sNew := make([]*TreeNode, 0)
+		lenSNew := 0
+		for i := 0; i < lenS; i++ {
+			rItem = append(rItem, s[i].Val)
+			if s[i].Left != nil {
+				sNew = append(sNew, s[i].Left)
+				lenSNew++
+			}
+			if s[i].Right != nil {
+				sNew = append(sNew, s[i].Right)
+				lenSNew++
+			}
+		}
+		r = append([][]int{rItem}, r...)
+		s = sNew
+		lenS = lenSNew
+	}
+	return r
 }

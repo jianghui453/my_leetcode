@@ -46,9 +46,9 @@ func isValidSudoku(board [][]byte) bool {
 				square[squareKey][val] > 0 {
 				return false
 			}
-			raw[k][val] ++
-			column[key][val] ++
-			square[squareKey][val] ++
+			raw[k][val]++
+			column[key][val]++
+			square[squareKey][val]++
 		}
 	}
 	return true

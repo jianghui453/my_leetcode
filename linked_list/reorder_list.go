@@ -13,29 +13,29 @@
 package linked_list
 
 func reorderList(head *ListNode) {
-    if head == nil || head.Next == nil {
-        return
-    }
-    h := head
-    list := make([]*ListNode, 0)
-    for h != nil {
-        list = append(list, h)
-        h = h.Next
-    }
-    left := 0
-    right := len(list)-1
-    for left < right {
-        list[left].Next = list[right]
-        if left+1 < right {
-            list[right].Next = list[left+1]
-        } else {
-            list[right].Next = nil
-            break
-        }
-        left ++
-        right --
-    }
-    if left == right {
-        list[left].Next = nil
-    }
+	if head == nil || head.Next == nil {
+		return
+	}
+	h := head
+	list := make([]*ListNode, 0)
+	for h != nil {
+		list = append(list, h)
+		h = h.Next
+	}
+	left := 0
+	right := len(list) - 1
+	for left < right {
+		list[left].Next = list[right]
+		if left+1 < right {
+			list[right].Next = list[left+1]
+		} else {
+			list[right].Next = nil
+			break
+		}
+		left++
+		right--
+	}
+	if left == right {
+		list[left].Next = nil
+	}
 }

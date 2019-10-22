@@ -49,23 +49,23 @@ package tree
 //}
 
 func sortedListToBST(head *ListNode) *TreeNode {
-    var list []int
-    for p := head; p != nil; p = p.Next {
-        list = append(list, p.Val)
-    }
+	var list []int
+	for p := head; p != nil; p = p.Next {
+		list = append(list, p.Val)
+	}
 
-    var build func([]int) *TreeNode
-    build = func(list []int) *TreeNode {
-        if len(list) == 0 {
-            return nil
-        }
-        mid := len(list) / 2
-        return &TreeNode{
-            Val: list[mid],
-            Left: build(list[:mid]),
-            Right: build(list[mid+1:]),
-        }
-    }
+	var build func([]int) *TreeNode
+	build = func(list []int) *TreeNode {
+		if len(list) == 0 {
+			return nil
+		}
+		mid := len(list) / 2
+		return &TreeNode{
+			Val:   list[mid],
+			Left:  build(list[:mid]),
+			Right: build(list[mid+1:]),
+		}
+	}
 
-    return build(list)
+	return build(list)
 }

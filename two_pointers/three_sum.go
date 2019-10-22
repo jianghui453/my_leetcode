@@ -10,19 +10,61 @@
 //  [-1, -1, 2]
 //]
 
-package array
+package two_pointers
+
+import "sort"
+// import "fmt"
 
 func threeSum(nums []int) [][]int {
-	var ret [][]int
-	nLen := len(nums)
-	if nLen < 3 {
-		return ret
+	numsLen := len(nums)
+	if numsLen < 3 {
+		return [][]int{}
 	}
-	for i := 0; i < nLen-2; i++ {
-		if i+2 < nLen && nums[i+2] == nums[i] {
 
+	sort.Ints(nums)
+
+	ret := make([][]int, 0)
+
+	for i := 0; i < numsLen; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+
+		if nums[i] > 0 {
+			break
+		}
+
+		j, k := i+1, numsLen-1
+		for j < k {
+			v := nums[i] + nums[j] + nums[k]
+			
+			if v < 0 {
+				j++
+				for j < k && nums[j] == nums[j-1] {
+					j++
+				}
+			} else if v > 0 {
+				k--
+				for k > j && nums[k] == nums[k+1] {
+					k--
+				}
+			} else {
+				ret = append(ret, []int{nums[i], nums[j], nums[k]})
+				
+				j++
+				for j < k && nums[j] == nums[j-1] {
+					j++
+				}
+				
+				k--
+				for k > j && nums[k] == nums[k+1] {
+					k--
+				}
+			}
 		}
 	}
+
+	return ret
 }
 
 //func threeSum(nums []int) [][]int {

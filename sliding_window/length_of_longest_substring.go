@@ -22,30 +22,30 @@
 package sliding_window
 
 func lengthOfLongestSubstring(s string) int {
-    sLen := len(s)
-    if sLen < 2 {
-        return sLen
-    }
-    his := make([]int, 255)
-    left := 0
-    right := 1
-    his[s[0]] = 1
-    max := 1
-    for right < sLen {
-        if his[s[right]] == 0 {
-            if max < (right-left+1) {
-                max = right-left+1
-            }
-        } else {
-            for left < his[s[right]] {
-                his[s[left]] = 0
-                left ++
-            }
-        }
-        his[s[right]] = right+1
-        right++
-    }
-    return max
+	sLen := len(s)
+	if sLen < 2 {
+		return sLen
+	}
+	his := make([]int, 255)
+	left := 0
+	right := 1
+	his[s[0]] = 1
+	max := 1
+	for right < sLen {
+		if his[s[right]] == 0 {
+			if max < (right - left + 1) {
+				max = right - left + 1
+			}
+		} else {
+			for left < his[s[right]] {
+				his[s[left]] = 0
+				left++
+			}
+		}
+		his[s[right]] = right + 1
+		right++
+	}
+	return max
 }
 
 //func lengthOfLongestSubstring(s string) int {

@@ -18,8 +18,8 @@ func addTwoNumbersMine(l1, l2 *ListNode) *ListNode {
 	carry := 0
 	var head, tail *ListNode
 	for l1 != nil && l2 != nil {
-		val := (l1.Val+l2.Val+carry)%10
-		carry = (l1.Val+l2.Val+carry)/10
+		val := (l1.Val + l2.Val + carry) % 10
+		carry = (l1.Val + l2.Val + carry) / 10
 		node := &ListNode{
 			val,
 			nil,
@@ -38,8 +38,8 @@ func addTwoNumbersMine(l1, l2 *ListNode) *ListNode {
 		l1 = l2
 	}
 	for l1 != nil {
-		val := (l1.Val+carry)%10
-		carry = (l1.Val+carry)/10
+		val := (l1.Val + carry) % 10
+		carry = (l1.Val + carry) / 10
 		node := &ListNode{
 			val,
 			nil,

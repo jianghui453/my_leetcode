@@ -18,7 +18,7 @@ func searchRange(nums []int, target int) []int {
 			max = half - 1
 		} else {
 			left, right := -1, -1
-			for i := min; i <= max; i ++ {
+			for i := min; i <= max; i++ {
 				if nums[i] == target {
 					if left == -1 {
 						left = i
@@ -35,7 +35,7 @@ func searchRange(nums []int, target int) []int {
 }
 
 func searchRangeV1(nums []int, target int) []int {
-    if len(nums) == 0 {
+	if len(nums) == 0 {
 		return []int{-1, -1}
 	}
 	var min, max = 0, len(nums) - 1
@@ -48,12 +48,12 @@ func searchRangeV1(nums []int, target int) []int {
 		} else {
 			var start, end = half, half
 			for {
-				if start > 0 && nums[start - 1] == target {
-					start --
+				if start > 0 && nums[start-1] == target {
+					start--
 					continue
 				}
-				if end < len(nums) - 1 && nums[end + 1] == target {
-					end ++
+				if end < len(nums)-1 && nums[end+1] == target {
+					end++
 					continue
 				}
 				return []int{start, end}

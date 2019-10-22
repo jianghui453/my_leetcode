@@ -23,32 +23,32 @@ package tree
 import "fmt"
 
 func pathSum(root *TreeNode, sum int) [][]int {
-    ret := make([][]int, 0)
-    var f func(node *TreeNode, s int, r []int)
-    f = func(node *TreeNode, s int, r []int) {
-        fmt.Printf("s=%d r=%v\n", s, r)
-        if node == nil {
-            return
-        }
-        if node.Left == nil && node.Right == nil {
-            if node.Val == s {
-                r = append(r, node.Val)
-                ret = append(ret, r)
-            }
-            return
-        }
-        r = append(r, node.Val)
-        if node.Left != nil {
-            rNew := make([]int, len(r))
-            copy(rNew, r)
-            f(node.Left, s-node.Val, rNew)
-        }
-        if node.Right != nil {
-            rNew := make([]int, len(r))
-            copy(rNew, r)
-            f(node.Right, s-node.Val, rNew)
-        }
-    }
-    f(root, sum, []int{})
-    return ret
+	ret := make([][]int, 0)
+	var f func(node *TreeNode, s int, r []int)
+	f = func(node *TreeNode, s int, r []int) {
+		fmt.Printf("s=%d r=%v\n", s, r)
+		if node == nil {
+			return
+		}
+		if node.Left == nil && node.Right == nil {
+			if node.Val == s {
+				r = append(r, node.Val)
+				ret = append(ret, r)
+			}
+			return
+		}
+		r = append(r, node.Val)
+		if node.Left != nil {
+			rNew := make([]int, len(r))
+			copy(rNew, r)
+			f(node.Left, s-node.Val, rNew)
+		}
+		if node.Right != nil {
+			rNew := make([]int, len(r))
+			copy(rNew, r)
+			f(node.Right, s-node.Val, rNew)
+		}
+	}
+	f(root, sum, []int{})
+	return ret
 }

@@ -21,31 +21,31 @@
 package greedy
 
 func candy(ratings []int) int {
-    if len(ratings) == 0 {
-        return 0
-    } else if len(ratings) == 1 {
-        return 1
-    }
-    var minCandy int
-    lenRatings := len(ratings)
-    record := make([]int, lenRatings)
-    record[0] = 1
-    for i := 0; i < lenRatings - 1; i ++ {
-        if ratings[i+1] > ratings[i] {
-            record[i+1] = record[i] + 1
-        } else {
-            record[i+1] = 1
-        }
-    }
-    for i := lenRatings - 1; i > 0; i -- {
-        if ratings[i-1] > ratings[i] && record[i-1] < record[i]+1 {
-            record[i-1] = record[i] + 1
-        }
-    }
-    for i := range ratings {
-        minCandy += record[i]
-    }
-    return minCandy
+	if len(ratings) == 0 {
+		return 0
+	} else if len(ratings) == 1 {
+		return 1
+	}
+	var minCandy int
+	lenRatings := len(ratings)
+	record := make([]int, lenRatings)
+	record[0] = 1
+	for i := 0; i < lenRatings-1; i++ {
+		if ratings[i+1] > ratings[i] {
+			record[i+1] = record[i] + 1
+		} else {
+			record[i+1] = 1
+		}
+	}
+	for i := lenRatings - 1; i > 0; i-- {
+		if ratings[i-1] > ratings[i] && record[i-1] < record[i]+1 {
+			record[i-1] = record[i] + 1
+		}
+	}
+	for i := range ratings {
+		minCandy += record[i]
+	}
+	return minCandy
 }
 
 //func candy(ratings []int) int {

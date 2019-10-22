@@ -2,7 +2,7 @@
 //
 //为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
 //
-// 
+//
 //
 //示例 1：
 //
@@ -25,7 +25,7 @@
 //解释：链表中没有环。
 //
 //
-// 
+//
 //
 //进阶：
 //
@@ -34,22 +34,22 @@
 package linked_list
 
 func hasCycle(head *ListNode) bool {
-    if head == nil || head.Next == nil {
-        return false
-    }
+	if head == nil || head.Next == nil {
+		return false
+	}
 
-    slow := head
-    fast := head.Next
+	slow := head
+	fast := head.Next
 
-    for fast.Next != nil {
-        if slow == fast {
-            return true
-        }
-        if fast.Next.Next == nil {
-            return false
-        }
-        fast = fast.Next.Next
-        slow = slow.Next
-    }
-    return false
+	for fast.Next != nil {
+		if slow == fast {
+			return true
+		}
+		if fast.Next.Next == nil {
+			return false
+		}
+		fast = fast.Next.Next
+		slow = slow.Next
+	}
+	return false
 }

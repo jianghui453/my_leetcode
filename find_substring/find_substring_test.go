@@ -11,8 +11,8 @@ func TestFindSubString(t *testing.T) {
 	var ret []int
 
 	s = "barfoothefoobarman"
-	words = []string{"foo","bar"}
-	hope = []int{0,9}
+	words = []string{"foo", "bar"}
+	hope = []int{0, 9}
 	ret = findSubstring(s, words)
 	t.Logf("s = %s; words = %v; hope = %v; ret = %v", s, words, hope, ret)
 }

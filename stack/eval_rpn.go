@@ -34,53 +34,53 @@ import "strconv"
 //= 22
 
 func evalRPN(tokens []string) int {
-    t := make([]string, 0)
-    v := make([]int, 0)
+	t := make([]string, 0)
+	v := make([]int, 0)
 
-    tmap := map[string]bool{
-        "+": true,
-        "-": true,
-        "*": true,
-        "/": true,
-    }
-    tl := len(tokens)
-    for i := 0; i < tl; i ++ {
-        token := tokens[i]
-        if _, ok := tmap[token]; !ok {
-            v2, err := strconv.Atoi(token)
-            if err != nil {
-                return 0
-            }
-            v = append(v, v2)
-            continue
-        }
-        if len(v) > 1 {
-            v1 := v[len(v)-2]
-            v2 := v[len(v)-1]
-            v = v[: len(v)-1]
-            var v0 int
-            switch token {
-            case "+":
-                v0 = v1+v2
-                break
-            case "-":
-                v0 = v1-v2
-                break
-            case "*":
-                v0 = v1*v2
-                break
-            case "/":
-                v0 = v1/v2
-            default:
-                return 0
-            }
-            v[len(v)-1] = v0
-            continue
-        }
-        t = append(t, token)
-    }
-    if len(v) == 0 {
-        return 0
-    }
-    return v[0]
+	tmap := map[string]bool{
+		"+": true,
+		"-": true,
+		"*": true,
+		"/": true,
+	}
+	tl := len(tokens)
+	for i := 0; i < tl; i++ {
+		token := tokens[i]
+		if _, ok := tmap[token]; !ok {
+			v2, err := strconv.Atoi(token)
+			if err != nil {
+				return 0
+			}
+			v = append(v, v2)
+			continue
+		}
+		if len(v) > 1 {
+			v1 := v[len(v)-2]
+			v2 := v[len(v)-1]
+			v = v[:len(v)-1]
+			var v0 int
+			switch token {
+			case "+":
+				v0 = v1 + v2
+				break
+			case "-":
+				v0 = v1 - v2
+				break
+			case "*":
+				v0 = v1 * v2
+				break
+			case "/":
+				v0 = v1 / v2
+			default:
+				return 0
+			}
+			v[len(v)-1] = v0
+			continue
+		}
+		t = append(t, token)
+	}
+	if len(v) == 0 {
+		return 0
+	}
+	return v[0]
 }

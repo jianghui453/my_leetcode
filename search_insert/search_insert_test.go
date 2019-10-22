@@ -32,7 +32,7 @@ func TestSearchInsert(t *testing.T) {
 	hope = 1
 	ret = searchInsert(nums, target)
 	t.Logf("nums = %v; target = %d; hope = %d; ret = %d;\n", nums, target, hope, ret)
-// return
+	// return
 	nums = []int{1, 2}
 	target = 2
 	hope = 1

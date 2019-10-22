@@ -25,11 +25,11 @@ func minimumTotal(triangle [][]int) int {
 	}
 	r := []int{triangle[0][0]}
 	lr := 1
-	for i := 1; i < lt; i ++ {
+	for i := 1; i < lt; i++ {
 		rn := make([]int, lr+1)
-		for j := 0; j <= lr; j ++ {
+		for j := 0; j <= lr; j++ {
 			if j == 0 {
-				rn[j] = triangle[i][j]+r[j]
+				rn[j] = triangle[i][j] + r[j]
 			} else if j < lr {
 				if r[j-1] < r[j] {
 					rn[j] = triangle[i][j] + r[j-1]
@@ -41,10 +41,10 @@ func minimumTotal(triangle [][]int) int {
 			}
 		}
 		r = rn
-		lr ++
+		lr++
 	}
 	min := math.MaxInt64
-	for i := 0; i < lr; i ++ {
+	for i := 0; i < lr; i++ {
 		if r[i] < min {
 			min = r[i]
 		}

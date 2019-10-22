@@ -1,4 +1,4 @@
-package array
+package two_pointers
 
 import (
 	"testing"

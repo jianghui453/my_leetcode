@@ -11,18 +11,18 @@ func jump(nums []int) int {
 	step := 0
 	for idx < nLen {
 		fmt.Printf("idx = %d.\n", idx)
-		if idx + nums[idx] >= nLen - 1 {
+		if idx+nums[idx] >= nLen-1 {
 			return step + 1
 		}
 		max := idx
-		for i := idx + 1; i <= idx + nums[idx]; i ++ {
+		for i := idx + 1; i <= idx+nums[idx]; i++ {
 			fmt.Printf("i = %d, nums[i] = %d.\n", i, nums[i])
-			if i + nums[i] > max + nums[max] {
+			if i+nums[i] > max+nums[max] {
 				max = i
 			}
 		}
 		idx = max
-		step ++
+		step++
 	}
 	return step
 }

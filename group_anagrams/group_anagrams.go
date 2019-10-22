@@ -7,7 +7,7 @@ import "strings"
 func groupAnagrams(strs []string) [][]string {
 	groups := []string{}
 	ret := [][]string{}
-	Loop:
+Loop:
 	for _, str := range strs {
 		_str := strings.Split(str, "")
 		sort.Strings(_str)
@@ -27,7 +27,7 @@ func groupAnagrams(strs []string) [][]string {
 func groupAnagramsv1(strs []string) [][]string {
 	groups := [][]byte{}
 	ret := [][]string{}
-	Loop:
+Loop:
 	for _, str := range strs {
 		for idx, group := range groups {
 			if equal(group, str) {
@@ -52,7 +52,7 @@ func equal(chs []byte, str string) bool {
 	}
 	if sLen == 1 {
 		return str[0] == chs[0]
-	} 
+	}
 	ch := str[0]
 	_str := str[1:]
 	for idx, c := range chs {
@@ -60,9 +60,9 @@ func equal(chs []byte, str string) bool {
 			continue
 		}
 		var _chs []byte
-		if idx == sLen - 1 {
+		if idx == sLen-1 {
 			_chs = make([]byte, sLen-1)
-			copy(_chs, chs[:sLen - 1])
+			copy(_chs, chs[:sLen-1])
 		} else {
 			_chs = make([]byte, idx)
 			copy(_chs, chs[:idx])

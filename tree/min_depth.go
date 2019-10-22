@@ -18,28 +18,28 @@
 package tree
 
 func minDepth(root *TreeNode) int {
-    if root == nil {
-        return 0
-    }
-    if root.Left == nil && root.Right == nil {
-        return 1
-    }
-    l := 0
-    r := 0
-    if root.Left != nil {
-        l = minDepth(root.Left)
-    }
-    if root.Right != nil {
-        r = minDepth(root.Right)
-    }
-    if l == 0 {
-        return r+1
-    }
-    if r == 0 {
-        return l+1
-    }
-    if l > r {
-        return r+1
-    }
-    return l+1
+	if root == nil {
+		return 0
+	}
+	if root.Left == nil && root.Right == nil {
+		return 1
+	}
+	l := 0
+	r := 0
+	if root.Left != nil {
+		l = minDepth(root.Left)
+	}
+	if root.Right != nil {
+		r = minDepth(root.Right)
+	}
+	if l == 0 {
+		return r + 1
+	}
+	if r == 0 {
+		return l + 1
+	}
+	if l > r {
+		return r + 1
+	}
+	return l + 1
 }

@@ -21,11 +21,11 @@ func recurity(rets *[][]int, ret []int, nums []int) {
 		newNums := []int{}
 		if i == 0 {
 			newNums = append(newNums, nums[1:]...)
-		} else if i == len(nums) - 1 {
+		} else if i == len(nums)-1 {
 			newNums = append(newNums, nums[:i]...)
 		} else {
 			newNums = append(newNums, nums[:i]...)
-			newNums = append(newNums, nums[i + 1:]...)
+			newNums = append(newNums, nums[i+1:]...)
 		}
 		newRet := make([]int, len(ret))
 		copy(newRet, ret)

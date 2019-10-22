@@ -29,36 +29,36 @@ package tree
 import "math"
 
 func isValidBST(root *TreeNode) bool {
-    if root == nil {
-        return true
-    }
-    var f func(*TreeNode, int, int) bool
-    f = func(n *TreeNode, min, max int) bool {
-        if n == nil {
-            return true
-        }
-        if n.Val >= max || n.Val <= min {
-            return false
-        }
-        if n.Left != nil {
-            _max := max
-            if n.Val < max {
-                _max = n.Val
-            }
-            if !f(n.Left, min, _max) {
-                return false
-            }
-        }
-        if n.Right != nil {
-            _min := min
-            if n.Val > min {
-                _min = n.Val
-            }
-            if !f(n.Right, _min, max) {
-                return false
-            }
-        }
-        return true
-    }
-    return f(root, math.MinInt64, math.MaxInt64)
+	if root == nil {
+		return true
+	}
+	var f func(*TreeNode, int, int) bool
+	f = func(n *TreeNode, min, max int) bool {
+		if n == nil {
+			return true
+		}
+		if n.Val >= max || n.Val <= min {
+			return false
+		}
+		if n.Left != nil {
+			_max := max
+			if n.Val < max {
+				_max = n.Val
+			}
+			if !f(n.Left, min, _max) {
+				return false
+			}
+		}
+		if n.Right != nil {
+			_min := min
+			if n.Val > min {
+				_min = n.Val
+			}
+			if !f(n.Right, _min, max) {
+				return false
+			}
+		}
+		return true
+	}
+	return f(root, math.MinInt64, math.MaxInt64)
 }

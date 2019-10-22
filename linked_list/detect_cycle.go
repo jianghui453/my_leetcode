@@ -4,7 +4,7 @@
 //
 //说明：不允许修改给定的链表。
 //
-// 
+//
 //
 //示例 1：
 //
@@ -27,7 +27,7 @@
 //解释：链表中没有环。
 //
 //
-// 
+//
 //
 //进阶：
 //你是否可以不用额外空间解决此题？
@@ -35,27 +35,27 @@
 package linked_list
 
 func detectCycle(head *ListNode) *ListNode {
-    if head == nil || head.Next == nil {
-        return nil
-    }
+	if head == nil || head.Next == nil {
+		return nil
+	}
 
-    fast := head
-    slow := head
+	fast := head
+	slow := head
 
-    for {
-        if fast.Next == nil || fast.Next.Next == nil {
-            return nil
-        }
-        fast = fast.Next.Next
-        slow = slow.Next
-        if fast == slow {
-            for {
-                if slow == head {
-                    return slow
-                }
-                slow = slow.Next
-                head = head.Next
-            }
-        }
-    }
+	for {
+		if fast.Next == nil || fast.Next.Next == nil {
+			return nil
+		}
+		fast = fast.Next.Next
+		slow = slow.Next
+		if fast == slow {
+			for {
+				if slow == head {
+					return slow
+				}
+				slow = slow.Next
+				head = head.Next
+			}
+		}
+	}
 }

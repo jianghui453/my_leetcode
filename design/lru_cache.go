@@ -24,88 +24,88 @@
 package design
 
 type LRUCache struct {
-    cap int
-    size int
-    cache map[int]*DLinkList
-    head *DLinkList
-    tail *DLinkList
+	cap   int
+	size  int
+	cache map[int]*DLinkList
+	head  *DLinkList
+	tail  *DLinkList
 }
 
 type DLinkList struct {
-    Key int
-    Val int
-    Prev *DLinkList
-    Next *DLinkList
+	Key  int
+	Val  int
+	Prev *DLinkList
+	Next *DLinkList
 }
 
 func Constructor(capacity int) LRUCache {
-    l := LRUCache{
-        capacity,
-        0,
-        make(map[int]*DLinkList),
-        new(DLinkList),
-        new(DLinkList),
-    }
-    l.head.Prev = l.tail
-    l.head.Next = l.tail
-    l.tail.Next = l.head
-    l.tail.Prev = l.head
-    return l
+	l := LRUCache{
+		capacity,
+		0,
+		make(map[int]*DLinkList),
+		new(DLinkList),
+		new(DLinkList),
+	}
+	l.head.Prev = l.tail
+	l.head.Next = l.tail
+	l.tail.Next = l.head
+	l.tail.Prev = l.head
+	return l
 }
 
 func (l *LRUCache) addNode(node *DLinkList) {
-    next := l.head.Next
-    l.head.Next = node
-    node.Prev = l.head
-    node.Next = next
-    next.Prev = node
+	next := l.head.Next
+	l.head.Next = node
+	node.Prev = l.head
+	node.Next = next
+	next.Prev = node
 }
 
 func (l *LRUCache) rmNode(node *DLinkList) {
-    prev := node.Prev
-    next := node.Next
-    prev.Next = next
-    next.Prev = prev
+	prev := node.Prev
+	next := node.Next
+	prev.Next = next
+	next.Prev = prev
 }
 
 func (l *LRUCache) popNode() *DLinkList {
-    node := l.tail.Prev
-    prev := l.tail.Prev.Prev
-    l.tail.Prev = prev
-    prev.Next = l.tail
-    return node
+	node := l.tail.Prev
+	prev := l.tail.Prev.Prev
+	l.tail.Prev = prev
+	prev.Next = l.tail
+	return node
 }
 
 func (this *LRUCache) Get(key int) int {
-    if _, ok := this.cache[key]; !ok {
-        return -1
-    }
-    node := this.cache[key]
-    this.rmNode(node)
-    this.addNode(node)
-    return node.Val
+	if _, ok := this.cache[key]; !ok {
+		return -1
+	}
+	node := this.cache[key]
+	this.rmNode(node)
+	this.addNode(node)
+	return node.Val
 }
 
-func (this *LRUCache) Put(key int, value int)  {
-    if _, ok := this.cache[key]; ok {
-        node := this.cache[key]
-        this.rmNode(node)
-        this.addNode(node)
-        node.Val = value
-        return
-    }
-    node := &DLinkList{
-        key,
-        value,
-        nil,
-        nil,
-    }
-    this.cache[key] = node
-    this.size ++
-    this.addNode(node)
-    if this.size > this.cap {
-        node = this.popNode()
-        this.size --
-        delete(this.cache, node.Key)
-    }
+func (this *LRUCache) Put(key int, value int) {
+	if _, ok := this.cache[key]; ok {
+		node := this.cache[key]
+		this.rmNode(node)
+		this.addNode(node)
+		node.Val = value
+		return
+	}
+	node := &DLinkList{
+		key,
+		value,
+		nil,
+		nil,
+	}
+	this.cache[key] = node
+	this.size++
+	this.addNode(node)
+	if this.size > this.cap {
+		node = this.popNode()
+		this.size--
+		delete(this.cache, node.Key)
+	}
 }

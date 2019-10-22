@@ -68,34 +68,34 @@ package tree
 //   15   7
 
 func buildTree(inorder []int, postorder []int) *TreeNode {
-    var r *TreeNode
-    if len(postorder) == 0 {
-       return r
-    }
-    var f func(*TreeNode, []int)
-    f = func(n *TreeNode, in []int) {
-       if len(postorder) == 0 {
-           return
-       }
-       n.Val = postorder[len(postorder)-1]
-       if len(postorder) == 1 {
-           return
-       }
-       postorder = postorder[: len(postorder)-1]
-       for i := 0; i < len(in); i ++ {
-           if in[i] == n.Val {
-               if i < len(in)-1 {
-                   n.Right = new(TreeNode)
-                   f(n.Right, in[i+1: ])
-               }
-               if i > 0 {
-                   n.Left = new(TreeNode)
-                   f(n.Left, in[: i])
-               }
-           }
-       }
-    }
-    r = new(TreeNode)
-    f(r, inorder)
-    return r
+	var r *TreeNode
+	if len(postorder) == 0 {
+		return r
+	}
+	var f func(*TreeNode, []int)
+	f = func(n *TreeNode, in []int) {
+		if len(postorder) == 0 {
+			return
+		}
+		n.Val = postorder[len(postorder)-1]
+		if len(postorder) == 1 {
+			return
+		}
+		postorder = postorder[:len(postorder)-1]
+		for i := 0; i < len(in); i++ {
+			if in[i] == n.Val {
+				if i < len(in)-1 {
+					n.Right = new(TreeNode)
+					f(n.Right, in[i+1:])
+				}
+				if i > 0 {
+					n.Left = new(TreeNode)
+					f(n.Left, in[:i])
+				}
+			}
+		}
+	}
+	r = new(TreeNode)
+	f(r, inorder)
+	return r
 }

@@ -20,32 +20,32 @@
 package dynamic_programming
 
 func numDecodings(s string) int {
-    var r int
-    var f func (string, int)
-    f = func (str string, sL int) {
-        if sL == 0 {
-            return
-        }
-        if sL == 1 {
-            if str[0]-'0' > 0 {
-                r++
-            }
-            return
-        }
-        if str[0]-'0'>0 {
-            f(str[1: ], sL-1)
-            n := 10*(str[0]-'0')+(str[1]-'0')
-            if n>0 && n <=26 {
-                if sL == 2 {
-                    r++
-                } else {
-                    f(str[2: ], sL-2)
-                }
-            }
-        }
-    }
-    f (s, len(s))
-    return r
+	var r int
+	var f func(string, int)
+	f = func(str string, sL int) {
+		if sL == 0 {
+			return
+		}
+		if sL == 1 {
+			if str[0]-'0' > 0 {
+				r++
+			}
+			return
+		}
+		if str[0]-'0' > 0 {
+			f(str[1:], sL-1)
+			n := 10*(str[0]-'0') + (str[1] - '0')
+			if n > 0 && n <= 26 {
+				if sL == 2 {
+					r++
+				} else {
+					f(str[2:], sL-2)
+				}
+			}
+		}
+	}
+	f(s, len(s))
+	return r
 }
 
 //func numDecodings(s string) int {

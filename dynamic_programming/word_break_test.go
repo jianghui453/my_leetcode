@@ -26,7 +26,7 @@ func TestWordBreak(t *testing.T) {
 	//t.Logf("s=%s wordDict=%v h=%t r=%t", s, wordDict, h, r)
 
 	//var h, r []string
-    //
+	//
 	//s = "catsanddog"
 	//wordDict = []string{"cat", "cats", "and", "sand", "dog"}
 	//h = []string{"cats and dog", "cat sand dog"}
@@ -53,11 +53,11 @@ func TestWordBreak(t *testing.T) {
 
 	//s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 	//s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    s = "aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+	s = "aaaaaaaaaaaaaaaaaaaaaaaaaaa"
 	//s = "aaaaaaaaaaaaaaaaaa"
-    //
+	//
 	wordDict = []string{"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"}
 	//h = []string{"a", "b"}
-    wordBreak(s, wordDict)
+	wordBreak(s, wordDict)
 	//t.Logf("s=%s wordDict=%v \nh=%s \nr=%s", s, wordDict, h, r)
 }

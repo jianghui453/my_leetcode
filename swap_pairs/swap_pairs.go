@@ -9,7 +9,7 @@ package swap_pairs
  */
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
@@ -26,7 +26,7 @@ func swapPairs(head *ListNode) *ListNode {
 	head = head.Next
 	head.Next = first
 	head.Next.Next = second
-	
+
 	last, first = head.Next, head.Next.Next
 	if first == nil {
 		return head

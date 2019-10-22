@@ -22,7 +22,7 @@ func search(root *BinTree, k, ret *int) {
 	if root.left != nil {
 		search(root.left, k, ret)
 	}
-	*k --
+	*k--
 	if *k == 0 {
 		*ret = root.val
 		return

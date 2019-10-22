@@ -28,14 +28,14 @@ func mySqrt(x int) int {
 	if x < 4 {
 		return 1
 	}
-	y := x/2
-	yNext := (y+x/y)/2
+	y := x / 2
+	yNext := (y + x/y) / 2
 	for y*y > x || math.Abs(float64(y-yNext)) >= 1 {
 		if math.Abs(float64(y-yNext)) == 1 && y*y < x || yNext*yNext < x {
 			return int(math.Min(float64(y), float64(yNext)))
 		}
 		y = yNext
-		yNext = (y+x/y)/2
+		yNext = (y + x/y) / 2
 	}
 	return y
 }

@@ -50,9 +50,9 @@ func recoverTree(root *TreeNode) {
 	var first, second, prev, cur, prevm *TreeNode
 	cur = root
 	for cur != nil {
-	    //fmt.Printf("cur.Val=%d cur.Left=%v cur.Right=%v\n", cur.Val, cur.Left, cur.Right)
+		//fmt.Printf("cur.Val=%d cur.Left=%v cur.Right=%v\n", cur.Val, cur.Left, cur.Right)
 		if cur.Left == nil {
-		    //fmt.Printf("leftNil prev=%v first=%v second=%v\n", prev, first, second)
+			//fmt.Printf("leftNil prev=%v first=%v second=%v\n", prev, first, second)
 			if prev != nil && cur.Val < prev.Val {
 				if first == nil {
 					first = prev
@@ -66,7 +66,7 @@ func recoverTree(root *TreeNode) {
 		} else {
 			prevm = cur.Left
 			for prevm.Right != nil && prevm.Right != cur {
-			    //fmt.Printf("a prevm.Val=%d\n", prevm.Val)
+				//fmt.Printf("a prevm.Val=%d\n", prevm.Val)
 				prevm = prevm.Right
 			}
 			if prevm.Right == nil {

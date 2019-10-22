@@ -33,51 +33,51 @@
 package tree
 
 func isSameTree(p *TreeNode, q *TreeNode) bool {
-    if p == nil {
-        return q == nil
-    }
-    if q == nil {
-        return p == nil
-    }
-    var prevp, prevq *TreeNode
-    for p != nil && q != nil {
-        if p.Left == nil {
-            if q.Left != nil || p.Val != q.Val {
-                return false
-            }
-            p = p.Right
-            q = q.Right
-        } else {
-            if q.Left == nil {
-                return false
-            }
-            prevp = p.Left
-            prevq = q.Left
-            for prevp.Right != nil && prevp.Right != p {
-                if prevq.Right == nil || prevq.Right == q {
-                    return false
-                }
-                prevp = prevp.Right
-                prevq = prevq.Right
-            }
-            if prevp.Right == nil {
-                if prevq.Right != nil {
-                    return false
-                }
-                prevp.Right = p
-                prevq.Right = q
-                p = p.Left
-                q = q.Left
-            } else {
-                if prevq.Right != q || p.Val != q.Val  {
-                    return false
-                }
-                prevp.Right = nil
-                prevq.Right = nil
-                p = p.Right
-                q = q.Right
-            }
-        }
-    }
-    return p == nil && q == nil
+	if p == nil {
+		return q == nil
+	}
+	if q == nil {
+		return p == nil
+	}
+	var prevp, prevq *TreeNode
+	for p != nil && q != nil {
+		if p.Left == nil {
+			if q.Left != nil || p.Val != q.Val {
+				return false
+			}
+			p = p.Right
+			q = q.Right
+		} else {
+			if q.Left == nil {
+				return false
+			}
+			prevp = p.Left
+			prevq = q.Left
+			for prevp.Right != nil && prevp.Right != p {
+				if prevq.Right == nil || prevq.Right == q {
+					return false
+				}
+				prevp = prevp.Right
+				prevq = prevq.Right
+			}
+			if prevp.Right == nil {
+				if prevq.Right != nil {
+					return false
+				}
+				prevp.Right = p
+				prevq.Right = q
+				p = p.Left
+				q = q.Left
+			} else {
+				if prevq.Right != q || p.Val != q.Val {
+					return false
+				}
+				prevp.Right = nil
+				prevq.Right = nil
+				p = p.Right
+				q = q.Right
+			}
+		}
+	}
+	return p == nil && q == nil
 }

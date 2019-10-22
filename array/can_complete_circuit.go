@@ -4,7 +4,7 @@
 //
 //如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1。
 //
-//说明: 
+//说明:
 //
 //如果题目有解，该答案即为唯一答案。
 //输入数组均为非空数组，且长度相同。
@@ -44,19 +44,19 @@
 package array
 
 func canCompleteCircuit(gas []int, cost []int) int {
-    var curGas, res, total int
-    for i := 0; i < len(gas); i++ {
-        total += gas[i] - cost[i]
-        curGas += gas[i] - cost[i]
-        if curGas < 0 {
-            res = i + 1
-            curGas = 0
-        }
-    }
-    if total < 0 {
-        return -1
-    }
-    return res
+	var curGas, res, total int
+	for i := 0; i < len(gas); i++ {
+		total += gas[i] - cost[i]
+		curGas += gas[i] - cost[i]
+		if curGas < 0 {
+			res = i + 1
+			curGas = 0
+		}
+	}
+	if total < 0 {
+		return -1
+	}
+	return res
 }
 
 //func canCompleteCircuit(gas []int, cost []int) int {

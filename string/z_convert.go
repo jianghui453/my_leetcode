@@ -10,36 +10,36 @@ func convert(s string, numRows int) string {
 		return s
 	}
 	matrix := make([][]int, numRows)
-	for i := 0; i < numRows; i ++ {
+	for i := 0; i < numRows; i++ {
 		matrix[i] = make([]int, sLen)
 	}
 	i, j := 0, 0
 	inc := false
-	for k := 0; k < sLen; k ++ {
+	for k := 0; k < sLen; k++ {
 		matrix[i][j] = int(s[k]) + 1
 		if inc {
-			if i == numRows - 1 {
+			if i == numRows-1 {
 				inc = !inc
-				i --
-				j ++
+				i--
+				j++
 			} else {
-				i ++
+				i++
 			}
 		} else {
 			if i == 0 {
 				inc = !inc
-				i ++
+				i++
 			} else {
-				i --
-				j ++
+				i--
+				j++
 			}
 		}
 	}
 	sb := new(strings.Builder)
-	for i := 0; i < numRows; i ++ {
-		for j := 0; j < sLen; j ++ {
+	for i := 0; i < numRows; i++ {
+		for j := 0; j < sLen; j++ {
 			if matrix[i][j] > 0 {
-				sb.WriteByte(byte(matrix[i][j]-1))
+				sb.WriteByte(byte(matrix[i][j] - 1))
 			}
 		}
 	}

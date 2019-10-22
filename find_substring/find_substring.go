@@ -18,15 +18,15 @@ func findSubstring(s string, words []string) []int {
 	}
 	wordLen := len(words[0])
 	var ret = []int{}
-	Loop:
-	for i := 0; i <= len(s) - wordLen * len(words); i ++ {
+Loop:
+	for i := 0; i <= len(s)-wordLen*len(words); i++ {
 		sMap := make(map[string]int)
-		for j := i; j < i + wordLen * len(words); j += wordLen {
+		for j := i; j < i+wordLen*len(words); j += wordLen {
 			var str string
-			if j + wordLen == len(s) {
+			if j+wordLen == len(s) {
 				str = s[j:]
 			} else {
-				str = s[j: j + wordLen]
+				str = s[j : j+wordLen]
 			}
 			if _, ok := wordsMap[str]; !ok {
 				continue Loop
@@ -49,7 +49,7 @@ func findSubstringV1(s string, words []string) []int {
 		return []int{}
 	}
 	var ret = []int{}
-	for i := 0; i < len(s); i ++ {
+	for i := 0; i < len(s); i++ {
 		if checkSubstring(s[i:], words) {
 			ret = append(ret, i)
 		}
@@ -71,13 +71,13 @@ func checkSubstring(s string, words []string) bool {
 		if len(wordCopy) == 1 {
 			return true
 		}
-		if k + 1 == len(wordCopy) {
+		if k+1 == len(wordCopy) {
 			wordCopy = wordCopy[:k]
 		} else {
-			wordCopy = append(wordCopy[:k], wordCopy[k + 1:]...)
+			wordCopy = append(wordCopy[:k], wordCopy[k+1:]...)
 		}
 		s = s[len(word):]
 		return checkSubstring(s, wordCopy)
 	}
-	return false;
+	return false
 }

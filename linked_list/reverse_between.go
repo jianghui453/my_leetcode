@@ -11,9 +11,9 @@
 package linked_list
 
 func reverseBetween(head *ListNode, m int, n int) *ListNode {
-    if head == nil {
-        return head
-    }
+	if head == nil {
+		return head
+	}
 	if n <= m {
 		return head
 	}
@@ -26,25 +26,25 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 		t1 = t1.Next
 	}
 	if t1 != nil {
-        h2 = t1.Next
-        t2 = h2
-    } else {
-        h2 = head
-        t2 = head
-    }
+		h2 = t1.Next
+		t2 = h2
+	} else {
+		h2 = head
+		t2 = head
+	}
 	h3 = h2.Next
 	for i := 1; i < n-m+1 && h3 != nil; i++ {
 		h3 = h3.Next
 		c := t2.Next
-        t2.Next = h3
+		t2.Next = h3
 		c.Next = h2
 		h2 = c
 		if t1 != nil {
-            t1.Next = h2
-        }
+			t1.Next = h2
+		}
 	}
 	if h1 == nil {
-	    return h2
-    }
+		return h2
+	}
 	return h1
 }

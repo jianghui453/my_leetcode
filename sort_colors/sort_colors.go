@@ -20,32 +20,32 @@ package sort_colors
 import "fmt"
 
 func sortColors(nums []int) {
-    nLen := len(nums)
-    if nLen < 1 {
-        return
-    }
-    cur := 0
-    zero := 0
-    two := nLen-1
-    for cur <= two {
-        fmt.Printf("nums=%v cur=%d zero=%d two=%d\n", nums, cur, zero, two)
-        switch nums[cur] {
-        case 0:
-            nums[cur], nums[zero] = nums[zero], nums[cur]
-            zero ++
-            if zero >= cur {
-                cur++
-            }
-            break
-        case 1:
-            cur++
-            break
-        case 2:
-            nums[cur], nums[two] = nums[two], nums[cur]
-            two--
-            break
-        }
-    }
+	nLen := len(nums)
+	if nLen < 1 {
+		return
+	}
+	cur := 0
+	zero := 0
+	two := nLen - 1
+	for cur <= two {
+		fmt.Printf("nums=%v cur=%d zero=%d two=%d\n", nums, cur, zero, two)
+		switch nums[cur] {
+		case 0:
+			nums[cur], nums[zero] = nums[zero], nums[cur]
+			zero++
+			if zero >= cur {
+				cur++
+			}
+			break
+		case 1:
+			cur++
+			break
+		case 2:
+			nums[cur], nums[two] = nums[two], nums[cur]
+			two--
+			break
+		}
+	}
 }
 
 //func sortColors(nums []int) {

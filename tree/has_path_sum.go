@@ -2,7 +2,7 @@
 //
 //说明: 叶子节点是指没有子节点的节点。
 //
-//示例: 
+//示例:
 //给定如下二叉树，以及目标和 sum = 22，
 //
 //              5
@@ -17,16 +17,16 @@
 package tree
 
 func hasPathSum(root *TreeNode, sum int) bool {
-    if root == nil || sum < 0 {
-        return false
-    }
-    if root.Left == nil && root.Right == nil {
-        return root.Val == sum
-    }
-    if root.Left != nil {
-        if hasPathSum(root.Left, sum-root.Val) {
-            return true
-        }
-    }
-    return hasPathSum(root.Right, sum-root.Val)
+	if root == nil || sum < 0 {
+		return false
+	}
+	if root.Left == nil && root.Right == nil {
+		return root.Val == sum
+	}
+	if root.Left != nil {
+		if hasPathSum(root.Left, sum-root.Val) {
+			return true
+		}
+	}
+	return hasPathSum(root.Right, sum-root.Val)
 }

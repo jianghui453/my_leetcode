@@ -23,27 +23,27 @@
 package tree
 
 func generateTrees(n int) []*TreeNode {
-    r := make([]*TreeNode, 0)
-    if n < 1 {
-        return r
-    }
+	r := make([]*TreeNode, 0)
+	if n < 1 {
+		return r
+	}
 	var f func(int, int) []*TreeNode
-	f = func (s, l int) []*TreeNode {
-	    if s > l {
-	        return []*TreeNode{nil}
-        }
-	    trees := make([]*TreeNode, 0)
-	    for i := s; i <= l; i ++ {
-	        leftTrees := f(s, i-1)
-            rightTrees := f(i+1, l)
-            for _, leftTree := range leftTrees {
-                for _, rightTree := range rightTrees {
-                    tree := &TreeNode{i, leftTree, rightTree}
-                    trees = append(trees, tree)
-                }
-            }
-        }
-	    return trees
-    }
+	f = func(s, l int) []*TreeNode {
+		if s > l {
+			return []*TreeNode{nil}
+		}
+		trees := make([]*TreeNode, 0)
+		for i := s; i <= l; i++ {
+			leftTrees := f(s, i-1)
+			rightTrees := f(i+1, l)
+			for _, leftTree := range leftTrees {
+				for _, rightTree := range rightTrees {
+					tree := &TreeNode{i, leftTree, rightTree}
+					trees = append(trees, tree)
+				}
+			}
+		}
+		return trees
+	}
 	return f(1, n)
 }

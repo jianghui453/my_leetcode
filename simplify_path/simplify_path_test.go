@@ -28,35 +28,35 @@ package simplify_path
 import "testing"
 
 func TestSimplifyPath(t *testing.T) {
-    var path, hope, ret string
+	var path, hope, ret string
 
-    path = "/home/"
-    hope = "/home"
-    ret = simplifyPath(path)
-    t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	path = "/home/"
+	hope = "/home"
+	ret = simplifyPath(path)
+	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
 
-    path = "/../"
-    hope = "/"
-    ret = simplifyPath(path)
-    t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	path = "/../"
+	hope = "/"
+	ret = simplifyPath(path)
+	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
 
-    path = "/home//foo/"
-    hope = "/home/foo"
-    ret = simplifyPath(path)
-    t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	path = "/home//foo/"
+	hope = "/home/foo"
+	ret = simplifyPath(path)
+	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
 
-    path = "/a/./b/../../c/"
-    hope = "/c"
-    ret = simplifyPath(path)
-    t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	path = "/a/./b/../../c/"
+	hope = "/c"
+	ret = simplifyPath(path)
+	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
 
-    path = "/a/../../b/../c//.//"
-    hope = "/c"
-    ret = simplifyPath(path)
-    t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	path = "/a/../../b/../c//.//"
+	hope = "/c"
+	ret = simplifyPath(path)
+	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
 
-    path = "/a//b////c/d//././/.."
-    hope = "/a/b/c"
-    ret = simplifyPath(path)
-    t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	path = "/a//b////c/d//././/.."
+	hope = "/a/b/c"
+	ret = simplifyPath(path)
+	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
 }

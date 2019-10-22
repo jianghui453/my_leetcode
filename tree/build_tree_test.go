@@ -15,29 +15,29 @@ import "testing"
 //}
 
 func TestBuildTree(t *testing.T) {
-   var inorder, postorder []int
-   var r []int
-   var _r *TreeNode
+	var inorder, postorder []int
+	var r []int
+	var _r *TreeNode
 
-   postorder = []int{9,15,7,20,3}
-   inorder = []int{9,3,15,20,7}
-   _r = buildTree(inorder, postorder)
-   r = getInorder(_r)
-   t.Logf("\nh=%v \nr=%v", inorder, r)
+	postorder = []int{9, 15, 7, 20, 3}
+	inorder = []int{9, 3, 15, 20, 7}
+	_r = buildTree(inorder, postorder)
+	r = getInorder(_r)
+	t.Logf("\nh=%v \nr=%v", inorder, r)
 }
 
 func getInorder(n *TreeNode) []int {
-    var f func(node *TreeNode)
-    var r []int
-    f = func (node *TreeNode) {
-        if node.Left != nil {
-            f(node.Left)
-        }
-        r = append(r, node.Val)
-        if node.Right != nil {
-            f(node.Right)
-        }
-    }
-    f(n)
-    return r
+	var f func(node *TreeNode)
+	var r []int
+	f = func(node *TreeNode) {
+		if node.Left != nil {
+			f(node.Left)
+		}
+		r = append(r, node.Val)
+		if node.Right != nil {
+			f(node.Right)
+		}
+	}
+	f(n)
+	return r
 }

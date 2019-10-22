@@ -12,33 +12,33 @@
 package min_window
 
 func minWindow(s string, t string) string {
-    countList := make([]int32, 256)
-    for _, c := range t {
-        countList[c]++
-    }
+	countList := make([]int32, 256)
+	for _, c := range t {
+		countList[c]++
+	}
 
-    cnt := 0
-    minLen := len(s)
-    var res string
+	cnt := 0
+	minLen := len(s)
+	var res string
 
-    for i, j := 0, 0; j < len(s); j++ {
-        if countList[s[j]] >= 1 {
-            cnt++
-        }
-        countList[s[j]]--
-        for cnt == len(t) {
-            if j - i + 1 <= minLen {
-                minLen = j - i + 1
-                res = s[i:j+1]
-            }
-            countList[s[i]]++
-            if countList[s[i]] > 0 {
-                cnt--
-            }
-            i++
-        }
-    }
-    return res
+	for i, j := 0, 0; j < len(s); j++ {
+		if countList[s[j]] >= 1 {
+			cnt++
+		}
+		countList[s[j]]--
+		for cnt == len(t) {
+			if j-i+1 <= minLen {
+				minLen = j - i + 1
+				res = s[i : j+1]
+			}
+			countList[s[i]]++
+			if countList[s[i]] > 0 {
+				cnt--
+			}
+			i++
+		}
+	}
+	return res
 }
 
 //func minWindow(s string, t string) string {

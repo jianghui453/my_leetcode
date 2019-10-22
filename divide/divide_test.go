@@ -12,6 +12,6 @@ func TestDevice(t *testing.T) {
 	hope = 2147483648
 	ret = divide(divident, divisor)
 	if hope == ret {
-		
+
 	}
 }
