@@ -40,14 +40,8 @@ func threeSum(nums []int) [][]int {
 			
 			if v < 0 {
 				j++
-				for j < k && nums[j] == nums[j-1] {
-					j++
-				}
 			} else if v > 0 {
 				k--
-				for k > j && nums[k] == nums[k+1] {
-					k--
-				}
 			} else {
 				ret = append(ret, []int{nums[i], nums[j], nums[k]})
 				
