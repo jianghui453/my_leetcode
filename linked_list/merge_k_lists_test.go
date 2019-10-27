@@ -1,11 +1,14 @@
-package leet_code
+package linked_list
 
 import (
 	"testing"
 )
 
 func TestMergeKLists(t *testing.T) {
-	var lists = []*ListNode{
+	var lists []*ListNode
+	var h, r []int
+
+	lists = []*ListNode{
 		&ListNode{
 			1,
 			&ListNode{
@@ -34,6 +37,12 @@ func TestMergeKLists(t *testing.T) {
 			},
 		},
 	}
-
-	_ = mergeKLists(lists)
+	h = []int{1, 1, 2, 3, 4, 4, 5, 6}
+	head := mergeKLists(lists)
+	r = []int{}
+	for head != nil {
+		r = append(r, head.Val)
+		head = head.Next
+	}
+	t.Logf("\nh=%v \nr=%v", h, r)
 }
