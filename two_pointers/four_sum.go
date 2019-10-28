@@ -10,7 +10,7 @@
 //  [-2,  0, 0, 2]
 // ]
 
-package array
+package two_pointers
 
 import (
 	"sort"
