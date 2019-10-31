@@ -20,45 +20,30 @@ package divide
 
 import (
 	"math"
-	"fmt"
+	// "fmt"
 )
 
 func divide(dividend int, divisor int) int {
-	var _divide func (_dividend, _divisor, noun int) int
-	_divide = func (_dividend, _divisor, noun int) int {
-		fmt.Printf("_dividend=%d _divisor=%d noun=%d\n", _dividend, _divisor, noun)
-
-		if math.Abs(float64(_dividend)) < math.Abs(float64(_divisor)) {
-			return 0
-		}
-
-		sign := (_dividend < 0 && _divisor < 0) || (_dividend > 0 && _divisor > 0)
-
-		_divisor += _divisor
-		if sign {
-			_dividend -= _divisor
-		} else {
-			_dividend += _divisor
-		}
-		noun += noun
-		
-		ret := _divide(_dividend-_divisor, _divisor, noun)
-		if ret > math.MaxInt32 || ret < math.MinInt32 {
-			return math.MaxInt32
-		}
-
-		if ret == 0 {
-			
-		}
-
-		if sign {
-			return ret+noun
-		} else {
-			return ret-noun
-		}
+	if math.Abs(float64(dividend)) < math.Abs(float64(divisor)) {
+		return 0
 	}
 
-	ret := _divide(dividend, divisor, 1)
+	sign := (dividend>0 && divisor>0) || (dividend<0 && divisor<0)
+
+	dsr := divisor
+	cnt := 1
+	for math.Abs(float64(dsr+dsr)) < math.Abs(float64(dividend)) {
+		dsr += dsr
+		cnt += cnt
+	}
+
+	var ret int
+	if sign {
+		ret = cnt + divide(dividend-dsr, divisor)
+	} else {
+		ret = -(cnt - divide(dividend+dsr, divisor))
+	}
+
 	if ret > math.MaxInt32 || ret < math.MinInt32 {
 		return math.MaxInt32
 	}
