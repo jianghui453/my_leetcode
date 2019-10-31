@@ -4,54 +4,54 @@ import "testing"
 
 func TestSearch(t *testing.T) {
 	var nums []int
-	var hope, ret bool
+	var h, r bool
 	var target int
 
 	nums = []int{2, 5, 6, 0, 0, 1, 2}
-	hope = true
+	h = true
 	target = 0
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{2, 5, 6, 0, 0, 1, 2}
-	hope = false
+	h = false
 	target = 3
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{1, 3}
-	hope = false
+	h = false
 	target = 2
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{1, 3, 1, 1, 1}
-	hope = true
+	h = true
 	target = 3
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{0}
-	hope = false
+	h = false
 	target = 1
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{1, 3}
-	hope = true
+	h = true
 	target = 3
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{1, 1, 3}
-	hope = true
+	h = true
 	target = 3
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 
 	nums = []int{3, 1}
-	hope = false
+	h = false
 	target = 2
-	ret = search(nums, target)
-	t.Logf("nums=%v target=%d hope=%t ret=%t\n", nums, target, hope, ret)
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 }

@@ -19,55 +19,157 @@
 
 package array
 
-import "fmt"
+// import "fmt"
 
-func search(nums []int, target int) bool {
-	lenN := len(nums)
-	if lenN < 1 {
-		return false
-	}
-	left := 0
-	right := lenN - 1
-	start := 0
-	for left < lenN && right >= 0 && left < right {
-		if left < lenN-1 && nums[left] > nums[left+1] {
-			start = left + 1
-			break
-		}
-		if right > 0 && nums[right] < nums[right-1] {
-			start = right
-			break
-		}
-		left++
-		right--
-	}
-	if start == 0 {
-		left = 0
-		right = lenN - 1
-	} else if target > nums[0] {
-		left = 0
-		right = start - 1
-	} else if target < nums[lenN-1] {
-		left = start
-		right = lenN - 1
-	} else {
-		return target == nums[0] || target == nums[lenN-1]
-	}
-	fmt.Printf("nums=%v target=%d start=%d left=%d right=%d\n", nums, target, start, left, right)
-	for left <= right {
-		mid := (left + right) / 2
-		fmt.Printf("left=%d right=%d mid=%d\n", left, right, mid)
-		if nums[mid] < target {
-			left = mid + 1
-		} else if nums[mid] > target {
-			if mid == right {
-				right--
-			} else {
-				right = mid
-			}
-		} else {
-			return true
-		}
-	}
-	return false
-}
+// func search(nums []int, target int) bool {
+// 	numsLen := len(nums)
+// 	if numsLen == 0 {
+// 		return false
+// 	}
+// 	if numsLen == 1 {
+// 		return nums[0] == target
+// 	}
+
+// 	binarySearch := func (_nums []int) bool {
+// 		_numsLen := len(_nums)
+// 		min, max := 0, _numsLen-1
+		
+// 		for min <= max {
+// 			_mid := (min+max)/2
+// 			if target > _nums[_mid] {
+// 				min = _mid+1
+// 			} else if target < _nums[_mid] {
+// 				max = _mid-1
+// 			} else {
+// 				return true
+// 			}
+// 		}
+
+// 		return false
+// 	}
+
+// 	if nums[0] < nums[numsLen-1] {
+// 		return binarySearch(nums)
+// 	}
+
+// 	left, right := 0, numsLen-1
+// 	mid := (left+right)/2
+// 	if target == nums[mid] || target == nums[0] || target == nums[numsLen-1] {
+// 		return true
+// 	}
+
+// 	if mid+1 == numsLen {
+// 		return false
+// 	}
+	
+// 	if target > nums[numsLen-1] {
+// 		if target < nums[mid] {
+// 			return binarySearch(nums[: mid])
+// 		}
+// 		if nums[mid] > nums[0] {
+// 			return search(nums[mid+1: ], target)
+// 		}
+// 		return binarySearch(nums[: mid])
+// 	} else {
+// 		if target > nums[mid] {
+// 			return binarySearch(nums[mid+1: ])
+// 		}
+// 		if nums[mid] > nums[0] {
+// 			return search(nums[mid+1: ], target)
+// 		}
+// 		return search(nums[: mid], target)
+// 	}
+// }
+
+// func search(nums []int, target int) bool {
+// 	lenN := len(nums)
+// 	if lenN < 1 {
+// 		return false
+// 	}
+// 	left := 0
+// 	right := lenN - 1
+// 	start := 0
+// 	for left < lenN && right >= 0 && left < right {
+// 		if left < lenN-1 && nums[left] > nums[left+1] {
+// 			start = left + 1
+// 			break
+// 		}
+// 		if right > 0 && nums[right] < nums[right-1] {
+// 			start = right
+// 			break
+// 		}
+// 		left++
+// 		right--
+// 	}
+// 	if start == 0 {
+// 		left = 0
+// 		right = lenN - 1
+// 	} else if target > nums[0] {
+// 		left = 0
+// 		right = start - 1
+// 	} else if target < nums[lenN-1] {
+// 		left = start
+// 		right = lenN - 1
+// 	} else {
+// 		return target == nums[0] || target == nums[lenN-1]
+// 	}
+// 	fmt.Printf("nums=%v target=%d start=%d left=%d right=%d\n", nums, target, start, left, right)
+// 	for left <= right {
+// 		mid := (left + right) / 2
+// 		fmt.Printf("left=%d right=%d mid=%d\n", left, right, mid)
+// 		if nums[mid] < target {
+// 			left = mid + 1
+// 		} else if nums[mid] > target {
+// 			if mid == right {
+// 				right--
+// 			} else {
+// 				right = mid
+// 			}
+// 		} else {
+// 			return true
+// 		}
+// 	}
+// 	return false
+// }
+
+// func search(nums []int, target int) int {
+// 	if len(nums) == 0 {
+// 		return -1
+// 	}
+// 	min, max := 0, len(nums)-1
+// 	for min <= max {
+// 		fmt.Printf("min = %d; max = %d\n", min, max)
+// 		if min == max {
+// 			if target == nums[min] {
+// 				return min
+// 			} else {
+// 				return -1
+// 			}
+// 		}
+// 		half := (min + max) / 2
+// 		if target > nums[half] {
+// 			if nums[half] < nums[0] {
+// 				if target < nums[0] {
+// 					min = half + 1
+// 				} else {
+// 					max = half
+// 				}
+// 			} else {
+// 				min = half + 1
+// 			}
+// 		} else if target < nums[half] {
+// 			if nums[half] < nums[0] {
+// 				max = half
+// 			} else {
+// 				if target < nums[0] {
+// 					min = half + 1
+// 				} else {
+// 					max = half
+// 				}
+// 			}
+// 		} else {
+// 			return half
+// 		}
+// 	}
+// 	return -1
+// }

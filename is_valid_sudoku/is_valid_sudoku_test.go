@@ -6,7 +6,7 @@ import (
 
 func TestIsValidSudoku(t *testing.T) {
 	var abord [][]byte
-	var hope, ret bool
+	var h, r bool
 
 	abord = [][]byte{
 		[]byte{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
@@ -19,9 +19,9 @@ func TestIsValidSudoku(t *testing.T) {
 		[]byte{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
 		[]byte{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
 	}
-	hope = true
-	ret = isValidSudoku(abord)
-	t.Logf("abord = %v; hope = %t; ret = %t;\n", abord, hope, ret)
+	h = true
+	r = isValidSudoku(abord)
+	t.Logf("abord=%v h=%t r=%t", abord, h, r)
 
 	abord = [][]byte{
 		[]byte{'8', '3', '.', '.', '7', '.', '.', '.', '.'},
@@ -34,7 +34,7 @@ func TestIsValidSudoku(t *testing.T) {
 		[]byte{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
 		[]byte{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
 	}
-	hope = false
-	ret = isValidSudoku(abord)
-	t.Logf("abord = %v; hope = %t; ret = %t;\n", abord, hope, ret)
+	h = false
+	r = isValidSudoku(abord)
+	t.Logf("abord=%v h=%t r=%t", abord, h, r)
 }

@@ -1,55 +1,91 @@
+// 判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。
+
+// 数字 1-9 在每一行只能出现一次。
+// 数字 1-9 在每一列只能出现一次。
+// 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
+
+
+// 上图是一个部分填充的有效的数独。
+
+// 数独部分空格内已填入了数字，空白格用 '.' 表示。
+
+// 示例 1:
+
+// 输入:
+// [
+//   ["5","3",".",".","7",".",".",".","."],
+//   ["6",".",".","1","9","5",".",".","."],
+//   [".","9","8",".",".",".",".","6","."],
+//   ["8",".",".",".","6",".",".",".","3"],
+//   ["4",".",".","8",".","3",".",".","1"],
+//   ["7",".",".",".","2",".",".",".","6"],
+//   [".","6",".",".",".",".","2","8","."],
+//   [".",".",".","4","1","9",".",".","5"],
+//   [".",".",".",".","8",".",".","7","9"]
+// ]
+// 输出: true
+// 示例 2:
+
+// 输入:
+// [
+//   ["8","3",".",".","7",".",".",".","."],
+//   ["6",".",".","1","9","5",".",".","."],
+//   [".","9","8",".",".",".",".","6","."],
+//   ["8",".",".",".","6",".",".",".","3"],
+//   ["4",".",".","8",".","3",".",".","1"],
+//   ["7",".",".",".","2",".",".",".","6"],
+//   [".","6",".",".",".",".","2","8","."],
+//   [".",".",".","4","1","9",".",".","5"],
+//   [".",".",".",".","8",".",".","7","9"]
+// ]
+// 输出: false
+// 解释: 除了第一行的第一个数字从 5 改为 8 以外，空格内其他数字均与 示例1 相同。
+//      但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。
+// 说明:
+
+// 一个有效的数独（部分已被填充）不一定是可解的。
+// 只需要根据以上规则，验证已经填入的数字是否有效即可。
+// 给定数独序列只包含数字 1-9 和字符 '.' 。
+// 给定数独永远是 9x9 形式的。
+
 package is_valid_sudoku
 
-// import "fmt"
-
 func isValidSudoku(board [][]byte) bool {
-	var raw [9][10]int
-	// fmt.Printf("raw = %v\n", raw)
-	// return true
-	var column [9][10]int
-	var square [9][10]int
-	for k, list := range board {
-		for key, val := range list {
-			if val == '.' {
-				continue
-			}
-			val = val - '0'
-			var squareKey int
-			if 0 <= key && key <= 2 {
-				if 0 <= k && k <= 2 {
-					squareKey = 0
-				} else if 3 <= k && k <= 5 {
-					squareKey = 1
-				} else {
-					squareKey = 2
-				}
-			} else if 3 <= key && key <= 5 {
-				if 0 <= k && k <= 2 {
-					squareKey = 3
-				} else if 3 <= k && k <= 5 {
-					squareKey = 4
-				} else {
-					squareKey = 5
-				}
-			} else {
-				if 0 <= k && k <= 2 {
-					squareKey = 6
-				} else if 3 <= k && k <= 5 {
-					squareKey = 7
-				} else {
-					squareKey = 8
-				}
-			}
-			// fmt.Printf("k = %d; key = %d; val = %d;\n", k, key, val)
-			if raw[k][val] > 0 ||
-				column[key][val] > 0 ||
-				square[squareKey][val] > 0 {
-				return false
-			}
-			raw[k][val]++
-			column[key][val]++
-			square[squareKey][val]++
+	vertical := make([][]int, 9)
+	horizontal := make([][]int, 9)
+	slanting := make([][][]int, 9)
+	
+	for i := 0; i < 9; i++ {
+		vertical[i] = make([]int, 9)
+		horizontal[i] = make([]int, 9)
+		slanting[i] = make([][]int, 9)
+		for j := 0; j < 9; j++ {
+			slanting[i][j] = make([]int, 9)
 		}
 	}
+
+	for i := 0; i < 9; i++ {
+		for j := 0; j < 9; j++ {
+			if board[i][j] != '.' {
+				val := int(board[i][j] - '1')
+				
+				vertical[i][val]++
+				if vertical[i][val] > 1 {
+					return false
+				}
+				
+				horizontal[j][val]++
+				if horizontal[j][val] > 1 {
+					return false
+				}
+				
+				slanting[i][j][val]++
+				if slanting[i][j][val] > 1 {
+					return false
+				}
+			}
+		}
+	}
+
 	return true
 }
