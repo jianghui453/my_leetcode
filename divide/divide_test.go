@@ -5,13 +5,23 @@ import (
 )
 
 func TestDevice(t *testing.T) {
-	var divident, divisor, hope, ret int32
+	var divident, divisor, h, r int
 
 	divident = -2147483648
 	divisor = -1
-	hope = 2147483648
-	ret = divide(divident, divisor)
-	if hope == ret {
+	h = 2147483648
+	r = divide(divident, divisor)
+	t.Logf("%t divident=%d divisor=%d h=%d r=%d", r==h, divident, divisor, h, r)
 
-	}
+	// divident = -5
+	// divisor = -1
+	// h = 5
+	// r = divide(divident, divisor)
+	// t.Logf("%t divident=%d divisor=%d h=%d r=%d", r==h, divident, divisor, h, r)
+
+	// divident = 5
+	// divisor = -1
+	// h = -5
+	// r = divide(divident, divisor)
+	// t.Logf("%t divident=%d divisor=%d h=%d r=%d", r==h, divident, divisor, h, r)
 }
