@@ -24,7 +24,7 @@
 // 输入: 4
 // 输出: "1211"
 
-package count_and_say
+package string
 
 func countAndSay(n int) string {
 	ret := ""

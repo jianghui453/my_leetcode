@@ -1,4 +1,4 @@
-package count_and_say
+package string
 
 import "testing"
 
