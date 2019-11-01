@@ -1,6 +1,4 @@
-package first_missing_positive
-
-import "fmt"
+package array
 
 func firstMissingPositive(nums []int) int {
 	hash := make(map[int]bool)
@@ -19,7 +17,7 @@ func firstMissingPositive(nums []int) int {
 	if max == 0 {
 		return 1
 	}
-	fmt.Printf("hash = %v.\n", hash)
+
 	var i int
 	for i = 1; i < max; i++ {
 		if _, ok := hash[i]; !ok {
