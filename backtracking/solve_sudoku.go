@@ -1,30 +1,26 @@
-package solve_sudoku
-
-import (
-	"fmt"
-)
+package backtracking
 
 func solveSudoku(board [][]byte) {
-	boardMirror := make([][]byte, 9)
-	vertical := make([][]int, 9)
+	mirror := make([][]byte, 9)
 	horizontal := make([][]int, 9)
+	vertical := make([][]int, 9)
 	square := make([][]int, 9)
 
 	for i := 0; i < 9; i++ {
-		boardMirror[i] = make([]byte, 9)
-		vertical[i] = make([]int, 9)
+		mirror[i] = make([]byte, 9)
 		horizontal[i] = make([]int, 9)
+		vertical[i] = make([]int, 9)
 		square[i] = make([]int, 9)
 	}
 
 	for i := 0; i < 9; i++ {
 		for j := 0; j < 9; j++ {
-			boardMirror[i][j] = board[i][j]
+			mirror[i][j] = board[i][j]
 			if board[i][j] != '.' {
 				v := int(board[i][j]-'1')
 
-				vertical[j][v]++
 				horizontal[i][v]++
+				vertical[j][v]++
 				idx := i/3*3+j/3
 				square[idx][v]++
 			}
@@ -33,41 +29,44 @@ func solveSudoku(board [][]byte) {
 
 	var f func(i, j, v int) bool
 	f = func(i, j, v int) bool {
-		fmt.Printf("i=%d j=%d v=%d\n", i, j, v)
 		idx := i/3*3 + j/3
-		if boardMirror[i][j] == '.' && (vertical[j][v] > 0 || horizontal[i][v] > 0 || square[idx][v] > 0) {
+
+		if mirror[i][j] == '.' {
+			if horizontal[i][v] + vertical[j][v] + square[idx][v] > 0 {
+				return false
+			}
+			
+			board[i][j] = byte('1'+v)
+			
+			horizontal[i][v]++
+			vertical[j][v]++
+			square[idx][v]++
+		} else if mirror[i][j] != byte('1'+v) {
 			return false
 		}
-
-		if boardMirror[i][j] == '.' {
-			board[i][j] = byte('1'+v)
-		}
-
+	
 		if i == 8 && j == 8 {
 			return true
 		}
-
-		vertical[j][v]++
-		horizontal[i][v]++
-		square[idx][v]++
 		
-		if j >= 8 {
-			i++
-			j = 0
+		x, y := i, j
+		if y >= 8 {
+			x++
+			y = 0
 		} else {
-			j++
+			y++
 		}
-
-		var ret bool
-		_v := 0
-		for !ret && _v < 9 {
-			ret = f(i, j, _v)
-			_v++
+	
+		val := 0
+		ret := false
+		for !ret && val < 9 { 
+			ret = f(x, y, val)
+			val++
 		}
-
-		if _v == 9 {
-			vertical[j][v]--
+	
+		if !ret && mirror[i][j] == '.' {
 			horizontal[i][v]--
+			vertical[j][v]--
 			square[idx][v]--
 		}
 		
@@ -136,8 +135,8 @@ func solveSudoku(board [][]byte) {
 // 	}
 // }
 
-// func solveSudokuV1(board [][]byte) {
-// 	fmt.Println("Start.")
+// func solveSudoku(board [][]byte) {
+// 	// fmt.Println("Start.")
 // 	var row, column, square [9][9]int
 // 	solve(board, 0, 0, row, column, square)
 // }
