@@ -3,38 +3,37 @@ package solve_sudoku
 import "testing"
 
 func TestSolveSudoku(t *testing.T) {
-	var abord [][]byte
+	var board [][]byte
+	var h, r [][]int
 
-	abord = [][]byte{
-		[]byte{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
-		[]byte{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
-		[]byte{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
-		[]byte{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
-		[]byte{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
-		[]byte{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
-		[]byte{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
-		[]byte{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
-		[]byte{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
-	}
-	ret := [][]string{}
-	for _, bytes := range abord {
-		vs := []string{}
-		for _, v := range bytes {
-			vs = append(vs, string(v))
-		}
-		ret = append(ret, vs)
-	}
-	t.Logf("before = %v", ret)
-	solveSudoku(abord)
-	ret = [][]string{}
-	for _, bytes := range abord {
-		vs := []string{}
-		for _, v := range bytes {
-			vs = append(vs, string(v))
-		}
-		ret = append(ret, vs)
-	}
-	t.Logf("after = %v", ret)
+	var toIntSlice = func(b [][]byte) [][]int {
+		ret := make([][]int, 9)
+		for i := 0; i < 9; i++ {
+			ret[i] = make([]int, 9)
 
-	// t.Logf("%d", -9 / 8)
+			for j := 0; j < 9; j++ {
+				ret[i][j] = int(b[i][j]-'0')
+			}
+		}
+
+		return ret
+	}
+
+	board = [][]byte{
+		{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
+	}
+	solveSudoku(board)
+	r = toIntSlice(board)
+	h = [][]int{
+		{},
+	}
+	t.Logf("\nr=%v \nh=%v", r, h)
 }
