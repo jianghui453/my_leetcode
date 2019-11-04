@@ -9,7 +9,11 @@
 // 输入: [0,1,0,2,1,0,1,3,2,1,2,1]
 // 输出: 6
 
-package trap
+package stack
+
+import (
+	// "fmt"
+)
 
 func trap(height []int) int {
 	ret := 0
@@ -21,22 +25,52 @@ func trap(height []int) int {
 	s := make([]int, 0)
 
 	for i := range height {
+		// fmt.Printf("i=%d s=%v ret=%d\n", i, s, ret)
 		if len(s) == 0 {
 			s = append(s, i)
 			continue
 		}
 
-		idx := s[len(s)-1]
-		if height[i] < height[idx] {
+		if height[i] < height[s[len(s)-1]] {
 			s = append(s, i)
 			continue
 		}
 
-		for len(s) > 0 {
-			idx := s[len(s)-1]
-			area := (i-idx)*
+		sLen := len(s)
+		if sLen == 1 {
+			s = []int{i}
+			continue
+		}
+
+		if height[i] >= height[s[0]] {
+			for j := 0; j < sLen-1; j++ {
+				ret += (i-s[j]-1)*(height[s[j]]-height[s[j+1]])
+			}
+			s = []int{i}
+		} else {
+			for j := sLen-2; j >= 0; j-- {
+				if height[i] >= height[s[j]] {
+					ret += (i-s[j]-1)*(height[s[j]]-height[s[j+1]])
+				} else {
+					ret += (i-s[j]-1)*(height[i]-height[s[j+1]])
+				}
+				
+				if height[i] == height[s[j]] {
+					s = s[: j]
+					break
+				}
+
+				if height[i] < height[s[j]] {
+					s = s[: j+1]
+					break
+				}
+			}
+
+			s = append(s, i)
 		}
 	}
+
+	return ret
 }
 
 // func trap(height []int) int {
