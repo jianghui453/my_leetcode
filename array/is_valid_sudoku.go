@@ -48,42 +48,34 @@
 // 给定数独序列只包含数字 1-9 和字符 '.' 。
 // 给定数独永远是 9x9 形式的。
 
-package is_valid_sudoku
+package array
 
 func isValidSudoku(board [][]byte) bool {
-	vertical := make([][]int, 9)
 	horizontal := make([][]int, 9)
-	slanting := make([][][]int, 9)
+	vertical := make([][]int, 9)
+	square := make([][]int, 9)
 	
 	for i := 0; i < 9; i++ {
-		vertical[i] = make([]int, 9)
 		horizontal[i] = make([]int, 9)
-		slanting[i] = make([][]int, 9)
-		for j := 0; j < 9; j++ {
-			slanting[i][j] = make([]int, 9)
-		}
+		vertical[i] = make([]int, 9)
+		square[i] = make([]int, 9)
 	}
 
 	for i := 0; i < 9; i++ {
 		for j := 0; j < 9; j++ {
-			if board[i][j] != '.' {
-				val := int(board[i][j] - '1')
-				
-				vertical[i][val]++
-				if vertical[i][val] > 1 {
-					return false
-				}
-				
-				horizontal[j][val]++
-				if horizontal[j][val] > 1 {
-					return false
-				}
-				
-				slanting[i][j][val]++
-				if slanting[i][j][val] > 1 {
-					return false
-				}
+			if board[i][j] == '.' {
+				continue
 			}
+
+			idx := i/3*3 + j/3
+			v := int(board[i][j]-'1')
+			if horizontal[i][v]+vertical[j][v]+square[idx][v] > 0 {
+				return false
+			}
+
+			horizontal[i][v]++
+			vertical[j][v]++
+			square[idx][v]++
 		}
 	}
 
