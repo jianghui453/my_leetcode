@@ -1,4 +1,4 @@
-package genera_matrix
+package array
 
 import "testing"
 
