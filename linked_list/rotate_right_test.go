@@ -3,65 +3,40 @@ package linked_list
 import "testing"
 
 func TestRotateRight(t *testing.T) {
-	var head, h, ret *ListNode
+	var head *ListNode
+	var k int
+	var h, r []int
 
-	head = new(ListNode)
-	h = head
-	for i := 1; i < 5; i++ {
-		h.Val = i
-		h.Next = new(ListNode)
-		h = h.Next
-	}
-	h.Val = 5
-	t.Log("\nk=2")
-	ret = rotateRight(head, 2)
-	for ret != nil {
-		t.Log(ret.Val)
-		ret = ret.Next
+	var f func(n *ListNode) []int
+	f = func(n *ListNode) []int {
+		ret := make([]int, 0)
+		if n == nil {
+			return ret
+		}
+
+		ret = append(ret, append([]int{n.Val}, f(n.Next)...)...)
+		return ret
 	}
 
-	head = new(ListNode)
-	h = head
-	for i := 1; i < 5; i++ {
-		h.Val = i
-		h.Next = new(ListNode)
-		h = h.Next
+	head = &ListNode{
+		1,
+		&ListNode{
+			2,
+			&ListNode{
+				3,
+				&ListNode{
+					4,
+					&ListNode{
+						5, 
+						nil,
+					},
+				},
+			},
+		},
 	}
-	h.Val = 5
-	t.Log("\nk=0")
-	ret = rotateRight(head, 0)
-	for ret != nil {
-		t.Log(ret.Val)
-		ret = ret.Next
-	}
-
-	head = new(ListNode)
-	h = head
-	for i := 1; i < 5; i++ {
-		h.Val = i
-		h.Next = new(ListNode)
-		h = h.Next
-	}
-	h.Val = 5
-	t.Log("\nk=5")
-	ret = rotateRight(head, 5)
-	for ret != nil {
-		t.Log(ret.Val)
-		ret = ret.Next
-	}
-
-	head = new(ListNode)
-	h = head
-	for i := 1; i < 5; i++ {
-		h.Val = i
-		h.Next = new(ListNode)
-		h = h.Next
-	}
-	h.Val = 5
-	t.Log("\nk=1")
-	ret = rotateRight(head, 1)
-	for ret != nil {
-		t.Log(ret.Val)
-		ret = ret.Next
-	}
+	k = 2
+	h = []int{4,5,1,2,3}
+	head = rotateRight(head, k)
+	r = f(head)
+	t.Logf("\nh=%v \nr=%v", h, r)
 }
