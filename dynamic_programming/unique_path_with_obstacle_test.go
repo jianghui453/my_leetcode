@@ -1,17 +1,17 @@
-package unique_path
+package dynamic_programming
 
 import "testing"
 
 func TestUniquePathWithObstacle(t *testing.T) {
 	var obstacleGrid [][]int
-	var hope, ret int
+	var h, r int
 
 	obstacleGrid = [][]int{
 		{0,0,0},
 		{0,1,0},
 		{0,0,0},
 	}
-	hope = 2
-	ret = uniquePathsWithObstacles(obstacleGrid)
-	t.Logf("hope=%d ret=%d", hope, ret)
+	h = 2
+	r = uniquePathsWithObstacles(obstacleGrid)
+	t.Logf("h=%d r=%d", h, r)
 }
