@@ -24,28 +24,31 @@
 //输入: m = 7, n = 3
 //输出: 28
 
-package unique_path
+package dynamic_programming
 
 func uniquePaths(m int, n int) int {
-	if m < 2 || n < 2 {
-		return 1
+	if m*n == 0 {
+		return 0
 	}
+
 	dp := make([][]int, m)
 	for i := 0; i < m; i ++ {
 		dp[i] = make([]int, n)
 	}
 	dp[0][0] = 1
-	for _m := 0; _m < m; _m ++ {
-		for _n := 0; _n < n; _n ++ {
-			if _n > 0 && _m > 0 {
-				dp[_m][_n] = dp[_m-1][_n] + dp[_m][_n-1]
-			} else if _n == 0 && _m > 0 {
-				dp[_m][_n] = dp[_m-1][_n]
-			} else if _n > 0 && _m == 0 {
-				dp[_m][_n] = dp[_m][_n-1]
+	
+	for i := 0; i < m; i ++ {
+		for j := 0; j < n; j ++ {
+			if j > 0 && i > 0 {
+				dp[i][j] = dp[i-1][j] + dp[i][j-1]
+			} else if j == 0 && i > 0 {
+				dp[i][j] = dp[i-1][j]
+			} else if j > 0 && i == 0 {
+				dp[i][j] = dp[i][j-1]
 			}
 		}
 	}
+
 	return dp[m-1][n-1]
 }
 
