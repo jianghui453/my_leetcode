@@ -55,66 +55,133 @@
 package full_justify
 
 import (
-	"strings"
+	// "strings"
+	// "fmt"
 )
 
 func fullJustify(words []string, maxWidth int) []string {
-	lenWords := len(words)
-	if lenWords < 1 {
-		return []string{}
+	ret := make([]string, 0)
+	l := len(words)
+	if l == 0 {
+		return ret
 	}
-	strs := make([]string, 0)
-	wordsT := make([]string, 0)
-	lenWordsTCont := 0
-	for i := 0; i < lenWords; i++ {
-		lenWord := len(words[i])
-		lenWordsT := len(wordsT)
-		if lenWord > maxWidth {
-			return strs
-		}
-		if lenWord+lenWordsTCont+lenWordsT <= maxWidth {
-			wordsT = append(wordsT, words[i])
-			lenWordsTCont += lenWord
-		} else {
-			sb := strings.Builder{}
-			if lenWordsT == 1 {
-				sb.WriteString(wordsT[0])
-				for j := 0; j < maxWidth-lenWordsTCont; j++ {
-					sb.WriteString(" ")
-				}
-			} else {
-				cntBlk := maxWidth - lenWordsTCont
-				cntBlkStr := lenWordsT - 1
-				blkStrs := make([]string, cntBlkStr)
-				for j := 0; j < cntBlk; j++ {
-					idx := j % cntBlkStr
-					blkStrs[idx] += " "
-				}
-				for j := 0; j < len(wordsT); j++ {
-					sb.WriteString(wordsT[j])
-					if j < len(wordsT)-1 {
-						sb.WriteString(blkStrs[j])
+
+	if l == 1 {
+		str := words[0]
+		for 
+		ret = append(ret, words[0] + string(bs))
+		return ret
+	}
+
+	wordsLen := 0
+	i := 0
+	for ; i < l; i++ {
+		if wordsLen+i+len(words[i]) > maxWidth {
+			str := ""
+			if i > 1 {
+				blanksCnt := maxWidth-wordsLen
+				blankStrCnt := i-1
+				for j := 0; j < i-1; j++ {
+					str += words[j]
+					cnt := blanksCnt/(blankStrCnt)
+					if blanksCnt%(blankStrCnt) > 0 {
+						cnt++
+					}
+					blanksCnt -= cnt
+					blankStrCnt--
+					for ; cnt > 0; cnt-- {
+						str += " "
 					}
 				}
+				str += words[i-1]
+			} else {
+				str = words[0]
+				for k := 0; k < maxWidth-len(words[0]); k ++ {
+					str += " "
+				}
 			}
-			strs = append(strs, sb.String())
-			wordsT = []string{words[i]}
-			lenWordsTCont = len(words[i])
-		}
-	}
-	if lenWordsTCont > 0 {
-		sb := strings.Builder{}
-		lenWordsT := len(wordsT)
-		for i := 0; i < lenWordsT; i++ {
-			sb.WriteString(wordsT[i])
-			if i < lenWordsT-1 {
-				sb.WriteString(" ")
+
+			ret = append(ret, str)
+			if i < l {
+				ret = append(ret, fullJustify(words[i: ], maxWidth)...)
 			}
+			return ret
 		}
-		for i := 0; i < maxWidth-lenWordsTCont-lenWordsT+1; i++ {
-			sb.WriteString(" ")
-		}
-		strs = append(strs, sb.String())
+
+		wordsLen += len(words[i])
 	}
-	return strs
+
+	str := ""
+	for i := 0; i < l-1; i++ {
+		str += words[i]
+		str += " "
+	}
+	str += words[l-1]
+	for k := 0; k < maxWidth-len(str); k++ {
+		str += " "
+	}
+
+	ret = append(ret, str)
+	return ret
 }
+
+// func fullJustify(words []string, maxWidth int) []string {
+// 	lenWords := len(words)
+// 	if lenWords < 1 {
+// 		return []string{}
+// 	}
+// 	strs := make([]string, 0)
+// 	wordsT := make([]string, 0)
+// 	lenWordsTCont := 0
+// 	for i := 0; i < lenWords; i++ {
+// 		lenWord := len(words[i])
+// 		lenWordsT := len(wordsT)
+// 		if lenWord > maxWidth {
+// 			return strs
+// 		}
+// 		if lenWord+lenWordsTCont+lenWordsT <= maxWidth {
+// 			wordsT = append(wordsT, words[i])
+// 			lenWordsTCont += lenWord
+// 		} else {
+// 			sb := strings.Builder{}
+// 			if lenWordsT == 1 {
+// 				sb.WriteString(wordsT[0])
+// 				for j := 0; j < maxWidth-lenWordsTCont; j++ {
+// 					sb.WriteString(" ")
+// 				}
+// 			} else {
+// 				cntBlk := maxWidth - lenWordsTCont
+// 				cntBlkStr := lenWordsT - 1
+// 				blkStrs := make([]string, cntBlkStr)
+// 				for j := 0; j < cntBlk; j++ {
+// 					idx := j % cntBlkStr
+// 					blkStrs[idx] += " "
+// 				}
+// 				for j := 0; j < len(wordsT); j++ {
+// 					sb.WriteString(wordsT[j])
+// 					if j < len(wordsT)-1 {
+// 						sb.WriteString(blkStrs[j])
+// 					}
+// 				}
+// 			}
+// 			strs = append(strs, sb.String())
+// 			wordsT = []string{words[i]}
+// 			lenWordsTCont = len(words[i])
+// 		}
+// 	}
+// 	if lenWordsTCont > 0 {
+// 		sb := strings.Builder{}
+// 		lenWordsT := len(wordsT)
+// 		for i := 0; i < lenWordsT; i++ {
+// 			sb.WriteString(wordsT[i])
+// 			if i < lenWordsT-1 {
+// 				sb.WriteString(" ")
+// 			}
+// 		}
+// 		for i := 0; i < maxWidth-lenWordsTCont-lenWordsT+1; i++ {
+// 			sb.WriteString(" ")
+// 		}
+// 		strs = append(strs, sb.String())
+// 	}
+// 	return strs
+// }

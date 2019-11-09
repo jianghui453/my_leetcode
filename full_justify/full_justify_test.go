@@ -6,17 +6,11 @@ func TestFullJustify(t *testing.T) {
 	var words, hope, ret []string
 	var maxWidth int
 
-	words = []string{
-		"This", "is", "an", "example", "of", "text", "justification.",
-	}
+	words = []string{"This", "is", "an", "example", "of", "text", "justification."}
 	maxWidth = 16
-	hope = []string{
-		"This    is    an",
-		"example  of text",
-		"justification.  ",
-	}
+	hope = []string{"This    is    an", "example  of text", "justification.  "}
 	ret = fullJustify(words, maxWidth)
-	t.Logf("\nwords=%v maxWidth=%d \nhope=%v \n ret=%v", words, maxWidth, hope, ret)
+	t.Logf("\nwords=%v maxWidth=%d \n hope=%v \n  ret=%v", words, maxWidth, hope, ret)
 
 	words = []string{"What", "must", "be", "acknowledgment", "shall", "be"}
 	maxWidth = 16
