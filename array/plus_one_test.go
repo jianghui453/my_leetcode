@@ -29,4 +29,9 @@ func TestPlusOne(t *testing.T) {
 	hope = []int{9, 9}
 	ret = plusOne(digits)
 	t.Logf("digits=%v \nhope=%v \nret=%v\n", digits, hope, ret)
+
+	digits = []int{8, 9}
+	hope = []int{9, 0}
+	ret = plusOne(digits)
+	t.Logf("digits=%v \nhope=%v \nret=%v\n", digits, hope, ret)
 }
