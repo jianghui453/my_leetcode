@@ -1,4 +1,4 @@
-package matrix
+package array
 
 import "testing"
 

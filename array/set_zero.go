@@ -33,33 +33,69 @@
 //一个直接的解决方案是使用  O(mn) 的额外空间，但这并不是一个好的解决方案。
 //一个简单的改进方案是使用 O(m + n) 的额外空间，但这仍然不是最好的解决方案。
 //你能想出一个常数空间的解决方案吗？
-package matrix
+package array
 
 func setZeroes(matrix [][]int) {
 	m := len(matrix)
 	if m == 0 {
 		return
 	}
+
 	n := len(matrix[0])
 	if n == 0 {
 		return
 	}
-	record := make([]int, 0)
+
+	hashM := make(map[int]bool)
+	hashN := make(map[int]bool)
+
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
 			if matrix[i][j] == 0 {
-				record = append(record, i*n+j)
+				hashM[i] = true
+				hashN[j] = true
 			}
 		}
 	}
-	for _, idx := range record {
-		raw := idx / n
-		col := idx % n
-		for i := 0; i < m; i++ {
-			matrix[i][col] = 0
-		}
+
+	for k := range hashM {
 		for j := 0; j < n; j++ {
-			matrix[raw][j] = 0
+			matrix[k][j] = 0
+		}
+	}
+
+	for k := range hashN {
+		for i := 0; i < m; i++ {
+			matrix[i][k] = 0
 		}
 	}
 }
+
+// func setZeroes(matrix [][]int) {
+// 	m := len(matrix)
+// 	if m == 0 {
+// 		return
+// 	}
+// 	n := len(matrix[0])
+// 	if n == 0 {
+// 		return
+// 	}
+// 	record := make([]int, 0)
+// 	for i := 0; i < m; i++ {
+// 		for j := 0; j < n; j++ {
+// 			if matrix[i][j] == 0 {
+// 				record = append(record, i*n+j)
+// 			}
+// 		}
+// 	}
+// 	for _, idx := range record {
+// 		raw := idx / n
+// 		col := idx % n
+// 		for i := 0; i < m; i++ {
+// 			matrix[i][col] = 0
+// 		}
+// 		for j := 0; j < n; j++ {
+// 			matrix[raw][j] = 0
+// 		}
+// 	}
+// }
