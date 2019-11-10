@@ -23,7 +23,7 @@
 //
 //输入："/a//b////c/d//././/.."
 //输出："/a/b/c"
-package simplify_path
+package stack
 
 import "testing"
 
@@ -33,30 +33,40 @@ func TestSimplifyPath(t *testing.T) {
 	path = "/home/"
 	hope = "/home"
 	ret = simplifyPath(path)
-	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
 
 	path = "/../"
 	hope = "/"
 	ret = simplifyPath(path)
-	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
+
+	path = "/./"
+	hope = "/"
+	ret = simplifyPath(path)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
+
+	path = "/a/../"
+	hope = "/"
+	ret = simplifyPath(path)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
 
 	path = "/home//foo/"
 	hope = "/home/foo"
 	ret = simplifyPath(path)
-	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
 
 	path = "/a/./b/../../c/"
 	hope = "/c"
 	ret = simplifyPath(path)
-	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
 
 	path = "/a/../../b/../c//.//"
 	hope = "/c"
 	ret = simplifyPath(path)
-	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
 
 	path = "/a//b////c/d//././/.."
 	hope = "/a/b/c"
 	ret = simplifyPath(path)
-	t.Logf("path=%s hope=%s ret=%s", path, hope, ret)
+	t.Logf("%t path=%s hope=%s ret=%s", ret==hope, path, hope, ret)
 }

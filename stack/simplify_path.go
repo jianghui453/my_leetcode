@@ -34,33 +34,59 @@
 //输入："/a//b////c/d//././/.."
 //输出："/a/b/c"
 
-package simplify_path
+package stack
 
-import "strings"
+import (
+	"strings"
+)
 
 func simplifyPath(path string) string {
-	slicePath := strings.Split(path, "/")
-	lenSlicePath := len(slicePath)
-	slicePathRet := make([]string, 0)
-	for i := 0; i < lenSlicePath; i++ {
-		switch slicePath[i] {
-		case "..":
-			if len(slicePathRet) > 0 {
-				slicePathRet = slicePathRet[:len(slicePathRet)-1]
-			}
-			break
-		case "/":
-			break
-		case ".":
-			break
-		case " ":
-			break
+	s := make([]string, 0)
+	paths := strings.Split(path, "/")
+	l := len(paths)
+
+	for i := 0; i < l; i++ {
+		switch paths[i] {
 		case "":
-			break
+			continue
+		case ".":
+			continue
+		case "..":
+			if len(s) > 0 {
+				s = s[: len(s)-1]
+			}
 		default:
-			slicePathRet = append(slicePathRet, slicePath[i])
-			break
+			s = append(s, paths[i])
 		}
 	}
-	return "/" + strings.Join(slicePathRet, "/")
+
+	ret := strings.Join(s, "/")
+	return "/" + ret
 }
+
+// func simplifyPath(path string) string {
+// 	slicePath := strings.Split(path, "/")
+// 	lenSlicePath := len(slicePath)
+// 	slicePathRet := make([]string, 0)
+// 	for i := 0; i < lenSlicePath; i++ {
+// 		switch slicePath[i] {
+// 		case "..":
+// 			if len(slicePathRet) > 0 {
+// 				slicePathRet = slicePathRet[:len(slicePathRet)-1]
+// 			}
+// 			break
+// 		case "/":
+// 			break
+// 		case ".":
+// 			break
+// 		case " ":
+// 			break
+// 		case "":
+// 			break
+// 		default:
+// 			slicePathRet = append(slicePathRet, slicePath[i])
+// 			break
+// 		}
+// 	}
+// 	return "/" + strings.Join(slicePathRet, "/")
+// }
