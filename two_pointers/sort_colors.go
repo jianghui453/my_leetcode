@@ -15,38 +15,77 @@
 //首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。
 //你能想出一个仅使用常数空间的一趟扫描算法吗？
 
-package sort_colors
+package two_pointers
 
-import "fmt"
+import (
+	// "fmt"
+)
 
 func sortColors(nums []int) {
-	nLen := len(nums)
-	if nLen < 1 {
+	l := len(nums)
+	if l <= 1 {
 		return
 	}
-	cur := 0
-	zero := 0
-	two := nLen - 1
-	for cur <= two {
-		fmt.Printf("nums=%v cur=%d zero=%d two=%d\n", nums, cur, zero, two)
-		switch nums[cur] {
+
+	i, i0, i1, i2 := 0, 0, 0, l-1
+
+	for i <= i2 {
+		switch nums[i] {
 		case 0:
-			nums[cur], nums[zero] = nums[zero], nums[cur]
-			zero++
-			if zero >= cur {
-				cur++
+			if i0 == i1 {
+				nums[i0], nums[i] = nums[i], nums[i0]
+				i0++
+				i1++
+			} else {
+				nums[i1], nums[i] = nums[i], nums[i1]
+				nums[i0], nums[i1] = nums[i1], nums[i0]
+				i0++
+				i1++
 			}
-			break
 		case 1:
-			cur++
-			break
+			nums[i0], nums[i] = nums[i], nums[i0]
+			i1++
 		case 2:
-			nums[cur], nums[two] = nums[two], nums[cur]
-			two--
-			break
+			nums[i2], nums[i] = nums[i], nums[i2]
+			i2--
+		}
+
+		if i < i1 {
+			i++
 		}
 	}
+
+	return
 }
+
+// func sortColors(nums []int) {
+// 	nLen := len(nums)
+// 	if nLen < 1 {
+// 		return
+// 	}
+// 	cur := 0
+// 	zero := 0
+// 	two := nLen - 1
+// 	for cur <= two {
+// 		fmt.Printf("nums=%v cur=%d zero=%d two=%d\n", nums, cur, zero, two)
+// 		switch nums[cur] {
+// 		case 0:
+// 			nums[cur], nums[zero] = nums[zero], nums[cur]
+// 			zero++
+// 			if zero >= cur {
+// 				cur++
+// 			}
+// 			break
+// 		case 1:
+// 			cur++
+// 			break
+// 		case 2:
+// 			nums[cur], nums[two] = nums[two], nums[cur]
+// 			two--
+// 			break
+// 		}
+// 	}
+// }
 
 //func sortColors(nums []int) {
 //    nLen := len(nums)
