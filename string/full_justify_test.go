@@ -1,4 +1,4 @@
-package full_justify
+package string
 
 import "testing"
 
