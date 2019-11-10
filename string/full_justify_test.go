@@ -14,17 +14,14 @@ func TestFullJustify(t *testing.T) {
 
 	words = []string{"What", "must", "be", "acknowledgment", "shall", "be"}
 	maxWidth = 16
-	hope = []string{"What   must   be",
-		"acknowledgment  ",
-		"shall be        "}
+	hope = []string{"What   must   be", "acknowledgment  ", "shall be        "}
 	ret = fullJustify(words, maxWidth)
 	t.Logf("\nwords=%v maxWidth=%d \nhope=%v \n ret=%v", words, maxWidth, hope, ret)
 
 	words = []string{"Science", "is", "what", "we", "understand", "well", "enough", "to", "explain",
 		"to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"}
 	maxWidth = 20
-	hope = []string{"Science  is  what we",
-		"understand      well", "enough to explain to", "a  computer.  Art is", "everything  else  we", "do                  "}
+	hope = []string{"Science  is  what we", "understand      well", "enough to explain to", "a  computer.  Art is", "everything  else  we", "do                  "}
 	ret = fullJustify(words, maxWidth)
 	t.Logf("\nwords=%v maxWidth=%d \nhope=%v \n ret=%v", words, maxWidth, hope, ret)
 

@@ -55,7 +55,7 @@
 package full_justify
 
 import (
-	// "strings"
+	"strings"
 	// "fmt"
 )
 
@@ -66,62 +66,60 @@ func fullJustify(words []string, maxWidth int) []string {
 		return ret
 	}
 
-	if l == 1 {
-		str := words[0]
-		for 
-		ret = append(ret, words[0] + string(bs))
-		return ret
-	}
-
 	wordsLen := 0
 	i := 0
 	for ; i < l; i++ {
-		if wordsLen+i+len(words[i]) > maxWidth {
-			str := ""
-			if i > 1 {
-				blanksCnt := maxWidth-wordsLen
-				blankStrCnt := i-1
-				for j := 0; j < i-1; j++ {
-					str += words[j]
-					cnt := blanksCnt/(blankStrCnt)
-					if blanksCnt%(blankStrCnt) > 0 {
-						cnt++
-					}
-					blanksCnt -= cnt
-					blankStrCnt--
-					for ; cnt > 0; cnt-- {
-						str += " "
-					}
-				}
-				str += words[i-1]
-			} else {
-				str = words[0]
-				for k := 0; k < maxWidth-len(words[0]); k ++ {
-					str += " "
-				}
-			}
-
-			ret = append(ret, str)
-			if i < l {
-				ret = append(ret, fullJustify(words[i: ], maxWidth)...)
-			}
-			return ret
+		wordLen := len(words[i])
+		if wordsLen+i+wordLen > maxWidth {
+			break
 		}
 
-		wordsLen += len(words[i])
+		wordsLen += wordLen
+	}
+	i--
+
+	var str string
+	if i == l-1 {
+		str = strings.Join(words, " ")
+		for j := maxWidth-len(str); j > 0; j-- {
+			str += " "
+		}
+		
+		ret = append(ret, str)
+	} else {
+		blankTotalCnt := maxWidth-wordsLen
+
+		if i == 0 {
+			str += words[0]
+			for j := 0; j < blankTotalCnt; j++ {
+				str += " "
+			}
+		} else {
+			blanks := make([]string, i)
+			for j := 0; j < i; j++ {
+				cnt := blankTotalCnt/(i-j)
+				if blankTotalCnt%(i-j) > 0 {
+					cnt++
+				}
+
+				for k := 0; k < cnt; k++ {
+					blanks[j] += " "
+				}
+
+				blankTotalCnt -= cnt
+			}
+
+			for j := 0; j < i; j++ {
+				str += words[j]
+				str += blanks[j]
+			}
+			str += words[i]
+		}
+
+		ret = append(ret, str)
+		ret = append(ret, fullJustify(words[i+1: ], maxWidth)...)
 	}
 
-	str := ""
-	for i := 0; i < l-1; i++ {
-		str += words[i]
-		str += " "
-	}
-	str += words[l-1]
-	for k := 0; k < maxWidth-len(str); k++ {
-		str += " "
-	}
-
-	ret = append(ret, str)
 	return ret
 }
 
