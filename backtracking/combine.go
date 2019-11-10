@@ -16,24 +16,47 @@
 package backtracking
 
 func combine(n int, k int) [][]int {
-	var backtrackCombine func(int, []int)
-	var res = make([][]int, 0)
-	backtrackCombine = func(first int, curr []int) {
-		if len(curr) == k {
-			var tmp = make([]int, k)
-			copy(tmp, curr)
-			res = append(res, tmp)
-			return
-		}
-		for i := first; i <= n-(k-len(curr))+1; i++ {
-			curr = append(curr, i)
-			backtrackCombine(i+1, curr)
-			curr = curr[:len(curr)-1]
+	ret := make([][]int, 0)
+	if k == 0 {
+		return ret
+	}
+
+	if n == 0 {
+		return ret
+	}
+
+	for i := n; i >= 1; i-- {
+		if k == 1 {
+			ret = append(ret, []int{i})
+		} else {
+			for _, retItem := range combine(i-1, k-1) {
+				ret = append(ret, append([]int{i}, retItem...))
+			}
 		}
 	}
-	backtrackCombine(1, make([]int, 0))
-	return res
+	
+	return ret
 }
+
+// func combine(n int, k int) [][]int {
+// 	var backtrackCombine func(int, []int)
+// 	var res = make([][]int, 0)
+// 	backtrackCombine = func(first int, curr []int) {
+// 		if len(curr) == k {
+// 			var tmp = make([]int, k)
+// 			copy(tmp, curr)
+// 			res = append(res, tmp)
+// 			return
+// 		}
+// 		for i := first; i <= n-(k-len(curr))+1; i++ {
+// 			curr = append(curr, i)
+// 			backtrackCombine(i+1, curr)
+// 			curr = curr[:len(curr)-1]
+// 		}
+// 	}
+// 	backtrackCombine(1, make([]int, 0))
+// 	return res
+// }
 
 //func combine(n int, k int) [][]int {
 //	ret := make([][]int, 0)
