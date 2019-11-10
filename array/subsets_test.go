@@ -19,4 +19,14 @@ func TestSubsets(t *testing.T) {
 	}
 	ret = subSets(nums)
 	t.Logf("\nnums=%v \nhope=%v \n ret=%v\n", nums, hope, ret)
+
+	nums = []int{}
+	hope = [][]int{{}}
+	ret = subSets(nums)
+	t.Logf("\nnums=%v \nhope=%v \n ret=%v\n", nums, hope, ret)
+
+	nums = []int{1}
+	hope = [][]int{{}, {1}}
+	ret = subSets(nums)
+	t.Logf("\nnums=%v \nhope=%v \n ret=%v\n", nums, hope, ret)
 }
