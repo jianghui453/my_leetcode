@@ -20,16 +20,13 @@
 //2.  1 阶 + 2 阶
 //3.  2 阶 + 1 阶
 
-package climb_stairs
+package dynamic_programming
 
 func climbStairs(n int) int {
-	if n == 0 {
-		return 0
-	} else if n == 1 {
-		return 1
-	} else if n == 2 {
-		return 2
+	if n <= 2 {
+		return n
 	}
+
 	dp := make([]int, n+1)
 	dp[1] = 1
 	dp[2] = 2

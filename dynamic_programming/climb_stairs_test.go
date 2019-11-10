@@ -1,4 +1,4 @@
-package climb_stairs
+package dynamic_programming
 
 import "testing"
 
