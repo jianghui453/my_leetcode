@@ -9,37 +9,112 @@
 //如果 S 中不存这样的子串，则返回空字符串 ""。
 //如果 S 中存在这样的子串，我们保证它是唯一的答案。
 
-package min_window
+package sliding_window
+
+import (
+	"math"
+	// "fmt"
+)
 
 func minWindow(s string, t string) string {
-	countList := make([]int32, 256)
-	for _, c := range t {
-		countList[c]++
+	ls := len(s)
+	lt := len(t)
+
+	if ls < lt || lt == 0 {
+		return ""
 	}
 
-	cnt := 0
-	minLen := len(s)
-	var res string
+	hashS := make([]int, 256)
+	hashT := make([]int, 256)
 
-	for i, j := 0, 0; j < len(s); j++ {
-		if countList[s[j]] >= 1 {
+	cntT := 0
+	for i := 0; i < lt; i++ {
+		idx := int(t[i])
+		hashT[idx]++
+		if hashT[idx] == 1 {
+			cntT++
+		}
+	}
+
+	strRet := ""
+	strLen := math.MaxInt64
+	cnt := 0
+	left, right := 0, 0
+
+	for ; right < ls; right++ {
+		// fmt.Printf("left=%d right=%d cnt=%d cntT=%d\n", left, right, cnt, cntT)
+		idx := s[right]
+
+		if hashT[idx] == 0 {
+			continue
+		}
+
+		hashS[idx]++
+		if hashS[idx] == hashT[idx] {
 			cnt++
 		}
-		countList[s[j]]--
-		for cnt == len(t) {
-			if j-i+1 <= minLen {
-				minLen = j - i + 1
-				res = s[i : j+1]
+
+		if cnt < cntT {
+			continue
+		}
+		
+		for ; left <= right; left++ {
+			// fmt.Printf("left=%d\n", left)
+			if right-left+1 < strLen {
+				if right < ls-1 {
+					strRet = s[left: right+1]
+				} else {
+					strRet = s[left: ]
+				}
+				strLen = right-left+1
 			}
-			countList[s[i]]++
-			if countList[s[i]] > 0 {
+
+			idx := int(s[left])
+			if hashT[idx] == 0 {
+				continue
+			}
+
+			hashS[idx]--
+			if hashS[idx] == hashT[idx]-1 {
 				cnt--
+				left++
+				break
 			}
-			i++
 		}
 	}
-	return res
+
+	return strRet
 }
+
+// func minWindow(s string, t string) string {
+// 	countList := make([]int32, 256)
+// 	for _, c := range t {
+// 		countList[c]++
+// 	}
+
+// 	cnt := 0
+// 	minLen := len(s)
+// 	var res string
+
+// 	for i, j := 0, 0; j < len(s); j++ {
+// 		if countList[s[j]] >= 1 {
+// 			cnt++
+// 		}
+// 		countList[s[j]]--
+// 		for cnt == len(t) {
+// 			if j-i+1 <= minLen {
+// 				minLen = j - i + 1
+// 				res = s[i : j+1]
+// 			}
+// 			countList[s[i]]++
+// 			if countList[s[i]] > 0 {
+// 				cnt--
+// 			}
+// 			i++
+// 		}
+// 	}
+// 	return res
+// }
 
 //func minWindow(s string, t string) string {
 //    lenS := len(s)
