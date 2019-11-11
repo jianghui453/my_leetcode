@@ -15,7 +15,7 @@ func TestExist(t *testing.T) {
 	word = "ABCCED"
 	hope = true
 	ret = exist(board, word)
-	t.Logf("hope=%t ret=%t", hope, ret)
+	t.Logf("\nhope=%t \n ret=%t", hope, ret)
 
 	board = [][]byte{
 		{'A', 'B', 'C', 'E'},
@@ -25,7 +25,7 @@ func TestExist(t *testing.T) {
 	word = "SEE"
 	hope = true
 	ret = exist(board, word)
-	t.Logf("hope=%t ret=%t", hope, ret)
+	t.Logf("\nhope=%t \n ret=%t", hope, ret)
 
 	board = [][]byte{
 		{'A', 'B', 'C', 'E'},
@@ -35,5 +35,5 @@ func TestExist(t *testing.T) {
 	word = "ABCB"
 	hope = false
 	ret = exist(board, word)
-	t.Logf("hope=%t ret=%t", hope, ret)
+	t.Logf("\nhope=%t \n ret=%t", hope, ret)
 }
