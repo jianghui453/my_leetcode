@@ -1,4 +1,4 @@
-package array
+package binary_search
 
 import "testing"
 
@@ -52,6 +52,12 @@ func TestSearch(t *testing.T) {
 	nums = []int{3, 1}
 	h = false
 	target = 2
+	r = search(nums, target)
+	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
+
+	nums = []int{1}
+	h = true
+	target = 1
 	r = search(nums, target)
 	t.Logf("%t nums=%v target=%d h=%t r=%t\n", r==h, nums, target, h, r)
 }

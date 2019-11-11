@@ -17,7 +17,62 @@
 //这是 搜索旋转排序数组 的延伸题目，本题中的 nums  可能包含重复元素。
 //这会影响到程序的时间复杂度吗？会有怎样的影响，为什么？
 
-package array
+package binary_search
+
+import (
+	// "fmt"
+)
+
+func search(nums []int, target int) bool {
+	l := len(nums)
+
+	for l > 1 {
+		if nums[l-1] != nums[0] {
+			break
+		}
+		l--
+	}
+
+	if l == 0 {
+		return false
+	}
+
+	if l == 1 {
+		return nums[0] == target
+	}
+
+	min, max := 0, l-1
+	for min <= max {
+		mid := (min+max)/2
+		if target == nums[0] || target == nums[l-1] || target == nums[mid] {
+			return true
+		}
+
+		if nums[mid] > target {
+			if target >= nums[0] {
+				max = mid-1
+			} else {
+				if nums[mid] >= nums[0] {
+					min = mid+1
+				} else {
+					max = mid-1
+				}
+			}
+		} else {
+			if target >= nums[0] {
+				if nums[mid] >= nums[0] {
+					min = mid+1
+				} else {
+					max = mid-1
+				}
+			} else {
+				min = mid+1
+			}
+		}
+	}
+	
+	return false
+}
 
 // import "fmt"
 
