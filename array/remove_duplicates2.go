@@ -35,29 +35,46 @@
 
 package array
 
-func remove_duplicates2(nums []int) int {
-	lenN := len(nums)
-	if lenN < 2 {
-		return lenN
+func removeDuplicates(nums []int) int {
+	l := len(nums)
+	if l <= 2 {
+		return l
 	}
-	cnt := 1
-	for i := 1; i < lenN; i++ {
-		if nums[i] != nums[i-1] {
-			cnt = 1
-			continue
+
+	i := 2
+	for j := 2; j < l; j++ {
+		if nums[i-1] != nums[j] || nums[i-2] != nums[j] {
+			nums[i] = nums[j]
+			i++
 		}
-		cnt++
-		if cnt < 3 {
-			continue
-		}
-		if i >= lenN-1 {
-			nums = nums[:i]
-			break
-		}
-		nums = append(nums[:i], nums[i+1:]...)
-		cnt--
-		lenN--
-		i--
 	}
-	return len(nums)
+
+	return i
 }
+
+// func remove_duplicates2(nums []int) int {
+// 	lenN := len(nums)
+// 	if lenN < 2 {
+// 		return lenN
+// 	}
+// 	cnt := 1
+// 	for i := 1; i < lenN; i++ {
+// 		if nums[i] != nums[i-1] {
+// 			cnt = 1
+// 			continue
+// 		}
+// 		cnt++
+// 		if cnt < 3 {
+// 			continue
+// 		}
+// 		if i >= lenN-1 {
+// 			nums = nums[:i]
+// 			break
+// 		}
+// 		nums = append(nums[:i], nums[i+1:]...)
+// 		cnt--
+// 		lenN--
+// 		i--
+// 	}
+// 	return len(nums)
+// }
