@@ -21,52 +21,82 @@
 //输入: [2,1,5,6,2,3]
 //输出: 10
 
-package array
+package stack
 
-import "fmt"
+import (
+	// "fmt"
+	"math"
+)
 
 func largestRectangleArea(heights []int) int {
-	lenH := len(heights)
-	if lenH < 1 {
+	l := len(heights)
+	if l == 0 {
 		return 0
 	}
-	if lenH < 2 {
+	if l == 1 {
 		return heights[0]
 	}
-	s := []int{-1}
-	lenS := 1
+
 	area := 0
-	for i := 0; i < lenH; i++ {
-		for lenS > 1 && heights[i] < heights[s[lenS-1]] {
-			left := s[lenS-2]
-			right := i - 1
-			width := right - left
-			height := heights[s[lenS-1]]
-			areaI := width * height
-			if areaI > area {
-				area = areaI
-			}
-			s = s[:lenS-1]
-			lenS--
+	s := []int{-1}
+	for i := 0; i < l; i++ {
+		for len(s) > 1 && heights[i] < heights[s[len(s)-1]] {
+			area = int(math.Max(float64(heights[s[len(s)-1]] * (i - 1 - s[len(s)-2])), float64(area)))
+			s = s[: len(s)-1]
 		}
 		s = append(s, i)
-		lenS++
 	}
-	fmt.Printf("s=%v lenS=%d lenH=%d\n", s, lenS, lenH)
-	idxS := lenS - 1
-	idxH := lenH
-	for ; idxS > 0; idxS-- {
-		left := s[idxS-1]
-		right := idxH - 1
-		width := right - left
-		height := heights[s[idxS]]
-		areaI := width * height
-		if areaI > area {
-			area = areaI
-		}
+
+	ls := len(s)
+	for i := ls-1; i > 0; i-- {
+		area = int(math.Max(float64(heights[s[i]] * (l - 1 - s[i-1])), float64(area)))
 	}
+
 	return area
 }
+
+// func largestRectangleArea(heights []int) int {
+// 	lenH := len(heights)
+// 	if lenH < 1 {
+// 		return 0
+// 	}
+// 	if lenH < 2 {
+// 		return heights[0]
+// 	}
+// 	s := []int{-1}
+// 	lenS := 1
+// 	area := 0
+// 	for i := 0; i < lenH; i++ {
+// 		for lenS > 1 && heights[i] < heights[s[lenS-1]] {
+// 			left := s[lenS-2]
+// 			right := i - 1
+// 			width := right - left
+// 			height := heights[s[lenS-1]]
+// 			areaI := width * height
+// 			if areaI > area {
+// 				area = areaI
+// 			}
+// 			s = s[:lenS-1]
+// 			lenS--
+// 		}
+// 		s = append(s, i)
+// 		lenS++
+// 	}
+// 	fmt.Printf("s=%v lenS=%d lenH=%d\n", s, lenS, lenH)
+// 	idxS := lenS - 1
+// 	idxH := lenH
+// 	for ; idxS > 0; idxS-- {
+// 		left := s[idxS-1]
+// 		right := idxH - 1
+// 		width := right - left
+// 		height := heights[s[idxS]]
+// 		areaI := width * height
+// 		if areaI > area {
+// 			area = areaI
+// 		}
+// 	}
+// 	return area
+// }
 
 //func largestRectangleArea(heights []int) int {
 //    lenH := len(heights)
