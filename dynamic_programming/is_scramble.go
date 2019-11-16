@@ -47,42 +47,44 @@
 package dynamic_programming
 
 func isScramble(s1 string, s2 string) bool {
-	// 边界判断
-	if s1 == s2 {
-		return true
-	}
-	if len(s2) != len(s2) {
-		return false
-	}
+	memo := make(map[string]map[string]bool)
+	var f func(str1, str2 string) bool
 
-	// 字符匹配判断
-	n := len(s1)
-	var counts = make([]int, 26, 26)
-	for i := 0; i < n; i++ {
-		counts[s1[i]-'a']++
-		counts[s2[i]-'a']--
-	}
-
-	for _, count := range counts {
-		if count != 0 {
+	f = func(str1, str2 string) bool {
+		l := len(s1)
+		if len(s2) != l {
 			return false
 		}
-	}
-
-	// for range s 处理
-	for i := 1; i < n; i++ {
-		// 直接对比两子树
-		if isScramble(s1[:i], s2[:i]) && isScramble(s1[i:], s2[i:]) {
-			return true
+		if l == 1 {
+			return s1 == s2
 		}
 
-		// 交换两子树，然后对比
-		if isScramble(s1[i:], s2[:n-i]) && isScramble(s1[:i], s2[n-i:]) {
-			return true
+		if _, ok := memo[str1]; ok {
+			if _, _ok := memo[str1][str2]; ok {
+				return memo[str1][str2]
+			}
 		}
-	}
 
-	return false
+		if l == 2 {
+			s3 := s2[1] + s2[0]
+			ret := s1 == s2 || s1 == s3
+			memo[str1][str2] = ret
+			return ret
+		}
+
+		memo[str1][str2] = false
+		for i := 1; i <= l/2; i++ {
+			if isScramble(s1[: i], s2[: i]) || isScramble(s[l-i: ], s2[: i]) {
+				memo[str1][str2] = true
+				break
+			}
+		}
+
+		return memo[str1][str2]
+	}
+	
+	r := f(s1, s2)
+	return r
 }
 
 //func isScramble(s1 string, s2 string) bool {

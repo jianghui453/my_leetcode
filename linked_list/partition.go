@@ -9,47 +9,81 @@
 
 package linked_list
 
-import "fmt"
+import (
+	// "fmt"
+)
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
 func partition(head *ListNode, x int) *ListNode {
-	var smaller, larger, sHead, lHead *ListNode
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	var h1, h2, t1, t2 *ListNode
+
 	for head != nil {
-		fmt.Println(head.Val)
 		if head.Val < x {
-			if smaller == nil {
-				smaller = head
-				sHead = smaller
+			if h1 == nil {
+				h1, t1 = head, head
 			} else {
-				smaller.Next = head
-				smaller = smaller.Next
+				t1.Next = head
+				t1 = t1.Next
 			}
 		} else {
-			if larger == nil {
-				larger = head
-				lHead = larger
+			if h2 == nil {
+				h2, t2 = head, head
 			} else {
-				larger.Next = head
-				larger = larger.Next
+				t2.Next = head
+				t2 = t2.Next
 			}
 		}
+
 		head = head.Next
 	}
-	if sHead == nil {
-		if lHead != nil {
-			return lHead
-		}
-		return nil
+
+	if t2 != nil {
+		t2.Next = nil
 	}
-	smaller.Next = lHead
-	if larger != nil {
-		larger.Next = nil
+
+	if t1 != nil {
+		t1.Next = h2
+		return h1
 	}
-	return sHead
+
+	return h2
 }
+
+// func partition(head *ListNode, x int) *ListNode {
+// 	var smaller, larger, sHead, lHead *ListNode
+// 	for head != nil {
+// 		fmt.Println(head.Val)
+// 		if head.Val < x {
+// 			if smaller == nil {
+// 				smaller = head
+// 				sHead = smaller
+// 			} else {
+// 				smaller.Next = head
+// 				smaller = smaller.Next
+// 			}
+// 		} else {
+// 			if larger == nil {
+// 				larger = head
+// 				lHead = larger
+// 			} else {
+// 				larger.Next = head
+// 				larger = larger.Next
+// 			}
+// 		}
+// 		head = head.Next
+// 	}
+// 	if sHead == nil {
+// 		if lHead != nil {
+// 			return lHead
+// 		}
+// 		return nil
+// 	}
+// 	smaller.Next = lHead
+// 	if larger != nil {
+// 		larger.Next = nil
+// 	}
+// 	return sHead
+// }
