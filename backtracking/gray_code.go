@@ -29,31 +29,55 @@
 
 package backtracking
 
-import "fmt"
+import (
+	// "math"
+	// "fmt"
+)
 
 func grayCode(n int) []int {
-	if n < 1 {
+    if n == 0 {
 		return []int{0}
 	}
-	ret := []int{0}
-	his := make([]int, 1<<uint(n))
-	num := 0
-	his[0]++
-	for i := 0; i < n; i++ {
-		j := 1 << uint(i)
-		fmt.Printf("i=%d j=%d num=%d\n", i, j, num)
-		if num&j > 0 && his[num-j] == 0 {
-			ret = append(ret, num-j)
-			his[num-j]++
-			i = -1
-			num = num - j
-		} else if num&j == 0 && his[num+j] == 0 {
-			ret = append(ret, num+j)
-			his[num+j]++
-			i = -1
-			num += j
-		}
-		fmt.Printf("i=%d j=%d num=%d his=%v ret=%v\n", i, j, num, his, ret)
+    
+    if n == 1 {
+		return []int{0, 1}
 	}
+
+	ret := make([]int, 0)
+	v := 1 << uint(n-1)
+	_ret := grayCode(n-1)
+	ret = append(ret, _ret...)
+	
+	for i := len(_ret)-1; i >= 0; i-- {
+		ret = append(ret, _ret[i]+v)
+	}
+
 	return ret
 }
+
+// func grayCode(n int) []int {
+// 	if n < 1 {
+// 		return []int{0}
+// 	}
+// 	ret := []int{0}
+// 	his := make([]int, 1<<uint(n))
+// 	num := 0
+// 	his[0]++
+// 	for i := 0; i < n; i++ {
+// 		j := 1 << uint(i)
+// 		fmt.Printf("i=%d j=%d num=%d\n", i, j, num)
+// 		if num&j > 0 && his[num-j] == 0 {
+// 			ret = append(ret, num-j)
+// 			his[num-j]++
+// 			i = -1
+// 			num = num - j
+// 		} else if num&j == 0 && his[num+j] == 0 {
+// 			ret = append(ret, num+j)
+// 			his[num+j]++
+// 			i = -1
+// 			num += j
+// 		}
+// 		fmt.Printf("i=%d j=%d num=%d his=%v ret=%v\n", i, j, num, his, ret)
+// 	}
+// 	return ret
+// }
