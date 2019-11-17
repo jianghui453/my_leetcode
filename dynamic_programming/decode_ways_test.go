@@ -45,4 +45,9 @@ func TestNumDecodings(t *testing.T) {
 	h = 1
 	r = numDecodings(s)
 	t.Logf("%t s=%s h=%d r=%d", h == r, s, h, r)
+
+	s = "01"
+	h = 0
+	r = numDecodings(s)
+	t.Logf("%t s=%s h=%d r=%d", h == r, s, h, r)
 }

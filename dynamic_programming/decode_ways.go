@@ -20,33 +20,68 @@
 package dynamic_programming
 
 func numDecodings(s string) int {
-	var r int
-	var f func(string, int)
-	f = func(str string, sL int) {
-		if sL == 0 {
-			return
-		}
-		if sL == 1 {
-			if str[0]-'0' > 0 {
-				r++
-			}
-			return
-		}
-		if str[0]-'0' > 0 {
-			f(str[1:], sL-1)
-			n := 10*(str[0]-'0') + (str[1] - '0')
-			if n > 0 && n <= 26 {
-				if sL == 2 {
-					r++
-				} else {
-					f(str[2:], sL-2)
+	l := len(s)
+	if l == 0 {
+		return 0
+	}
+
+	dp := make([]int, l+1)
+	for i := 0; i < l; i++ {
+		if s[i] > '0' && s[i] <= '9' {
+			dp[i] = 1
+			for j := i+1; j < l; j++ {
+				if s[j] > '0' && s[j] <= '9' {
+					dp[j] = dp[j-1]
+				}
+				if s[j-1] > '0' && (int(s[j-1]-'0')*10 + int(s[j]-'0')) <= 26 {
+					if j < 2 {
+						dp[j]++
+					} else {
+						dp[j] += dp[j-2]
+					}
+				}
+				if dp[j] == 0 {
+					return 0
 				}
 			}
+
+			break
+		} else {
+			return 0
 		}
 	}
-	f(s, len(s))
-	return r
+	
+	return dp[l-1]
 }
+
+// func numDecodings(s string) int {
+// 	var r int
+// 	var f func(string, int)
+// 	f = func(str string, sL int) {
+// 		if sL == 0 {
+// 			return
+// 		}
+// 		if sL == 1 {
+// 			if str[0]-'0' > 0 {
+// 				r++
+// 			}
+// 			return
+// 		}
+// 		if str[0]-'0' > 0 {
+// 			f(str[1:], sL-1)
+// 			n := 10*(str[0]-'0') + (str[1] - '0')
+// 			if n > 0 && n <= 26 {
+// 				if sL == 2 {
+// 					r++
+// 				} else {
+// 					f(str[2:], sL-2)
+// 				}
+// 			}
+// 		}
+// 	}
+// 	f(s, len(s))
+// 	return r
+// }
 
 //func numDecodings(s string) int {
 //	l := len(s)
