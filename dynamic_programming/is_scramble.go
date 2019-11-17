@@ -46,47 +46,81 @@
 
 package dynamic_programming
 
-func isScramble(s1 string, s2 string) bool {
-	memo := make(map[string]map[string]bool)
-	var f func(str1, str2 string) bool
+import (
+	// "fmt"
+)
 
-	f = func(str1, str2 string) bool {
-		l := len(s1)
-		if len(s2) != l {
-			return false
+func isScramble(s1 string, s2 string) bool {
+	l := len(s1)
+	if len(s2) != l {
+		return false
+	}
+	if l == 0 {
+		return true
+	}
+
+	dp := make([][][]bool, l)
+	for i := 0; i < l; i++ {
+		dp[i] = make([][]bool, l)
+		
+		for j := 0; j < l; j++ {
+			dp[i][j] = make([]bool, l+1)
+			dp[i][j][0] = true
+			if s1[i] == s2[j] {
+				dp[i][j][1] = true
+			}
 		}
 		if l == 1 {
 			return s1 == s2
 		}
 
-		if _, ok := memo[str1]; ok {
-			if _, _ok := memo[str1][str2]; ok {
-				return memo[str1][str2]
+	for i := l-1; i >= 0; i-- {
+		for j := l-1; j >= 0; j-- {
+			_l := l-i
+			if l-j < l-i {
+				_l = l-j
+			}
+
+			for k1 := 1; k1 < _l; k1++ {
+				for k2 := 1; k2 <= _l-k1; k2++ {
+					if (j+k1 < l && i+k2 < l && dp[i][j+k1][k2] && dp[i+k2][j][k1]) ||
+							(i+k1 < l && j+k1 < l && dp[i][j][k1] && dp[i+k1][j+k1][k2]) {
+						dp[i][j][k1+k2] = true
+					}
+				}
 			}
 		}
 
-		if l == 2 {
-			s3 := s2[1] + s2[0]
-			ret := s1 == s2 || s1 == s3
-			memo[str1][str2] = ret
-			return ret
-		}
-
-		memo[str1][str2] = false
-		for i := 1; i <= l/2; i++ {
-			if isScramble(s1[: i], s2[: i]) || isScramble(s[l-i: ], s2[: i]) {
-				memo[str1][str2] = true
-				break
-			}
-		}
-
-		return memo[str1][str2]
-	}
-	
-	r := f(s1, s2)
-	return r
+	return dp[0][0][l]
 }
 
+/** [
+		[
+			[true true false false false] 
+			[true false false false false] 
+			[true false false false false] 
+			[true false false false false]
+		] 
+		[
+			[true false false false false] 
+			[true false false true false] 
+			[true false false false false] 
+			[true true false false false]
+		] 
+		[
+			[true false false false false] 
+			[true true true false false] 
+			[true false false false false] 
+			[true false false false false]
+		] 
+		[
+			[true false false false false] 
+			[true false false false false] 
+			[true true false false false] 
+			[true false false false false]
+		]
+	]
+*/
 //func isScramble(s1 string, s2 string) bool {
 //	len1 := len(s1)
 //	len2 := len(s2)
