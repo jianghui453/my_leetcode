@@ -19,30 +19,42 @@ func inorderTraversal(root *TreeNode) []int {
 	if root == nil {
 		return r
 	}
-	var f func(*TreeNode)
-	f = func(n *TreeNode) {
-		if n.Left != nil {
-			f(n.Left)
+	
+	s := make([]*TreeNode, 0)
+	for root != nil {
+		if root.Left != nil {
+			s = append(s, root)
+			root = root.Left
+			continue
 		}
-		r = append(r, n.Val)
-		if n.Right != nil {
-			f(n.Right)
+
+		r = append(r, root.Val)
+		if root.Right != nil {
+			root = root.Right
+		} else if len(s) > 0 {
+			node := new(TreeNode)
+			node.Right = s[len(s)-1].Right
+			node.Val = s[len(s)-1].Val
+			root = node
+			s = s[: len(s)-1]
+		} else {
+			root = nil
 		}
 	}
-	f(root)
+
 	return r
 }
 
-//func inorderTraversal(root *TreeNode) []int {
-//	r := make([]int, 0)
-//	if root == nil {
-//		return r
-//	}
-//	s := make([]*TreeNode, 0)
-//	sL := 0
-//	n := root
-//	for {
-//	    if n != nil {
+// func inorderTraversal(root *TreeNode) []int {
+// 	r := make([]int, 0)
+// 	if root == nil {
+// 		return r
+// 	}
+// 	s := make([]*TreeNode, 0)
+// 	sL := 0
+// 	n := root
+// 	for {
+// 	    if n != nil {
 //            if n.Left != nil {
 //                s = append(s, n)
 //                sL++
@@ -64,6 +76,6 @@ func inorderTraversal(root *TreeNode) []int {
 //            continue
 //        }
 //        n = nil
-//	}
-//	return r
-//}
+// 	}
+// 	return r
+// }
