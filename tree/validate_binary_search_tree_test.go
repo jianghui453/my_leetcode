@@ -17,8 +17,19 @@ func TestIsValidBST(t *testing.T) {
 	r = isValidBST(root)
 	t.Logf("%t h=%t r=%t", h == r, h, r)
 
+	root = &TreeNode{5, &TreeNode{1, nil, nil}, &TreeNode{7,
+		&TreeNode{6, nil, nil}, &TreeNode{8, nil, nil}}}
+	h = true
+	r = isValidBST(root)
+	t.Logf("%t h=%t r=%t", h == r, h, r)
+
 	root = &TreeNode{1, &TreeNode{1, nil, nil}, nil}
 	h = false
+	r = isValidBST(root)
+	t.Logf("%t h=%t r=%t", h == r, h, r)
+
+	root = &TreeNode{1, &TreeNode{0, nil, nil}, nil}
+	h = true
 	r = isValidBST(root)
 	t.Logf("%t h=%t r=%t", h == r, h, r)
 }
