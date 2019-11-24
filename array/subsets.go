@@ -19,7 +19,7 @@
 
 package array
 
-func subSets(nums []int) [][]int {
+func subsets(nums []int) [][]int {
 	ret := make([][]int, 0)
 	ret = append(ret, []int{})
 	
@@ -31,7 +31,7 @@ func subSets(nums []int) [][]int {
 	for i := 0; i < l; i++ {
 		ret = append(ret, []int{nums[i]})
 		if i < l-1 {
-			for _, retItem := range subSets(nums[i+1: ]) {
+			for _, retItem := range subsets(nums[i+1: ]) {
 				if len(retItem) > 0 {
 					ret = append(ret, append([]int{nums[i]}, retItem...))	
 				}
