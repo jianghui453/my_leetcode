@@ -28,7 +28,7 @@ func divide(dividend int, divisor int) int {
 		return 0
 	}
 
-	sign := (dividend>0 && divisor>0) || (dividend<0 && divisor<0)
+	sign := (dividend > 0 && divisor > 0) || (dividend < 0 && divisor < 0)
 
 	dsr := divisor
 	cnt := 1

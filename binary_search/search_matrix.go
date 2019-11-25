@@ -44,12 +44,12 @@ func searchMatrix(matrix [][]int, target int) bool {
 		if matrix[i][0] <= target && matrix[i][n-1] >= target {
 			min, max := 0, n-1
 			for min <= max {
-				mid := (min+max)/2
+				mid := (min + max) / 2
 
 				if matrix[i][mid] < target {
-					min = mid+1
+					min = mid + 1
 				} else if matrix[i][mid] > target {
-					max = mid-1
+					max = mid - 1
 				} else {
 					return true
 				}

@@ -5,7 +5,7 @@
 // 说明：
 
 // 所有数字（包括目标数）都是正整数。
-// 解集不能包含重复的组合。 
+// 解集不能包含重复的组合。
 // 示例 1:
 
 // 输入: candidates = [10,1,2,7,6,1,5], target = 8,
@@ -58,7 +58,7 @@ func combinationSum2(candidates []int, target int) [][]int {
 			}
 
 			if i < _l-1 {
-				for _, item := range f(nums[i+1: ], t-nums[i]) {
+				for _, item := range f(nums[i+1:], t-nums[i]) {
 					_ret = append(_ret, append([]int{nums[i]}, item...))
 				}
 			}

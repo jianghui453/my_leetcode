@@ -12,12 +12,12 @@
 package dynamic_programming
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func isInterleave(s1 string, s2 string, s3 string) bool {
 	l1, l2, l3 := len(s1), len(s2), len(s3)
-	if l3 != l1 + l2 {
+	if l3 != l1+l2 {
 		return false
 	}
 

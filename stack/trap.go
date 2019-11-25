@@ -1,7 +1,5 @@
 // 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
-
-
 // 上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 感谢 Marcos 贡献此图。
 
 // 示例:
@@ -12,7 +10,7 @@
 package stack
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func trap(height []int) int {
@@ -44,24 +42,24 @@ func trap(height []int) int {
 
 		if height[i] >= height[s[0]] {
 			for j := 0; j < sLen-1; j++ {
-				ret += (i-s[j]-1)*(height[s[j]]-height[s[j+1]])
+				ret += (i - s[j] - 1) * (height[s[j]] - height[s[j+1]])
 			}
 			s = []int{i}
 		} else {
-			for j := sLen-2; j >= 0; j-- {
+			for j := sLen - 2; j >= 0; j-- {
 				if height[i] >= height[s[j]] {
-					ret += (i-s[j]-1)*(height[s[j]]-height[s[j+1]])
+					ret += (i - s[j] - 1) * (height[s[j]] - height[s[j+1]])
 				} else {
-					ret += (i-s[j]-1)*(height[i]-height[s[j+1]])
+					ret += (i - s[j] - 1) * (height[i] - height[s[j+1]])
 				}
-				
+
 				if height[i] == height[s[j]] {
-					s = s[: j]
+					s = s[:j]
 					break
 				}
 
 				if height[i] < height[s[j]] {
-					s = s[: j+1]
+					s = s[:j+1]
 					break
 				}
 			}

@@ -74,7 +74,7 @@ func isNumber(s string) bool {
 			}
 			return -1
 		case 4:
-			if ch >= '0' && ch <='9' {
+			if ch >= '0' && ch <= '9' {
 				return 5
 			}
 			return -1

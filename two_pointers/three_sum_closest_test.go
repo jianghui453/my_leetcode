@@ -14,9 +14,9 @@ func TestThreeSumClosest(t *testing.T) {
 	// r = threeSumClosest(nums, target)
 	// t.Logf("%t nums=%v target=%d h=%d r=%d", r==h, nums, target, h, r)
 
-	nums = []int{-3,-2,-5,3,-4}
+	nums = []int{-3, -2, -5, 3, -4}
 	target = -1
 	h = -2
 	r = threeSumClosest(nums, target)
-	t.Logf("%t nums=%v target=%d h=%d r=%d", r==h, nums, target, h, r)
+	t.Logf("%t nums=%v target=%d h=%d r=%d", r == h, nums, target, h, r)
 }

@@ -14,7 +14,7 @@
 package string
 
 import (
-	// "strings"
+// "strings"
 )
 
 func addBinary(a string, b string) string {
@@ -33,14 +33,14 @@ func addBinary(a string, b string) string {
 	for ia >= 0 || ib >= 0 || carry > 0 {
 		val := carry
 		if ia >= 0 {
-			val += int(a[ia]-'0')
+			val += int(a[ia] - '0')
 		}
 		if ib >= 0 {
-			val += int(b[ib]-'0')
+			val += int(b[ib] - '0')
 		}
 
 		ret = append(ret, byte(val%2+'0'))
-		carry = val/2
+		carry = val / 2
 
 		ia--
 		ib--
@@ -49,7 +49,7 @@ func addBinary(a string, b string) string {
 	l := len(ret)
 	for i := 0; i < l/2; i++ {
 		ret[i], ret[l-1-i] = ret[l-i-1], ret[i]
-	} 
+	}
 
 	return string(ret)
 }

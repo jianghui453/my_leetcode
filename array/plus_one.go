@@ -26,9 +26,9 @@ func plusOne(digits []int) []int {
 
 	carry := 1
 	for i := l - 1; i >= 0 && carry > 0; i-- {
-		val := digits[i]+carry
-		digits[i] = val%10
-		carry = val/10
+		val := digits[i] + carry
+		digits[i] = val % 10
+		carry = val / 10
 	}
 
 	if carry > 0 {

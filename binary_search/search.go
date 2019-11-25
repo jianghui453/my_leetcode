@@ -31,16 +31,16 @@ func search(nums []int, target int) int {
 		return -1
 	}
 
-	binarySearch := func (_nums []int) int {
+	binarySearch := func(_nums []int) int {
 		_numsLen := len(_nums)
 		min, max := 0, _numsLen-1
-		
+
 		for min <= max {
-			_mid := (min+max)/2
+			_mid := (min + max) / 2
 			if target > _nums[_mid] {
-				min = _mid+1
+				min = _mid + 1
 			} else if target < _nums[_mid] {
-				max = _mid-1
+				max = _mid - 1
 			} else {
 				return _mid
 			}
@@ -54,49 +54,49 @@ func search(nums []int, target int) int {
 	}
 
 	left, right := 0, numsLen-1
-	mid := (left+right)/2
+	mid := (left + right) / 2
 
 	if target > nums[mid] {
 		if nums[mid] > nums[numsLen-1] {
 			if mid == numsLen-1 {
 				return -1
 			}
-			ret := search(nums[mid+1: ], target)
+			ret := search(nums[mid+1:], target)
 			if ret == -1 {
 				return -1
 			}
-			return ret+mid+1
+			return ret + mid + 1
 		}
 
 		if target > nums[numsLen-1] {
-			return search(nums[: mid], target)
-		} 
+			return search(nums[:mid], target)
+		}
 
 		if mid == numsLen-1 {
 			return -1
 		}
-		ret := binarySearch(nums[mid+1: ])
+		ret := binarySearch(nums[mid+1:])
 		if ret == -1 {
 			return -1
 		}
-		return ret+mid+1
+		return ret + mid + 1
 	} else if target < nums[mid] {
 		if nums[mid] < nums[0] {
-			return search(nums[: mid], target)
+			return search(nums[:mid], target)
 		}
 
-		if  target > nums[numsLen-1] {
-			return binarySearch(nums[: mid])
+		if target > nums[numsLen-1] {
+			return binarySearch(nums[:mid])
 		}
 
 		if mid == numsLen-1 {
 			return -1
 		}
-		ret := search(nums[mid+1: ], target)
+		ret := search(nums[mid+1:], target)
 		if ret == -1 {
 			return -1
 		}
-		return ret+mid+1
+		return ret + mid + 1
 	} else {
 		return mid
 	}

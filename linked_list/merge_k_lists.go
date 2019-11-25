@@ -48,12 +48,12 @@ func mergeKLists(lists []*ListNode) *ListNode {
 			}
 			l2 = l2.Next
 		}
-		
+
 		lists[0] = h
 		if len(lists) == 2 {
 			return h
 		}
-		lists = append(lists[: 1], lists[2: ]...)
+		lists = append(lists[:1], lists[2:]...)
 	}
 	return lists[0]
 }

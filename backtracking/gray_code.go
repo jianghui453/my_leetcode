@@ -30,25 +30,25 @@
 package backtracking
 
 import (
-	// "math"
-	// "fmt"
+// "math"
+// "fmt"
 )
 
 func grayCode(n int) []int {
-    if n == 0 {
+	if n == 0 {
 		return []int{0}
 	}
-    
-    if n == 1 {
+
+	if n == 1 {
 		return []int{0, 1}
 	}
 
 	ret := make([]int, 0)
 	v := 1 << uint(n-1)
-	_ret := grayCode(n-1)
+	_ret := grayCode(n - 1)
 	ret = append(ret, _ret...)
-	
-	for i := len(_ret)-1; i >= 0; i-- {
+
+	for i := len(_ret) - 1; i >= 0; i-- {
 		ret = append(ret, _ret[i]+v)
 	}
 

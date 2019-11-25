@@ -22,7 +22,7 @@ package array
 func subsets(nums []int) [][]int {
 	ret := make([][]int, 0)
 	ret = append(ret, []int{})
-	
+
 	l := len(nums)
 	if l == 0 {
 		return ret
@@ -31,9 +31,9 @@ func subsets(nums []int) [][]int {
 	for i := 0; i < l; i++ {
 		ret = append(ret, []int{nums[i]})
 		if i < l-1 {
-			for _, retItem := range subsets(nums[i+1: ]) {
+			for _, retItem := range subsets(nums[i+1:]) {
 				if len(retItem) > 0 {
-					ret = append(ret, append([]int{nums[i]}, retItem...))	
+					ret = append(ret, append([]int{nums[i]}, retItem...))
 				}
 			}
 		}

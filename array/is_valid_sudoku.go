@@ -4,7 +4,6 @@
 // 数字 1-9 在每一列只能出现一次。
 // 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
 
-
 // 上图是一个部分填充的有效的数独。
 
 // 数独部分空格内已填入了数字，空白格用 '.' 表示。
@@ -54,7 +53,7 @@ func isValidSudoku(board [][]byte) bool {
 	horizontal := make([][]int, 9)
 	vertical := make([][]int, 9)
 	square := make([][]int, 9)
-	
+
 	for i := 0; i < 9; i++ {
 		horizontal[i] = make([]int, 9)
 		vertical[i] = make([]int, 9)
@@ -68,7 +67,7 @@ func isValidSudoku(board [][]byte) bool {
 			}
 
 			idx := i/3*3 + j/3
-			v := int(board[i][j]-'1')
+			v := int(board[i][j] - '1')
 			if horizontal[i][v]+vertical[j][v]+square[idx][v] > 0 {
 				return false
 			}

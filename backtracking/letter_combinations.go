@@ -29,13 +29,13 @@ func dfs(digits, str string, ret *[]string, letterMap *[][]string) {
 	if len(digits) == 0 {
 		*ret = append(*ret, str)
 	} else {
-		idx := digits[0]-'2'
+		idx := digits[0] - '2'
 		for i := range (*letterMap)[idx] {
 			newStr := str + (*letterMap)[idx][i]
 			if len(digits) == 1 {
 				dfs("", newStr, ret, letterMap)
 			} else {
-				dfs(digits[1: ], newStr, ret, letterMap)
+				dfs(digits[1:], newStr, ret, letterMap)
 			}
 		}
 	}

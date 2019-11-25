@@ -53,7 +53,7 @@ func simplifyPath(path string) string {
 			continue
 		case "..":
 			if len(s) > 0 {
-				s = s[: len(s)-1]
+				s = s[:len(s)-1]
 			}
 		default:
 			s = append(s, paths[i])

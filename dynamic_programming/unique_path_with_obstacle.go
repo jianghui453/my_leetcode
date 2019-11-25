@@ -4,8 +4,6 @@
 
 // Now consider if some obstacles are added to the grids. How many unique paths would there be?
 
-
-
 // An obstacle and empty space is marked as 1 and 0 respectively in the grid.
 
 // Note: m and n will be at most 100.
@@ -39,7 +37,7 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	if obstacleGrid[0][0] == 1 {
 		return 0
 	}
-	
+
 	dp := make([][]int, m)
 	for i := 0; i < m; i++ {
 		dp[i] = make([]int, n)
@@ -47,8 +45,8 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 		for j := 0; j < n; j++ {
 			if obstacleGrid[i][j] == 1 {
 				continue
-			} 
-			
+			}
+
 			if i > 0 {
 				dp[i][j] += dp[i-1][j]
 			}
@@ -58,6 +56,6 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 
 		}
 	}
-	
+
 	return dp[m-1][n-1]
 }

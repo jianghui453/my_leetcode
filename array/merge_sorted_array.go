@@ -15,33 +15,33 @@
 package array
 
 import (
-	// "fmt"
+// "fmt"
 )
 
-func merge(nums1 []int, m int, nums2 []int, n int)  {
-    nums := make([]int, m+n)
-    i1, i2 := 0, 0
-    for i1 < m && i2 < n {
-        var num int
-        if nums1[i1] > nums2[i2] {
-            num = nums2[i2]
-            i2++
-        } else {
-            num = nums1[i1]
-            i1++
-        }
-        nums[i1+i2-1] = num
-    }
-    
-    for i1 < m {
+func merge(nums1 []int, m int, nums2 []int, n int) {
+	nums := make([]int, m+n)
+	i1, i2 := 0, 0
+	for i1 < m && i2 < n {
+		var num int
+		if nums1[i1] > nums2[i2] {
+			num = nums2[i2]
+			i2++
+		} else {
+			num = nums1[i1]
+			i1++
+		}
+		nums[i1+i2-1] = num
+	}
+
+	for i1 < m {
 		nums[i1+i2] = nums1[i1]
 		i1++
-    }
-    for i2 < n {
+	}
+	for i2 < n {
 		nums[i1+i2] = nums2[i2]
 		i2++
 	}
-	
+
 	copy(nums1, nums)
 }
 

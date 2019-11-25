@@ -23,7 +23,7 @@ func rotateRight(head *ListNode, k int) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
-	
+
 	q := make([]*ListNode, 0)
 	q = append(q, head)
 	for head.Next != nil {

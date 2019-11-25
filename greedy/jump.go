@@ -17,7 +17,7 @@
 package greedy
 
 import (
-	// "math"
+// "math"
 )
 
 func jump(nums []int) int {
@@ -31,9 +31,9 @@ func jump(nums []int) int {
 	for idx < l && nums[idx]+idx < l-1 {
 		maxV := 0
 		maxI := 0
-		for i := idx+1; i <= idx+nums[idx]; i++ {
+		for i := idx + 1; i <= idx+nums[idx]; i++ {
 			if i+nums[i] > maxV {
-				maxV = i+nums[i]
+				maxV = i + nums[i]
 				maxI = i
 			}
 		}

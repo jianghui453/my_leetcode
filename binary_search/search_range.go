@@ -28,23 +28,23 @@ func searchRange(nums []int, target int) []int {
 	min, max := 0, len(nums)-1
 	var mid int
 	for min <= max {
-		mid = (min+max)/2
+		mid = (min + max) / 2
 		if nums[mid] > target {
-			max = mid-1
+			max = mid - 1
 		} else if nums[mid] < target {
-			min = mid+1
+			min = mid + 1
 		} else {
 			left, right := mid, mid
 			if left > 0 {
-				retLeft := searchRange(nums[: mid], target)
+				retLeft := searchRange(nums[:mid], target)
 				if retLeft[0] != -1 {
 					left = retLeft[0]
 				}
 			}
 			if right < numsLen-1 {
-				retRight := searchRange(nums[mid+1: ], target)
+				retRight := searchRange(nums[mid+1:], target)
 				if retRight[1] != -1 {
-					right = retRight[1]+mid+1
+					right = retRight[1] + mid + 1
 				}
 			}
 			return []int{left, right}

@@ -20,7 +20,7 @@
 package binary_search
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func search(nums []int, target int) bool {
@@ -43,34 +43,34 @@ func search(nums []int, target int) bool {
 
 	min, max := 0, l-1
 	for min <= max {
-		mid := (min+max)/2
+		mid := (min + max) / 2
 		if target == nums[0] || target == nums[l-1] || target == nums[mid] {
 			return true
 		}
 
 		if nums[mid] > target {
 			if target >= nums[0] {
-				max = mid-1
+				max = mid - 1
 			} else {
 				if nums[mid] >= nums[0] {
-					min = mid+1
+					min = mid + 1
 				} else {
-					max = mid-1
+					max = mid - 1
 				}
 			}
 		} else {
 			if target >= nums[0] {
 				if nums[mid] >= nums[0] {
-					min = mid+1
+					min = mid + 1
 				} else {
-					max = mid-1
+					max = mid - 1
 				}
 			} else {
-				min = mid+1
+				min = mid + 1
 			}
 		}
 	}
-	
+
 	return false
 }
 
@@ -88,7 +88,7 @@ func search(nums []int, target int) bool {
 // 	binarySearch := func (_nums []int) bool {
 // 		_numsLen := len(_nums)
 // 		min, max := 0, _numsLen-1
-		
+
 // 		for min <= max {
 // 			_mid := (min+max)/2
 // 			if target > _nums[_mid] {
@@ -116,7 +116,7 @@ func search(nums []int, target int) bool {
 // 	if mid+1 == numsLen {
 // 		return false
 // 	}
-	
+
 // 	if target > nums[numsLen-1] {
 // 		if target < nums[mid] {
 // 			return binarySearch(nums[: mid])

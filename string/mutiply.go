@@ -18,14 +18,14 @@
 package string
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func multiply(num1 string, num2 string) string {
 	num1Len := len(num1)
 	num2Len := len(num2)
 
-	if num1Len * num2Len == 0 {
+	if num1Len*num2Len == 0 {
 		return ""
 	}
 	if num1 == "0" || num2 == "0" {
@@ -33,19 +33,19 @@ func multiply(num1 string, num2 string) string {
 	}
 
 	ret := make([]int, 0)
-	for i := num1Len-1; i >= 0; i-- {
-		for j := num2Len-1; j >= 0; j-- {
+	for i := num1Len - 1; i >= 0; i-- {
+		for j := num2Len - 1; j >= 0; j-- {
 			product := int(num1[i]-'0') * int(num2[j]-'0')
-			
-			k := num1Len+num2Len-2-i-j
+
+			k := num1Len + num2Len - 2 - i - j
 			for product > 0 {
 				if len(ret) <= k {
 					ret = append(ret, make([]int, k-len(ret)+1)...)
 				}
-				
+
 				product += ret[k]
-				ret[k] = product%10
-				product = product/10
+				ret[k] = product % 10
+				product = product / 10
 				k++
 			}
 		}

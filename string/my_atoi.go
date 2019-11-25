@@ -26,7 +26,7 @@
 // 示例 5:
 // 输入: "-91283472332"
 // 输出: -2147483648
-// 解释: 数字 "-91283472332" 超过 32 位有符号整数范围。 
+// 解释: 数字 "-91283472332" 超过 32 位有符号整数范围。
 //      因此返回 INT_MIN (−231) 。
 
 // 标签：数学、字符串
@@ -42,7 +42,7 @@ func myAtoi(str string) int {
 	status := 1
 	ret := 0
 	signed := 1
-    for i := range str {
+	for i := range str {
 		b := str[i]
 		status = dfa(status, b)
 		// if status == 4 {
@@ -54,12 +54,12 @@ func myAtoi(str string) int {
 			if b == '-' {
 				signed = -1
 			} else if b >= '0' && b <= '9' {
-				ret = ret * 10 + int(b - '0')
+				ret = ret*10 + int(b-'0')
 			}
-			if signed * ret > math.MaxInt32 {
+			if signed*ret > math.MaxInt32 {
 				return math.MaxInt32
 			}
-			if signed * ret < math.MinInt32 {
+			if signed*ret < math.MinInt32 {
 				return math.MinInt32
 			}
 		}

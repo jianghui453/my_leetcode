@@ -18,17 +18,17 @@
 package binary_search
 
 import (
-	// "math"
+// "math"
 )
 
 func mySqrt(x int) int {
 	min, max := 0, x
 	for min <= max {
-		mid := (min+max)/2
-		if mid * mid > x {
-			max = mid-1
-		} else if mid * mid < x {
-			min = mid+1
+		mid := (min + max) / 2
+		if mid*mid > x {
+			max = mid - 1
+		} else if mid*mid < x {
+			min = mid + 1
 		} else {
 			return mid
 		}

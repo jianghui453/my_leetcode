@@ -8,8 +8,8 @@ func TestGroupAnagrams(t *testing.T) {
 
 	strs = []string{"eat", "tea", "tan", "ate", "nat", "bat"}
 	h = [][]string{
-		{"ate","eat","tea"},
-		{"nat","tan"},
+		{"ate", "eat", "tea"},
+		{"nat", "tan"},
 		{"bat"},
 	}
 	r = groupAnagrams(strs)

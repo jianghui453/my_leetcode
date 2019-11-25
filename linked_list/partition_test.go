@@ -4,10 +4,10 @@ import "testing"
 
 func TestPartition(t *testing.T) {
 	var (
-		head *ListNode
-		x int
+		head      *ListNode
+		x         int
 		hope, ret []int
-		f func(n *ListNode) []int
+		f         func(n *ListNode) []int
 	)
 
 	f = func(n *ListNode) []int {
@@ -19,23 +19,23 @@ func TestPartition(t *testing.T) {
 	}
 
 	head = &ListNode{
-	   1,
-	   &ListNode{
-	       4,
-	       &ListNode{
-	           3,
-	           &ListNode{
-	               2,
-	               &ListNode{
-	                   5,
-	                   &ListNode{
-	                       2,
-	                       nil,
-	                   },
-	               },
-	           },
-	       },
-	   },
+		1,
+		&ListNode{
+			4,
+			&ListNode{
+				3,
+				&ListNode{
+					2,
+					&ListNode{
+						5,
+						&ListNode{
+							2,
+							nil,
+						},
+					},
+				},
+			},
+		},
 	}
 	x = 3
 	hope = []int{1, 2, 2, 4, 3, 5}

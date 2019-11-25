@@ -26,8 +26,8 @@
 package math_algorithm
 
 import (
-	// "fmt"
-	// "strings"
+// "fmt"
+// "strings"
 )
 
 func getPermutation(n int, k int) string {
@@ -47,24 +47,24 @@ func getPermutation(n int, k int) string {
 	if k != 0 && k%cnt == 0 {
 		k = cnt
 	} else {
-		k = k%cnt
+		k = k % cnt
 	}
 
 	if k <= cnt-k {
 		nums = make([]byte, n)
 		for i := 0; i < n; i++ {
-			nums[i] = byte(i+'1')
+			nums[i] = byte(i + '1')
 		}
 
 	loop1:
 		for ; k > 1; k-- {
-			for i := n-1; i >= 0; i-- {
+			for i := n - 1; i >= 0; i-- {
 				if i > 0 && nums[i] > nums[i-1] {
-					idx := i-1
-					_idx := n-1
-					for j := i+1; j < n; j++ {
+					idx := i - 1
+					_idx := n - 1
+					for j := i + 1; j < n; j++ {
 						if nums[j] <= nums[i-1] {
-							_idx = j-1
+							_idx = j - 1
 							break
 						}
 					}
@@ -73,40 +73,40 @@ func getPermutation(n int, k int) string {
 						nums[i+x], nums[n-1-x] = nums[n-1-x], nums[i+x]
 					}
 					continue loop1
-				} 
+				}
 			}
 		}
 	} else {
 		nums = make([]byte, n)
 		for i := 0; i < n; i++ {
-			nums[n-i-1] = byte(i+'1')
+			nums[n-i-1] = byte(i + '1')
 		}
 
 	loop2:
 		for ; cnt > k; cnt-- {
-			for i := n-1; i >= 0; i-- {
+			for i := n - 1; i >= 0; i-- {
 				if i > 0 && nums[i] < nums[i-1] {
-					idx := i-1
-					_idx := n-1
-					
-					for j := i+1; j < n; j++ {
+					idx := i - 1
+					_idx := n - 1
+
+					for j := i + 1; j < n; j++ {
 						if nums[j] >= nums[i-1] {
-							_idx = j-1
+							_idx = j - 1
 							break
 						}
 					}
-				
+
 					nums[idx], nums[_idx] = nums[_idx], nums[idx]
-					
+
 					for x := 0; x < (n-i)/2; x++ {
 						nums[i+x], nums[n-1-x] = nums[n-1-x], nums[i+x]
 					}
 					continue loop2
-				} 
+				}
 			}
 		}
 	}
-	
+
 	return string(nums)
 }
 
@@ -144,23 +144,23 @@ func getPermutation(n int, k int) string {
 func getPermutation(n int, k int) string {
 	candidate := make([]byte, n)
 	for i := 0; i < n; i++ {
-			candidate[i] = '0' + byte(i+1)
+		candidate[i] = '0' + byte(i+1)
 	}
 
 	fact := 1
 	for i := 1; i < n; i++ {
-			fact *= i
+		fact *= i
 	}
-k--
+	k--
 	for i := 0; i < n-1; i++ {
-			idx := i + k/fact
-			tmp := candidate[idx]
-			for j := idx; j > i; j-- {
-					candidate[j] = candidate[j-1]
-			}
-			candidate[i] = tmp
-			k %= fact
-			fact /= (n - i - 1)
+		idx := i + k/fact
+		tmp := candidate[idx]
+		for j := idx; j > i; j-- {
+			candidate[j] = candidate[j-1]
+		}
+		candidate[i] = tmp
+		k %= fact
+		fact /= (n - i - 1)
 	}
 	return string(candidate)
 }

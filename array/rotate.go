@@ -49,7 +49,7 @@
 
 // Example 1:
 
-// Given input matrix = 
+// Given input matrix =
 // [
 //   [1,2,3],
 //   [4,5,6],
@@ -70,7 +70,7 @@
 //   [ 2, 4, 8,10],
 //   [13, 3, 6, 7],
 //   [15,14,12,16]
-// ], 
+// ],
 
 // rotate the input matrix in-place such that it becomes:
 // [
@@ -91,7 +91,7 @@ func rotate(matrix [][]int) {
 
 	for i := 0; i < n; i++ {
 		_m = append(_m, make([]int, 0))
-		for j := n-1; j >= 0; j-- {
+		for j := n - 1; j >= 0; j-- {
 			_m[i] = append(_m[i], matrix[j][i])
 		}
 	}

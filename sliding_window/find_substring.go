@@ -1,6 +1,6 @@
 // 给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。
 // 注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。
-//  
+//
 // 示例 1：
 // 输入：
 //   s = "barfoothefoobarman",
@@ -41,7 +41,7 @@ func findSubstring(s string, words []string) []int {
 
 	wordLen := len(words[0])
 	for i := 0; i < wordLen; i++ {
-		
+
 		winMap := make(map[string]int)
 		cnt := 0
 		left, right := i, i
@@ -49,9 +49,9 @@ func findSubstring(s string, words []string) []int {
 
 			var subStr string
 			if right+wordLen == sLen {
-				subStr = s[right: ]
+				subStr = s[right:]
 			} else {
-				subStr = s[right: right+wordLen]
+				subStr = s[right : right+wordLen]
 			}
 
 			if _, ok := wordsMap[subStr]; !ok {
@@ -68,9 +68,9 @@ func findSubstring(s string, words []string) []int {
 			}
 			right += wordLen
 			cnt++
-			
+
 			for winMap[subStr] > wordsMap[subStr] {
-				winMap[s[left: left+wordLen]]--
+				winMap[s[left:left+wordLen]]--
 				cnt--
 				left += wordLen
 			}

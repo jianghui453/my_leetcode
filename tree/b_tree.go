@@ -32,7 +32,7 @@ func (n *BTreeNode) Traverse() []int {
 
 		ret = append(ret, n.Keys[i])
 	}
-	
+
 	if !n.Leaf {
 		ret = append(ret, n.C[i].Traverse()...)
 	}
@@ -86,7 +86,7 @@ func (n *BTreeNode) SplitChild(i int, y *BTreeNode) {
 	n.Keys[i] = y.Keys[t-1]
 	n.N++
 
-	y.Keys = y.Keys[: t]
+	y.Keys = y.Keys[:t]
 	y.N = t - 1
 }
 

@@ -22,22 +22,22 @@ func nextPermutation(nums []int) {
 		if _numsLen <= 1 {
 			return
 		}
-		_halfNumsLen := _numsLen/2
+		_halfNumsLen := _numsLen / 2
 		for j := 0; j < _halfNumsLen; j++ {
 			_nums[j], _nums[_numsLen-1-j] = _nums[_numsLen-1-j], _nums[j]
 		}
 	}
 
-	for i := numsLen-2; i >= 0; i-- {
+	for i := numsLen - 2; i >= 0; i-- {
 		if nums[i] < nums[i+1] {
-			j := i+1
+			j := i + 1
 			for ; j < numsLen; j++ {
 				if nums[i] >= nums[j] {
 					break
 				}
 			}
 			nums[i], nums[j-1] = nums[j-1], nums[i]
-			reverseNums(nums[i+1: ])
+			reverseNums(nums[i+1:])
 			return
 		}
 	}

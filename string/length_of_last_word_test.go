@@ -11,5 +11,5 @@ func TestLengthOfLastWord(t *testing.T) {
 	s = "hello world"
 	h = 5
 	r = lengthOfLastWord(s)
-	t.Logf("%t s=%s h=%d r=%d", r==h, s, h, r)
+	t.Logf("%t s=%s h=%d r=%d", r == h, s, h, r)
 }

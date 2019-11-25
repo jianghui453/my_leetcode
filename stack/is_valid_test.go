@@ -11,15 +11,15 @@ func TestIsValid(t *testing.T) {
 	s = "()[]{}"
 	h = true
 	r = isValid(s)
-	t.Logf("%t s=%s h=%t r=%t", r==h, s, h, r)
+	t.Logf("%t s=%s h=%t r=%t", r == h, s, h, r)
 
 	s = "{[]}"
 	h = true
 	r = isValid(s)
-	t.Logf("%t s=%s h=%t r=%t", r==h, s, h, r)
+	t.Logf("%t s=%s h=%t r=%t", r == h, s, h, r)
 
 	s = "([)]"
 	h = false
 	r = isValid(s)
-	t.Logf("%t s=%s h=%t r=%t", r==h, s, h, r)
+	t.Logf("%t s=%s h=%t r=%t", r == h, s, h, r)
 }

@@ -30,7 +30,7 @@ func strStr(haystack string, needle string) int {
 		}
 	}
 
-	if haystack[i: ] == needle {
+	if haystack[i:] == needle {
 		return i
 	}
 

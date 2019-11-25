@@ -33,7 +33,7 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 			tail = tail.Next
 		}
 	}
-	
+
 	for i := int(math.Min(float64(n-1), float64(len(s)-1))); i >= m-1; i-- {
 		if head == nil {
 			head, tail = s[i], s[i]

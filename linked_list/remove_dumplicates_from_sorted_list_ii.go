@@ -12,7 +12,7 @@
 package linked_list
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func deleteDuplicates(head *ListNode) *ListNode {

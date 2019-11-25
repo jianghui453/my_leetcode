@@ -4,10 +4,10 @@ import "testing"
 
 func TestReverseBetween(t *testing.T) {
 	var (
-		head *ListNode
+		head      *ListNode
 		hope, ret []int
-		m, n int
-		f func(n *ListNode) []int
+		m, n      int
+		f         func(n *ListNode) []int
 	)
 
 	f = func(n *ListNode) []int {
@@ -18,7 +18,6 @@ func TestReverseBetween(t *testing.T) {
 		r = append(r, n.Val)
 		return append(r, f(n.Next)...)
 	}
-	
 
 	head = &ListNode{
 		1,

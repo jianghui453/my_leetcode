@@ -8,7 +8,6 @@ func TestThreeSum(t *testing.T) {
 	var nums []int
 	var h, r [][]int
 
-
 	nums = []int{
 		-1, 0, 1, 2, -1, -4,
 	}
@@ -63,7 +62,7 @@ func TestThreeSum(t *testing.T) {
 	nums = []int{-2, 0, 1, 1, 2}
 	r = threeSum(nums)
 	h = [][]int{
-		{-2,0,2},{-2,1,1},
+		{-2, 0, 2}, {-2, 1, 1},
 	}
 	t.Logf("nums=%v h=%v r=%v\n", nums, h, r)
 }

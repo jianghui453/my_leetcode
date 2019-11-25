@@ -43,32 +43,31 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 		}
 
 		if newInterval[1] < intervals[i][0] {
-			ret = append(ret, intervals[: i]...)
+			ret = append(ret, intervals[:i]...)
 			ret = append(ret, newInterval)
-			ret = append(ret, intervals[i: ]...)
+			ret = append(ret, intervals[i:]...)
 			return ret
 		}
 
-		
 		for j := i; j < l; j++ {
 			if newInterval[1] < intervals[j][0] {
-				ret = append(ret, intervals[: i]...)
+				ret = append(ret, intervals[:i]...)
 				ret = append(ret, []int{int(math.Min(float64(newInterval[0]), float64(intervals[i][0]))), newInterval[1]})
-				ret = append(ret, intervals[j: ]...)
+				ret = append(ret, intervals[j:]...)
 				return ret
 			}
 
 			if newInterval[1] <= intervals[j][1] {
-				ret = append(ret, intervals[: i]...)
+				ret = append(ret, intervals[:i]...)
 				ret = append(ret, []int{int(math.Min(float64(newInterval[0]), float64(intervals[i][0]))), intervals[j][1]})
 				if j < l-1 {
-					ret = append(ret, intervals[j+1: ]...)
+					ret = append(ret, intervals[j+1:]...)
 				}
 				return ret
 			}
 		}
-		
-		ret = append(ret, intervals[: i]...)
+
+		ret = append(ret, intervals[:i]...)
 		ret = append(ret, []int{int(math.Min(float64(newInterval[0]), float64(intervals[i][0]))), newInterval[1]})
 		return ret
 	}

@@ -13,6 +13,7 @@
 package two_pointers
 
 import "sort"
+
 // import "fmt"
 
 func threeSum(nums []int) [][]int {
@@ -37,19 +38,19 @@ func threeSum(nums []int) [][]int {
 		j, k := i+1, numsLen-1
 		for j < k {
 			v := nums[i] + nums[j] + nums[k]
-			
+
 			if v < 0 {
 				j++
 			} else if v > 0 {
 				k--
 			} else {
 				ret = append(ret, []int{nums[i], nums[j], nums[k]})
-				
+
 				j++
 				for j < k && nums[j] == nums[j-1] {
 					j++
 				}
-				
+
 				k--
 				for k > j && nums[k] == nums[k+1] {
 					k--

@@ -21,6 +21,7 @@
 package math_algorithm
 
 import "math"
+
 // import "fmt"
 
 func reverse(x int) int {
@@ -30,9 +31,9 @@ func reverse(x int) int {
 	ret := 0
 	signed := x / int(math.Abs(float64(x)))
 	x = int(math.Abs(float64(x)))
-    for x != 0 {
+	for x != 0 {
 		reminder := x % 10
-		ret = ret * 10 + reminder
+		ret = ret*10 + reminder
 		if ret > math.MaxInt32 || ret < math.MinInt32 {
 			return 0
 		}

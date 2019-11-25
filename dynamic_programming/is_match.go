@@ -80,7 +80,7 @@ func isMatch(s string, p string) bool {
 	for i := 0; i <= sLen; i++ {
 		for j := 0; j <= pLen; j++ {
 			if (i > 0 && j > 0 && dp[i-1][j-1] && (p[j-1] == s[i-1] || p[j-1] == '.' || (p[j-1] == '*' && j > 1 && p[j-2] == s[i-1]))) ||
-				(i > 0 && dp[i-1][j] && j > 1 && (p[j-2] == s[i-1] || p[j-2]  == '.') && p[j-1] == '*') ||
+				(i > 0 && dp[i-1][j] && j > 1 && (p[j-2] == s[i-1] || p[j-2] == '.') && p[j-1] == '*') ||
 				(j > 0 && dp[i][j-1] && p[j-1] == '*') ||
 				(j > 1 && dp[i][j-2] && p[j-1] == '*') {
 				dp[i][j] = true

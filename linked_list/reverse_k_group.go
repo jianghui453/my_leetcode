@@ -12,7 +12,7 @@
 package linked_list
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-    if k <= 1 || head == nil || head.Next == nil {
+	if k <= 1 || head == nil || head.Next == nil {
 		return head
 	}
 
@@ -52,7 +52,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 			break
 		}
 
-		for i := k-1; i >= 0; i-- {
+		for i := k - 1; i >= 0; i-- {
 			if head == nil {
 				head, tail = rcd[i][l], rcd[i][l]
 			} else {

@@ -12,13 +12,13 @@ package backtracking
 
 // import(
 // 	"fmt"
-	// "strings"
+// "strings"
 // )
 
 func generateParenthesis(n int) []string {
 	ret := make([]string, 0)
 
-	var bt func (_n, cnt int, s string)
+	var bt func(_n, cnt int, s string)
 	bt = func(_n, cnt int, s string) {
 		if _n > 0 {
 			bt(_n-1, cnt+1, s+"(")

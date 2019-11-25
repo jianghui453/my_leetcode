@@ -13,37 +13,37 @@ func TestBTree_Insert(t *testing.T) {
 	// h = []int{10}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(20)
 	// h = []int{10, 20}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(5)
 	// h = []int{5, 10, 20}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(6)
 	// h = []int{5, 6, 10, 20}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(12)
 	// h = []int{5, 6, 10, 12, 20}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(30)
 	// h = []int{5, 6, 10, 12, 20, 30}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(7)
 	// h = []int{5, 6, 7, 10, 12, 20, 30}
 	// r = btree.Root.Traverse()
 	// t.Logf("\nh=%v \nr=%v", h, r)
-	
+
 	btree.Insert(17)
 	h = []int{5, 6, 7, 10, 12, 17, 20, 30}
 	r = btree.Root.Traverse()

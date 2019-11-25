@@ -8,7 +8,7 @@
 package backtracking
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func restoreIpAddresses(s string) []string {
@@ -22,28 +22,28 @@ func restoreIpAddresses(s string) []string {
 		}
 
 		if cnt == 1 {
-			if l > 3 || (l > 1 && str[0] == '0') || l == 3 && int(str[0]-'0')*100 + int(str[1]-'0')*10 + int(str[2]-'0') > 255 {
+			if l > 3 || (l > 1 && str[0] == '0') || l == 3 && int(str[0]-'0')*100+int(str[1]-'0')*10+int(str[2]-'0') > 255 {
 				return
 			}
 
-			strIP += "."+str
-			ret = append(ret, strIP[1: ])
+			strIP += "." + str
+			ret = append(ret, strIP[1:])
 			return
 		}
 
-		f(str[1: ], strIP + "." + str[0: 1], cnt-1)
+		f(str[1:], strIP+"."+str[0:1], cnt-1)
 
 		if str[0] == '0' {
 			return
 		}
-		
+
 		if l >= 3 {
-			f(str[2: ], strIP+"."+str[0: 2], cnt-1)
+			f(str[2:], strIP+"."+str[0:2], cnt-1)
 		}
-		
+
 		if l >= 4 {
-			if int(str[0]-'0')*100 + int(str[1]-'0')*10 + int(str[2]-'0') < 256 {
-				f(str[3: ], strIP+"."+str[: 3], cnt-1)
+			if int(str[0]-'0')*100+int(str[1]-'0')*10+int(str[2]-'0') < 256 {
+				f(str[3:], strIP+"."+str[:3], cnt-1)
 			}
 		}
 	}

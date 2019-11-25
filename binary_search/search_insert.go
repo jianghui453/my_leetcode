@@ -30,11 +30,11 @@ func searchInsert(nums []int, target int) int {
 	min, max := 0, numsLen-1
 	var mid int
 	for min <= max {
-		mid = (min+max)/2
+		mid = (min + max) / 2
 		if nums[mid] > target {
-			max = mid-1
+			max = mid - 1
 		} else if nums[mid] < target {
-			min = mid+1
+			min = mid + 1
 		} else {
 			return mid
 		}

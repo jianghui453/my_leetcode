@@ -7,9 +7,9 @@ func TestMinPathSum(t *testing.T) {
 	var h, r int
 
 	grid = [][]int{
-		{1,3,1},
-		{1,5,1},
-		{4,2,1},
+		{1, 3, 1},
+		{1, 5, 1},
+		{4, 2, 1},
 	}
 	h = 7
 	r = minPathSum(grid)

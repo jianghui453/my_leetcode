@@ -22,7 +22,7 @@ func exist(board [][]byte, word string) bool {
 	if l == 0 {
 		return true
 	}
-	
+
 	m := len(board)
 	if m == 0 {
 		return false
@@ -45,7 +45,7 @@ func exist(board [][]byte, word string) bool {
 				if f(i+1, x-1, y) {
 					return true
 				}
-				board[x-1][y] = word[i] 
+				board[x-1][y] = word[i]
 			}
 		}
 		if x < m-1 {

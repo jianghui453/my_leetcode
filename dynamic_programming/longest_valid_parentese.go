@@ -35,10 +35,10 @@ func longestValidParentheses(s string) int {
 			continue
 		}
 
-		for j := i-1; j >= 0; j-- {
+		for j := i - 1; j >= 0; j-- {
 			if (j == i-1 && s[j] == '(') || (dp[j+1][i-1] && s[j] == '(') {
 				dp[j][i] = true
-				for k := j-2; k >= 0; k-- {
+				for k := j - 2; k >= 0; k-- {
 					if dp[k][j-1] {
 						dp[k][i] = true
 						j = k
@@ -48,7 +48,7 @@ func longestValidParentheses(s string) int {
 			}
 		}
 	}
-	
+
 	return int(maxLen)
 }
 

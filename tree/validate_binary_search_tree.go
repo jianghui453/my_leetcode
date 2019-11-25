@@ -41,13 +41,13 @@ func isValidBST(root *TreeNode) bool {
 		if node.Val <= min || node.Val >= max {
 			return false
 		}
-	
+
 		if node.Left != nil {
 			if !f(node.Left, min, node.Val) {
 				return false
 			}
 		}
-	
+
 		if node.Right != nil {
 			if !f(node.Right, node.Val, max) {
 				return false

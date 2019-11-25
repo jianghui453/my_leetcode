@@ -10,7 +10,7 @@
 package linked_list
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func partition(head *ListNode, x int) *ListNode {

@@ -29,11 +29,11 @@ func numDecodings(s string) int {
 	for i := 0; i < l; i++ {
 		if s[i] > '0' && s[i] <= '9' {
 			dp[i] = 1
-			for j := i+1; j < l; j++ {
+			for j := i + 1; j < l; j++ {
 				if s[j] > '0' && s[j] <= '9' {
 					dp[j] = dp[j-1]
 				}
-				if s[j-1] > '0' && (int(s[j-1]-'0')*10 + int(s[j]-'0')) <= 26 {
+				if s[j-1] > '0' && (int(s[j-1]-'0')*10+int(s[j]-'0')) <= 26 {
 					if j < 2 {
 						dp[j]++
 					} else {
@@ -50,7 +50,7 @@ func numDecodings(s string) int {
 			return 0
 		}
 	}
-	
+
 	return dp[l-1]
 }
 

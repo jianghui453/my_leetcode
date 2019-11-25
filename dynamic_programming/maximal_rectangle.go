@@ -23,7 +23,7 @@ func maximalRectangle(matrix [][]byte) int {
 		return 0
 	}
 	n := len(matrix[0])
-	if n== 0 {
+	if n == 0 {
 		return 0
 	}
 
@@ -46,7 +46,7 @@ func maximalRectangle(matrix [][]byte) int {
 
 				min = byte(math.Min(float64(min), float64(matrix[_i][j])))
 
-				area = int(math.Max(float64(int(min - '0') * (i-_i+1)), float64(area)))
+				area = int(math.Max(float64(int(min-'0')*(i-_i+1)), float64(area)))
 			}
 		}
 	}

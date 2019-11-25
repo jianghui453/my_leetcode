@@ -58,7 +58,7 @@ func levelOrder(root *TreeNode) [][]int {
 		}
 
 		if len(s) > l {
-			s = s[l: ]
+			s = s[l:]
 		} else {
 			break
 		}

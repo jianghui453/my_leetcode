@@ -12,7 +12,7 @@ func TestSolveSudoku(t *testing.T) {
 			ret[i] = make([]int, 9)
 
 			for j := 0; j < 9; j++ {
-				ret[i][j] = int(b[i][j]-'0')
+				ret[i][j] = int(b[i][j] - '0')
 			}
 		}
 

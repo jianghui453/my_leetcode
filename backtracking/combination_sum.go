@@ -42,7 +42,7 @@ func combinationSum(candidates []int, target int) [][]int {
 	var f func(nums []int, t int) [][]int
 	f = func(nums []int, t int) [][]int {
 		_ret := make([][]int, 0)
-		
+
 		for i := range nums {
 			if nums[i] > t {
 				break
@@ -53,7 +53,7 @@ func combinationSum(candidates []int, target int) [][]int {
 				break
 			}
 
-			for _, item := range f(nums[i: ], t-nums[i]) {
+			for _, item := range f(nums[i:], t-nums[i]) {
 				_ret = append(_ret, append([]int{nums[i]}, item...))
 			}
 		}

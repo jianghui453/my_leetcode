@@ -24,14 +24,14 @@ func merge(intervals [][]int) [][]int {
 	ret = append(ret, intervals[0])
 	rl := 1
 
-	loop:
+loop:
 	for i := 0; i < l; i++ {
 		for j := 0; j < rl; j++ {
 			if intervals[i][0] < ret[j][0] && intervals[i][1] > ret[j][1] {
 				copy(ret[j], intervals[i])
-				continue loop		
+				continue loop
 			}
-			
+
 			if intervals[i][0] >= ret[j][0] && intervals[i][0] <= ret[j][1] {
 				if intervals[i][1] > ret[j][1] {
 					ret[j][1] = intervals[i][1]
@@ -86,7 +86,7 @@ func merge(intervals [][]int) [][]int {
 // 	}
 
 // 	newItv := make([][]int, l)
-	
+
 // 	val := intervals[0][0]
 // 	left, right := 0, l-1
 // 	for i := 1; i < l; i++ {
@@ -107,7 +107,7 @@ func merge(intervals [][]int) [][]int {
 // 	if left < l {
 // 		quickSort(newItv[: left])
 // 	}
-	
+
 // 	if right < l-1 {
 // 		quickSort(newItv[right+1: ])
 // 	}

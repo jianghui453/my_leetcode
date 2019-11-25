@@ -1,8 +1,8 @@
 package dynamic_programming
 
 import (
-	// "strings"
-	// "fmt"
+// "strings"
+// "fmt"
 )
 
 func isMatch(s string, p string) bool {
@@ -47,7 +47,7 @@ func isMatch(s string, p string) bool {
 				(dp[i+1][j] && p[j] == '*') {
 				dp[i+1][j+1] = true
 			}
-				
+
 		}
 	}
 
@@ -84,7 +84,7 @@ func isMatch(s string, p string) bool {
 // 			}
 // 			return true
 // 		}
-		
+
 // 	}
 // 	if len(p) == 0 {
 // 		return false

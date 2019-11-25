@@ -14,32 +14,32 @@
 package two_pointers
 
 import (
-    "strings"
+	"strings"
 )
 
 func isPalindrome(s string) bool {
-    sl := len(s)
-    if sl < 2 {
-        return true
-    }
-    left := 0
-    right := sl-1
-    s = strings.ToLower(s)
-    for left <= right {
-        if (s[left] < 'a' || s[left] > 'z') && (s[left] < '0' || s[left] > '9') {
-            left ++
-            continue
-        }
-        if (s[right] < 'a' || s[right] > 'z') && (s[right] < '0' || s[right] > '9') {
-            right --
-            continue
-        }
-        if s[left] == s[right] {
-            left ++
-            right --
-            continue
-        }
-        return false
-    }
-    return true
+	sl := len(s)
+	if sl < 2 {
+		return true
+	}
+	left := 0
+	right := sl - 1
+	s = strings.ToLower(s)
+	for left <= right {
+		if (s[left] < 'a' || s[left] > 'z') && (s[left] < '0' || s[left] > '9') {
+			left++
+			continue
+		}
+		if (s[right] < 'a' || s[right] > 'z') && (s[right] < '0' || s[right] > '9') {
+			right--
+			continue
+		}
+		if s[left] == s[right] {
+			left++
+			right--
+			continue
+		}
+		return false
+	}
+	return true
 }

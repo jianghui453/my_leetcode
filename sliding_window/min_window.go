@@ -57,16 +57,16 @@ func minWindow(s string, t string) string {
 		if cnt < cntT {
 			continue
 		}
-		
+
 		for ; left <= right; left++ {
 			// fmt.Printf("left=%d\n", left)
 			if right-left+1 < strLen {
 				if right < ls-1 {
-					strRet = s[left: right+1]
+					strRet = s[left : right+1]
 				} else {
-					strRet = s[left: ]
+					strRet = s[left:]
 				}
-				strLen = right-left+1
+				strLen = right - left + 1
 			}
 
 			idx := int(s[left])

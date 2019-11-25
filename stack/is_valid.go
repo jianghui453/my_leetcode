@@ -31,21 +31,21 @@ func isValid(s string) bool {
 		switch s[i] {
 		case ')':
 			if len(st) > 0 && st[len(st)-1] == '(' {
-				st = st[: len(st)-1]
+				st = st[:len(st)-1]
 			} else {
 				return false
 			}
 			break
 		case '}':
 			if len(st) > 0 && st[len(st)-1] == '{' {
-				st = st[: len(st)-1]
+				st = st[:len(st)-1]
 			} else {
 				return false
 			}
 			break
 		case ']':
 			if len(st) > 0 && st[len(st)-1] == '[' {
-				st = st[: len(st)-1]
+				st = st[:len(st)-1]
 			} else {
 				return false
 			}

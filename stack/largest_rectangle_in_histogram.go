@@ -41,15 +41,15 @@ func largestRectangleArea(heights []int) int {
 	s := []int{-1}
 	for i := 0; i < l; i++ {
 		for len(s) > 1 && heights[i] < heights[s[len(s)-1]] {
-			area = int(math.Max(float64(heights[s[len(s)-1]] * (i - 1 - s[len(s)-2])), float64(area)))
-			s = s[: len(s)-1]
+			area = int(math.Max(float64(heights[s[len(s)-1]]*(i-1-s[len(s)-2])), float64(area)))
+			s = s[:len(s)-1]
 		}
 		s = append(s, i)
 	}
 
 	ls := len(s)
-	for i := ls-1; i > 0; i-- {
-		area = int(math.Max(float64(heights[s[i]] * (l - 1 - s[i-1])), float64(area)))
+	for i := ls - 1; i > 0; i-- {
+		area = int(math.Max(float64(heights[s[i]]*(l-1-s[i-1])), float64(area)))
 	}
 
 	return area

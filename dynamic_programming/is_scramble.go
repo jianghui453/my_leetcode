@@ -47,7 +47,7 @@
 package dynamic_programming
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func isScramble(s1 string, s2 string) bool {
@@ -62,7 +62,7 @@ func isScramble(s1 string, s2 string) bool {
 	dp := make([][][]bool, l)
 	for i := 0; i < l; i++ {
 		dp[i] = make([][]bool, l)
-		
+
 		for j := 0; j < l; j++ {
 			dp[i][j] = make([]bool, l+1)
 			dp[i][j][0] = true
@@ -73,54 +73,28 @@ func isScramble(s1 string, s2 string) bool {
 		if l == 1 {
 			return s1 == s2
 		}
-
-	for i := l-1; i >= 0; i-- {
-		for j := l-1; j >= 0; j-- {
-			_l := l-i
+	}
+	for i := l - 1; i >= 0; i-- {
+		for j := l - 1; j >= 0; j-- {
+			_l := l - i
 			if l-j < l-i {
-				_l = l-j
+				_l = l - j
 			}
 
 			for k1 := 1; k1 < _l; k1++ {
 				for k2 := 1; k2 <= _l-k1; k2++ {
 					if (j+k1 < l && i+k2 < l && dp[i][j+k1][k2] && dp[i+k2][j][k1]) ||
-							(i+k1 < l && j+k1 < l && dp[i][j][k1] && dp[i+k1][j+k1][k2]) {
+						(i+k1 < l && j+k1 < l && dp[i][j][k1] && dp[i+k1][j+k1][k2]) {
 						dp[i][j][k1+k2] = true
 					}
 				}
 			}
 		}
+	}
 
 	return dp[0][0][l]
 }
 
-/** [
-		[
-			[true true false false false] 
-			[true false false false false] 
-			[true false false false false] 
-			[true false false false false]
-		] 
-		[
-			[true false false false false] 
-			[true false false true false] 
-			[true false false false false] 
-			[true true false false false]
-		] 
-		[
-			[true false false false false] 
-			[true true true false false] 
-			[true false false false false] 
-			[true false false false false]
-		] 
-		[
-			[true false false false false] 
-			[true false false false false] 
-			[true true false false false] 
-			[true false false false false]
-		]
-	]
-*/
 //func isScramble(s1 string, s2 string) bool {
 //	len1 := len(s1)
 //	len2 := len(s2)

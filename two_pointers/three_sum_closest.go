@@ -11,7 +11,7 @@ import (
 
 func threeSumClosest(nums []int, target int) int {
 	numsLen := len(nums)
-	
+
 	sort.Ints(nums)
 
 	ret := nums[0] + nums[1] + nums[2]

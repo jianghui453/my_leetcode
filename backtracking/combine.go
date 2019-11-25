@@ -34,7 +34,7 @@ func combine(n int, k int) [][]int {
 			}
 		}
 	}
-	
+
 	return ret
 }
 

@@ -45,7 +45,7 @@ func groupAnagrams(strs []string) [][]string {
 		k := string(b)
 		if _, ok := hash[k]; !ok {
 			ret = append(ret, []string{})
-			hash[k] = len(ret)-1
+			hash[k] = len(ret) - 1
 		}
 		ret[hash[k]] = append(ret[hash[k]], strs[i])
 	}

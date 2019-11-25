@@ -7,11 +7,7 @@
 // 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
 // 空白格用 '.' 表示。
 
-
-
 // 一个数独。
-
-
 
 // 答案被标成红色。
 
@@ -40,11 +36,11 @@ func solveSudoku(board [][]byte) {
 		for j := 0; j < 9; j++ {
 			mirror[i][j] = board[i][j]
 			if board[i][j] != '.' {
-				v := int(board[i][j]-'1')
+				v := int(board[i][j] - '1')
 
 				horizontal[i][v]++
 				vertical[j][v]++
-				idx := i/3*3+j/3
+				idx := i/3*3 + j/3
 				square[idx][v]++
 			}
 		}
@@ -55,23 +51,23 @@ func solveSudoku(board [][]byte) {
 		idx := i/3*3 + j/3
 
 		if mirror[i][j] == '.' {
-			if horizontal[i][v] + vertical[j][v] + square[idx][v] > 0 {
+			if horizontal[i][v]+vertical[j][v]+square[idx][v] > 0 {
 				return false
 			}
-			
-			board[i][j] = byte('1'+v)
-			
+
+			board[i][j] = byte('1' + v)
+
 			horizontal[i][v]++
 			vertical[j][v]++
 			square[idx][v]++
 		} else if mirror[i][j] != byte('1'+v) {
 			return false
 		}
-	
+
 		if i == 8 && j == 8 {
 			return true
 		}
-		
+
 		x, y := i, j
 		if y >= 8 {
 			x++
@@ -79,20 +75,20 @@ func solveSudoku(board [][]byte) {
 		} else {
 			y++
 		}
-	
+
 		val := 0
 		ret := false
-		for !ret && val < 9 { 
+		for !ret && val < 9 {
 			ret = f(x, y, val)
 			val++
 		}
-	
+
 		if !ret && mirror[i][j] == '.' {
 			horizontal[i][v]--
 			vertical[j][v]--
 			square[idx][v]--
 		}
-		
+
 		return ret
 	}
 

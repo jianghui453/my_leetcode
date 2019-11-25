@@ -19,7 +19,7 @@ func inorderTraversal(root *TreeNode) []int {
 	if root == nil {
 		return r
 	}
-	
+
 	s := make([]*TreeNode, 0)
 	for root != nil {
 		if root.Left != nil {
@@ -36,7 +36,7 @@ func inorderTraversal(root *TreeNode) []int {
 			node.Right = s[len(s)-1].Right
 			node.Val = s[len(s)-1].Val
 			root = node
-			s = s[: len(s)-1]
+			s = s[:len(s)-1]
 		} else {
 			root = nil
 		}

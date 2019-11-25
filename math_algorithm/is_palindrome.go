@@ -18,7 +18,7 @@
 package math_algorithm
 
 func isPalindrome(x int) bool {
-    if x < 0 {
+	if x < 0 {
 		return false
 	}
 	if x == 0 {
@@ -27,7 +27,7 @@ func isPalindrome(x int) bool {
 	_x := x
 	ret := 0
 	for _x > 0 {
-		ret = ret * 10 + _x % 10
+		ret = ret*10 + _x%10
 		_x = _x / 10
 	}
 	return ret == x

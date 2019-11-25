@@ -27,7 +27,7 @@ func TestRotateRight(t *testing.T) {
 				&ListNode{
 					4,
 					&ListNode{
-						5, 
+						5,
 						nil,
 					},
 				},
@@ -35,7 +35,7 @@ func TestRotateRight(t *testing.T) {
 		},
 	}
 	k = 2
-	h = []int{4,5,1,2,3}
+	h = []int{4, 5, 1, 2, 3}
 	head = rotateRight(head, k)
 	r = f(head)
 	t.Logf("\nh=%v \nr=%v", h, r)

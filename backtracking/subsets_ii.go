@@ -27,7 +27,7 @@ func subsetsWithDup(nums []int) [][]int {
 	if len(nums) == 0 {
 		return [][]int{[]int{}}
 	}
-	
+
 	sort.Ints(nums)
 
 	var f func(ns []int) [][]int
@@ -49,7 +49,7 @@ func subsetsWithDup(nums []int) [][]int {
 			if i == ln-1 {
 				_r = [][]int{[]int{}}
 			} else {
-				_r = f(ns[i+1: ])
+				_r = f(ns[i+1:])
 			}
 			for _, item := range _r {
 				r = append(r, append([]int{ns[i]}, item...))

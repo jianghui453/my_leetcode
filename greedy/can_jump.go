@@ -15,7 +15,7 @@
 // Output: false
 // Explanation: You will always arrive at index 3 no matter what. Its maximum
 // 			 jump length is 0, which makes it impossible to reach the last index.
-			 
+
 package greedy
 
 func canJump(nums []int) bool {
@@ -34,9 +34,9 @@ func canJump(nums []int) bool {
 		maxL := -1
 		maxI := i
 
-		for j := i+1; j <= i+nums[i]; j++ {
+		for j := i + 1; j <= i+nums[i]; j++ {
 			if j+nums[j] > maxL {
-				maxL = j+nums[j]
+				maxL = j + nums[j]
 				maxI = j
 			}
 		}

@@ -81,13 +81,13 @@ func fullJustify(words []string, maxWidth int) []string {
 	var str string
 	if i == l-1 {
 		str = strings.Join(words, " ")
-		for j := maxWidth-len(str); j > 0; j-- {
+		for j := maxWidth - len(str); j > 0; j-- {
 			str += " "
 		}
-		
+
 		ret = append(ret, str)
 	} else {
-		blankTotalCnt := maxWidth-wordsLen
+		blankTotalCnt := maxWidth - wordsLen
 
 		if i == 0 {
 			str += words[0]
@@ -97,7 +97,7 @@ func fullJustify(words []string, maxWidth int) []string {
 		} else {
 			blanks := make([]string, i)
 			for j := 0; j < i; j++ {
-				cnt := blankTotalCnt/(i-j)
+				cnt := blankTotalCnt / (i - j)
 				if blankTotalCnt%(i-j) > 0 {
 					cnt++
 				}
@@ -117,7 +117,7 @@ func fullJustify(words []string, maxWidth int) []string {
 		}
 
 		ret = append(ret, str)
-		ret = append(ret, fullJustify(words[i+1: ], maxWidth)...)
+		ret = append(ret, fullJustify(words[i+1:], maxWidth)...)
 	}
 
 	return ret
