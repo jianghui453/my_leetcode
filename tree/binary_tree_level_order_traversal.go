@@ -138,31 +138,4 @@ func levelOrder(root *TreeNode) [][]int {
 // 	return r
 // }
 
-// func levelOrderBottom(root *TreeNode) [][]int {
-// 	r := make([][]int, 0)
-// 	if root == nil {
-// 		return r
-// 	}
-// 	s := []*TreeNode{root}
-// 	lenS := 1
-// 	for lenS > 0 {
-// 		rItem := make([]int, 0)
-// 		sNew := make([]*TreeNode, 0)
-// 		lenSNew := 0
-// 		for i := 0; i < lenS; i++ {
-// 			rItem = append(rItem, s[i].Val)
-// 			if s[i].Left != nil {
-// 				sNew = append(sNew, s[i].Left)
-// 				lenSNew++
-// 			}
-// 			if s[i].Right != nil {
-// 				sNew = append(sNew, s[i].Right)
-// 				lenSNew++
-// 			}
-// 		}
-// 		r = append([][]int{rItem}, r...)
-// 		s = sNew
-// 		lenS = lenSNew
-// 	}
-// 	return r
-// }
+

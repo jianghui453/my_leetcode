@@ -27,7 +27,7 @@ func TestLevelOrderTest(t *testing.T) {
 			},
 		},
 	}
-	h = [][]int{{3}, {9, 20}, {15, 7}}
-	r = levelOrder(root)
-	t.Logf("h=%v r=%v", h, r)
+	h = [][]int{{15, 7}, {9, 20}, {3}}
+	r = levelOrderBottom(root)
+	t.Logf("\nh=%v \nr=%v", h, r)
 }
