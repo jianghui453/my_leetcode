@@ -17,6 +17,38 @@
 
 package tree
 
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	if len(preorder) == 0 {
+		return nil
+	}
+
+	node := new(TreeNode)
+	node.Val = preorder[0]
+
+	if len(preorder) == 1 {
+		return node
+	}
+
+	for i := 0; i < len(inorder); i++ {
+		if inorder[i] == node.Val {
+			if i == 0 {
+				if i < len(inorder)-1 {
+					node.Right = buildTree(preorder[1:], inorder[1:])
+				}
+			} else {
+				node.Left = buildTree(preorder[1:i+1], inorder[:i])
+				if i < len(inorder)-1 {
+					node.Right = buildTree(preorder[i+1:], inorder[i+1:])
+				}
+			}
+
+			break
+		}
+	}
+
+	return node
+}
+
 //func buildTree(preorder []int, inorder []int) *TreeNode {
 //    var r *TreeNode
 //    if len(preorder) == 0 {
@@ -67,35 +99,35 @@ package tree
 //    /  \
 //   15   7
 
-func buildTree(inorder []int, postorder []int) *TreeNode {
-	var r *TreeNode
-	if len(postorder) == 0 {
-		return r
-	}
-	var f func(*TreeNode, []int)
-	f = func(n *TreeNode, in []int) {
-		if len(postorder) == 0 {
-			return
-		}
-		n.Val = postorder[len(postorder)-1]
-		if len(postorder) == 1 {
-			return
-		}
-		postorder = postorder[:len(postorder)-1]
-		for i := 0; i < len(in); i++ {
-			if in[i] == n.Val {
-				if i < len(in)-1 {
-					n.Right = new(TreeNode)
-					f(n.Right, in[i+1:])
-				}
-				if i > 0 {
-					n.Left = new(TreeNode)
-					f(n.Left, in[:i])
-				}
-			}
-		}
-	}
-	r = new(TreeNode)
-	f(r, inorder)
-	return r
-}
+// func buildTree(inorder []int, postorder []int) *TreeNode {
+// 	var r *TreeNode
+// 	if len(postorder) == 0 {
+// 		return r
+// 	}
+// 	var f func(*TreeNode, []int)
+// 	f = func(n *TreeNode, in []int) {
+// 		if len(postorder) == 0 {
+// 			return
+// 		}
+// 		n.Val = postorder[len(postorder)-1]
+// 		if len(postorder) == 1 {
+// 			return
+// 		}
+// 		postorder = postorder[:len(postorder)-1]
+// 		for i := 0; i < len(in); i++ {
+// 			if in[i] == n.Val {
+// 				if i < len(in)-1 {
+// 					n.Right = new(TreeNode)
+// 					f(n.Right, in[i+1:])
+// 				}
+// 				if i > 0 {
+// 					n.Left = new(TreeNode)
+// 					f(n.Left, in[:i])
+// 				}
+// 			}
+// 		}
+// 	}
+// 	r = new(TreeNode)
+// 	f(r, inorder)
+// 	return r
+// }
