@@ -5,7 +5,7 @@ import "testing"
 func TestPathSum(t *testing.T) {
 	var root *TreeNode
 	var sum int
-	var h, r bool
+	var h, r [][]int
 
 	root = &TreeNode{
 		5,
@@ -49,7 +49,7 @@ func TestPathSum(t *testing.T) {
 		},
 	}
 	sum = 22
-	h = true
+	h = [][]int{{5, 4, 11, 2}, {5, 8, 4, 5}}
 	r = pathSum(root, sum)
-	t.Logf("%t h=%t r=%t", r==h, h, r)
+	t.Logf("\nh=%v \nr=%v", h, r)
 }
