@@ -20,35 +20,71 @@
 //]
 package tree
 
-import "fmt"
+import (
+	// "fmt"
+)
 
 func pathSum(root *TreeNode, sum int) [][]int {
 	ret := make([][]int, 0)
-	var f func(node *TreeNode, s int, r []int)
-	f = func(node *TreeNode, s int, r []int) {
-		fmt.Printf("s=%d r=%v\n", s, r)
-		if node == nil {
-			return
-		}
+	if root == nil {
+		return ret
+	}
+
+	var f func(node *TreeNode, nums []int, target int)
+	f = func(node *TreeNode, nums []int, target int) {
+		nums = append(nums, node.Val)
+		
 		if node.Left == nil && node.Right == nil {
-			if node.Val == s {
-				r = append(r, node.Val)
-				ret = append(ret, r)
+			if node.Val == target {
+				ret = append(ret, nums)
 			}
 			return
 		}
-		r = append(r, node.Val)
+
+		target -= node.Val
 		if node.Left != nil {
-			rNew := make([]int, len(r))
-			copy(rNew, r)
-			f(node.Left, s-node.Val, rNew)
+			newNums := make([]int, len(nums))
+			copy(newNums, nums)
+			f(node.Left, newNums, target)
 		}
 		if node.Right != nil {
-			rNew := make([]int, len(r))
-			copy(rNew, r)
-			f(node.Right, s-node.Val, rNew)
+			newNums := make([]int, len(nums))
+			copy(newNums, nums)
+			f(node.Right, newNums, target)
 		}
 	}
-	f(root, sum, []int{})
+	f(root, make([]int, 0), sum)
+
 	return ret
 }
+
+// func pathSum(root *TreeNode, sum int) [][]int {
+// 	ret := make([][]int, 0)
+// 	var f func(node *TreeNode, s int, r []int)
+// 	f = func(node *TreeNode, s int, r []int) {
+// 		fmt.Printf("s=%d r=%v\n", s, r)
+// 		if node == nil {
+// 			return
+// 		}
+// 		if node.Left == nil && node.Right == nil {
+// 			if node.Val == s {
+// 				r = append(r, node.Val)
+// 				ret = append(ret, r)
+// 			}
+// 			return
+// 		}
+// 		r = append(r, node.Val)
+// 		if node.Left != nil {
+// 			rNew := make([]int, len(r))
+// 			copy(rNew, r)
+// 			f(node.Left, s-node.Val, rNew)
+// 		}
+// 		if node.Right != nil {
+// 			rNew := make([]int, len(r))
+// 			copy(rNew, r)
+// 			f(node.Right, s-node.Val, rNew)
+// 		}
+// 	}
+// 	f(root, sum, []int{})
+// 	return ret
+// }
