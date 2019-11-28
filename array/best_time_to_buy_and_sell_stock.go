@@ -18,6 +18,28 @@
 
 package array
 
+import (
+	"math"
+)
+
+func maxProfit(prices []int) int {
+	if len(prices) < 2 {
+		return 0
+	}
+	ret := 0
+	min, max := math.MaxInt64, 0
+	for i := 0; i < len(prices); i++ {
+		if prices[i] < min {
+			min, max = prices[i], prices[i]
+		} else if prices[i] > max {
+			max = prices[i]
+			ret = int(math.Max(float64(ret), float64(max-min)))
+		}
+	}
+
+	return ret
+}
+
 //func maxProfit(prices []int) int {
 //	minv := math.MaxInt64
 //	maxp := 0
@@ -173,31 +195,31 @@ package array
 //	return max
 //}
 
-func maxProfit(prices []int) int {
-	pl := len(prices)
-	if pl < 2 {
-		return 0
-	}
-	d := 2
-	// 三个变量：交易天数（i）、已交易次数(j)、当前交易状态(k，存在两种情况：持有、未持有)
-	// 买入不算交易次数
-	dp := make([][][2]int, pl+1)
-	for i := 0; i <= pl; i++ {
-		dp[i] = make([][2]int, d+1)
-		if i > 0 {
-			for j := 1; j <= d; j++ {
-				if i == 1 {
-					dp[i][j][0] = 0
-					dp[i][j][1] = -prices[0]
-				} else {
-					dp[i][j][0] = max(dp[i-1][j][0], dp[i-1][j][1]+prices[i-1])
-					dp[i][j][1] = max(dp[i-1][j][1], dp[i-1][j-1][0]-prices[i-1])
-				}
-			}
-		}
-	}
-	return dp[pl][d][0]
-}
+// func maxProfit(prices []int) int {
+// 	pl := len(prices)
+// 	if pl < 2 {
+// 		return 0
+// 	}
+// 	d := 2
+// 	// 三个变量：交易天数（i）、已交易次数(j)、当前交易状态(k，存在两种情况：持有、未持有)
+// 	// 买入不算交易次数
+// 	dp := make([][][2]int, pl+1)
+// 	for i := 0; i <= pl; i++ {
+// 		dp[i] = make([][2]int, d+1)
+// 		if i > 0 {
+// 			for j := 1; j <= d; j++ {
+// 				if i == 1 {
+// 					dp[i][j][0] = 0
+// 					dp[i][j][1] = -prices[0]
+// 				} else {
+// 					dp[i][j][0] = max(dp[i-1][j][0], dp[i-1][j][1]+prices[i-1])
+// 					dp[i][j][1] = max(dp[i-1][j][1], dp[i-1][j-1][0]-prices[i-1])
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return dp[pl][d][0]
+// }
 
 //func maxProfit(prices []int) int {
 //	k := 2
@@ -237,9 +259,9 @@ func maxProfit(prices []int) int {
 //	return dp0
 //}
 //
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}
+// func max(x, y int) int {
+// 	if x > y {
+// 		return x
+// 	}
+// 	return y
+// }
