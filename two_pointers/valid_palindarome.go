@@ -18,28 +18,23 @@ import (
 )
 
 func isPalindrome(s string) bool {
-	sl := len(s)
-	if sl < 2 {
+	l := len(s)
+	if l < 2 {
 		return true
 	}
-	left := 0
-	right := sl - 1
+	left, right := 0, l - 1
 	s = strings.ToLower(s)
 	for left <= right {
 		if (s[left] < 'a' || s[left] > 'z') && (s[left] < '0' || s[left] > '9') {
 			left++
-			continue
-		}
-		if (s[right] < 'a' || s[right] > 'z') && (s[right] < '0' || s[right] > '9') {
+		} else if (s[right] < 'a' || s[right] > 'z') && (s[right] < '0' || s[right] > '9') {
 			right--
-			continue
-		}
-		if s[left] == s[right] {
+		} else if s[left] == s[right] {
 			left++
 			right--
-			continue
+		} else {
+			return false
 		}
-		return false
 	}
 	return true
 }
