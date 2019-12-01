@@ -7,6 +7,15 @@ func TestMaxPathSum(t *testing.T) {
 	var h, r int
 
 	root = &TreeNode{
+		-3,
+		nil,
+		nil,
+	}
+	h = -3
+	r = maxPathSum(root)
+	t.Logf("%t h=%d r=%d", h == r, h, r)
+
+	root = &TreeNode{
 		1,
 		&TreeNode{
 			2,
