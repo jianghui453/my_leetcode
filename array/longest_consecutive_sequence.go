@@ -10,27 +10,42 @@
 
 package array
 
-func longestConsecutive(nums []int) int {
-	hash := make(map[int]int)
-	var max int
+import (
+	"math"
+	// "fmt"
+)
 
-	for _, v := range nums {
-		if _, ok := hash[v]; !ok {
-			left := hash[v-1]
-			right := hash[v+1]
-			curry := 1 + left + right
-			if curry > max {
-				max = curry
+func longestConsecutive(nums []int) int {
+	ret, littler, bigger, l := 0, make(map[int]int), make(map[int]int), len(nums)
+	for i := 0; i < l; i++ {
+		num := nums[i]
+		for {
+			if _, ok := bigger[num+1]; ok {
+				num = bigger[num+1]
+			} else {
+				break
 			}
-			hash[v] = curry
-			hash[v-left] = curry
-			hash[v+right] = curry
 		}
+		
+		bigger[nums[i]] = num
+
+		num = nums[i]
+		for {
+			if  _, ok := littler[num-1]; ok {
+				num = littler[num-1]
+			} else {
+				break
+			}
+		}
+		littler[nums[i]] = num
+
+		ret = int(math.Max(float64(ret), float64(bigger[nums[i]]-littler[nums[i]]+1)))
 	}
-	return max
+
+	return ret
 }
 
-//func longestConsecutive(nums []int) int {
+// func longestConsecutive(nums []int) int {
 //    numsLen := len(nums)
 //    if numsLen == 0 {
 //        return 0
@@ -43,7 +58,7 @@ func longestConsecutive(nums []int) int {
 //        if _, ok := record[cur]; ok {
 //            continue
 //        }
-//
+
 //        record[cur] = cur
 //        maxRecord[cur] = 1
 //        if maxRecord[cur] > max {
@@ -56,7 +71,7 @@ func longestConsecutive(nums []int) int {
 //                max = maxRecord[cur]
 //            }
 //        }
-//
+
 //        j := cur-1
 //        if _, ok := record[j]; ok {
 //            for {
@@ -74,4 +89,4 @@ func longestConsecutive(nums []int) int {
 //        }
 //    }
 //    return max
-//}
+// }
