@@ -43,6 +43,9 @@
 
 package array
 
+// （1）如果总的耗油量大于总的加油量，肯定无解
+// （2）如果加油站的加油量小于到下一个加油站的耗油量肯定不是起点
+// （3）在（2）的前提下，如果到起始加油站A到某加油站B无法到达，则A到B之间的加油站都不可能到达B
 func canCompleteCircuit(gas []int, cost []int) int {
 	var curGas, res, total int
 	for i := 0; i < len(gas); i++ {
