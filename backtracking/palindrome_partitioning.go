@@ -32,14 +32,14 @@ func dfs(s string, i int, cur []string, result *[][]string) {
 		// i == 0 时，
 		// 按照 len(cur[0]) 的不同，来划分 res
 		// 并以此类推
-		if par(s[i : j+1]) {
+		if isPartition(s[i : j+1]) {
 			dfs(s, j+1, append(cur, s[i:j+1]), result)
 		}
 	}
 }
 
 // s 为回文，则返回 true
-func par(s string) bool {
+func isPartition(s string) bool {
 	if len(s) <= 1 {
 		return true
 	}
