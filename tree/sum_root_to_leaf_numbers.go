@@ -35,7 +35,7 @@
 package tree
 
 import (
-	"fmt"
+	// "fmt"
 	"math"
 )
 
@@ -57,7 +57,6 @@ func sumNumbers(root *TreeNode) int {
 			f(node.Right, sum)
 		}
 		if node.Right == nil && node.Left == nil {
-			fmt.Printf("sum=%d node.Val=%d\n", sum, node.Val)
 			r += sum
 		}
 	}
