@@ -21,7 +21,7 @@
 
 // 注意: 给定的矩阵grid 的长度和宽度都不超过 50。
 
-package dfs
+package bfs
 
 func maxAreaOfIsland(grid [][]int) int {
 	m := len(grid)
@@ -36,34 +36,35 @@ func maxAreaOfIsland(grid [][]int) int {
 	ret := 0
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			if grid[i][j] == '1' {
+			if grid[i][j] == 1 {
 				cnt := 0
 				eles := make([][2]int, 0)
 				eles = append(eles, [2]int{i, j})
+				grid[i][j] = 2
 				for len(eles) > 0 {
 					cnt += len(eles)
 					newEles := make([][2]int, 0)
 					for k := range eles {
 						x, y := eles[k][0], eles[k][1]
 
-						if x > 0 && grid[x-1][y] == '1' {
+						if x > 0 && grid[x-1][y] == 1 {
 							newEles = append(newEles, [2]int{x-1, y})
-							grid[x-1][y] = '2'
+							grid[x-1][y] = 2
 						}
 
-						if y > 0 && grid[x][y-1] == '1' {
+						if y > 0 && grid[x][y-1] == 1 {
 							newEles = append(newEles, [2]int{x, y-1})
-							grid[x][y-1] = '2'
+							grid[x][y-1] = 2
 						}
 
-						if x < m-1 && grid[x+1][y] == '1' {
+						if x < m-1 && grid[x+1][y] == 1 {
 							newEles = append(newEles, [2]int{x+1, y})
-							grid[x+1][y] = '2'
+							grid[x+1][y] = 2
 						}
 
-						if y < n-1 && grid[x][y+1] == '1' {
+						if y < n-1 && grid[x][y+1] == 1 {
 							newEles = append(newEles, [2]int{x, y+1})
-							grid[xy+1] = '2'
+							grid[x][y+1] = 2
 						}
 					}
 
