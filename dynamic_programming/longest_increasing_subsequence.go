@@ -14,7 +14,7 @@
 package dynamic_programming
 
 import (
-	// "fmt"
+	"fmt"
 )
 
 func lengthOfLIS(nums []int) int {
@@ -23,38 +23,74 @@ func lengthOfLIS(nums []int) int {
 		return 0
 	}
 
-	s := make([]int, l)
-	dp := make([]int, l)
-	dp[0] = 1
-	ret := 1
-	for i := 1; i < l; i++ {
-		dp[i] = 1
+	tails := make([]int, l)
+	ret := 0
+	for i := 0; i < l; i++ {
+		min, max := 0, ret-1
 
-		for j := i-1; j >= 0; j-- {
-			if nums[i] > nums[s[j]] {
-				dp[i] = max(dp[i], dp[s[j]]+1)
-				break
-			}
-		}
-
-		s[i] = i
-		for j := i-1; j >= 0; j-- {
-			if dp[s[j]] > dp[s[j+1]] {
-				s[j], s[j+1] = s[j+1], s[j]
+		for min <= max {
+			mid := (min+max)/2
+			if tails[mid] > nums[i] {
+				max = mid-1
+			} else if tails[mid] < nums[i] {
+				min = mid+1
 			} else {
+				tails[mid] = nums[i]
 				break
 			}
 		}
 
-		ret = max(ret, dp[i])
+		if min > max {
+			tails[min] = nums[i]
+			if min == ret {
+				ret++
+			}
+		}
+
+		fmt.Println(tails, ret)
 	}
-	
+
 	return ret
 }
 
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}
+// func lengthOfLIS(nums []int) int {
+// 	l := len(nums)
+// 	if l == 0 {
+// 		return 0
+// 	}
+
+// 	s := make([]int, l)
+// 	dp := make([]int, l)
+// 	dp[0] = 1
+// 	ret := 1
+// 	for i := 1; i < l; i++ {
+// 		dp[i] = 1
+
+// 		for j := i-1; j >= 0; j-- {
+// 			if nums[i] > nums[s[j]] {
+// 				dp[i] = max(dp[i], dp[s[j]]+1)
+// 				break
+// 			}
+// 		}
+
+// 		s[i] = i
+// 		for j := i-1; j >= 0; j-- {
+// 			if dp[s[j]] > dp[s[j+1]] {
+// 				s[j], s[j+1] = s[j+1], s[j]
+// 			} else {
+// 				break
+// 			}
+// 		}
+
+// 		ret = max(ret, dp[i])
+// 	}
+	
+// 	return ret
+// }
+
+// func max(x, y int) int {
+// 	if x > y {
+// 		return x
+// 	}
+// 	return y
+// }
