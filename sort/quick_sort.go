@@ -1,26 +1,27 @@
 package sort
 
 func quickSort(nums []int) {
-	nLen := len(nums)
-	if nLen < 2 {
+	l := len(nums)
+	if l <= 1 {
 		return
 	}
-	num := nums[0]
-	left := 0
-	right := nLen - 1
-	_nums := make([]int, nLen)
-	copy(_nums, nums)
-	for i := 1; i < nLen; i++ {
-		if _nums[i] < num {
-			nums[left] = _nums[i]
-			left++
-		} else {
-			nums[right] = _nums[i]
-			right--
+
+	newnums := make([]int, l)
+	left, right := 0, l-1
+	for i := 1; i < l; i++ {
+		if nums[i] > nums[0] {
+			newnums[right], right = nums[i], right-1
+		} else if nums[i] < nums[0] {
+			newnums[left], left = nums[i], left+1
 		}
 	}
-	nums[left] = num
-	//fmt.Printf("nums=%v \nnums[:left]=%v \nnums[right:]=%v\n", nums, nums[:left], nums[right:])
-	quickSort(nums[:left])
-	quickSort(nums[right+1:])
+	for i := left; i <= right; i++ {
+		newnums[i] = nums[0]
+	}
+	
+	copy(nums, newnums)
+	quickSort(nums[: left])
+	if right < l-1 {
+		quickSort(nums[right+1: ])
+	}
 }

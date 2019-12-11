@@ -16,11 +16,13 @@ type Graph struct {
 func kruskal(g Graph) Graph {
 	edges := g.Edges
 	sortEdges(edges)
+
 	eLen := len(edges)
 	parents := make([]int, g.V)
 	for i := 0; i < g.V; i++ {
 		parents[i] = i
 	}
+
 	rank := make([]int, g.V)
 	fmt.Printf("edges=%v parents=%v rank=%v\n", edges, parents, rank)
 	mst := Graph{}
@@ -32,12 +34,14 @@ func kruskal(g Graph) Graph {
 		if rootSrc == rootDst {
 			continue
 		}
+
 		fmt.Printf("edge=%v rootSrc=%d rootDst=%d parents=%v rank=%v\n", edges[i], rootSrc, rootDst, parents, rank)
 		union(parents, rank, rootSrc, rootDst)
 		fmt.Printf("parents=%v rank=%v\n", parents, rank)
 		mst.Edges = append(mst.Edges, edges[i])
 		mst.E++
 	}
+	
 	eLen = len(mst.Edges)
 	sVertex := make([]int, g.V)
 	for i := 0; i < eLen; i++ {

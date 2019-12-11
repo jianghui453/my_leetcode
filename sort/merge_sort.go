@@ -16,7 +16,6 @@ func mergeSort(nums []int) {
 			} else {
 				nums2 = nums[j+i : j+i<<1]
 			}
-			fmt.Printf("startsort \nnums1=%v \nnums2=%v\n", nums1, nums2)
 			_len := len(nums1) + len(nums2)
 			var _nums []int
 			off1 := 0
@@ -36,7 +35,7 @@ func mergeSort(nums []int) {
 			if off2 < _len-i {
 				_nums = append(_nums, nums2[off2:]...)
 			}
-			fmt.Printf("_nums=%v\n", _nums)
+			
 			for x := j; x < j+_len; x++ {
 				nums[x] = _nums[x-j]
 			}
