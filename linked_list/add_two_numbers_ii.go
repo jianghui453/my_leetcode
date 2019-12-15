@@ -16,53 +16,71 @@
 package linked_list
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	nums1, nums2 := make([]int, 0), make([]int, 0)
-	for ; l1 != nil; l1 = l1.Next { 
-		nums1 = append(nums1, l1.Val)
-	}
-	for ; l2 != nil; l2 = l2.Next {
-		nums2 = append(nums2, l2.Val)
-	}
 
-	len1, len2 := len(nums1)-1, len(nums2)-1
-	nums, carry := make([]int, 0), 0
-	for len1 >= 0 && len2 >= 0 {
-		v := nums1[len1]+nums2[len2]+carry
-		nums = append(nums, v%10)
-		carry = v / 10
-		len1, len2 = len1-1, len2-1
-	}
-
-	for len1 >= 0 {
-		v := nums1[len1]+carry
-		nums = append(nums, v%10)
-		carry = v / 10
-		len1--
-	}
-
-	for len2 >= 0 {
-		v := nums2[len2]+carry
-		nums = append(nums, v%10)
-		carry = v / 10
-		len2--
-	}
-
-	if carry > 0 {
-		nums = append(nums, carry)
-	}
-
-	l := len(nums)
-	var head, tail *ListNode
-	for i := l-1; i >= 0; i-- {
-		if head == nil {
-			head = new(ListNode)
-			head.Val = nums[i]
-			tail = head
-		} else {
-			tail.Next = &ListNode{nums[i], nil}
-			tail = tail.Next
-		}
-	}
-
-	return head
 }
+
+func reverseList(l *ListNode) *ListNode {
+	if l == nil {
+		return l
+	}
+
+	h := l
+	l = l.Next
+	for l != nil {
+		l.Next, l, h1 = h1, l.Next, l
+	}
+
+	return 
+}
+
+// func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+// 	nums1, nums2 := make([]int, 0), make([]int, 0)
+// 	for ; l1 != nil; l1 = l1.Next { 
+// 		nums1 = append(nums1, l1.Val)
+// 	}
+// 	for ; l2 != nil; l2 = l2.Next {
+// 		nums2 = append(nums2, l2.Val)
+// 	}
+
+// 	len1, len2 := len(nums1)-1, len(nums2)-1
+// 	nums, carry := make([]int, 0), 0
+// 	for len1 >= 0 && len2 >= 0 {
+// 		v := nums1[len1]+nums2[len2]+carry
+// 		nums = append(nums, v%10)
+// 		carry = v / 10
+// 		len1, len2 = len1-1, len2-1
+// 	}
+
+// 	for len1 >= 0 {
+// 		v := nums1[len1]+carry
+// 		nums = append(nums, v%10)
+// 		carry = v / 10
+// 		len1--
+// 	}
+
+// 	for len2 >= 0 {
+// 		v := nums2[len2]+carry
+// 		nums = append(nums, v%10)
+// 		carry = v / 10
+// 		len2--
+// 	}
+
+// 	if carry > 0 {
+// 		nums = append(nums, carry)
+// 	}
+
+// 	l := len(nums)
+// 	var head, tail *ListNode
+// 	for i := l-1; i >= 0; i-- {
+// 		if head == nil {
+// 			head = new(ListNode)
+// 			head.Val = nums[i]
+// 			tail = head
+// 		} else {
+// 			tail.Next = &ListNode{nums[i], nil}
+// 			tail = tail.Next
+// 		}
+// 	}
+
+// 	return head
+// }
