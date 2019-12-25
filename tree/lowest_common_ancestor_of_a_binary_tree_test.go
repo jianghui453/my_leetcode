@@ -16,8 +16,8 @@ func Test_lowestCommonAncestor(t *testing.T) {
 		},
 		&TreeNode{
 			2,
-			&TreeNode{7,nil,nil,},
-			&TreeNode{4,nil,nil},
+			&TreeNode{7, nil, nil},
+			&TreeNode{4, nil, nil},
 		},
 	}
 	q = &TreeNode{
@@ -33,7 +33,7 @@ func Test_lowestCommonAncestor(t *testing.T) {
 	hope, ret = root, lowestCommonAncestor(root, p, q)
 	t.Logf("%t root=%v p=%v q=%v hope=%v ret=%v", ret == hope, root, p, q, hope, ret)
 
-	q = &TreeNode{4,nil,nil}
+	q = &TreeNode{4, nil, nil}
 	p = &TreeNode{
 		5,
 		&TreeNode{
@@ -43,7 +43,7 @@ func Test_lowestCommonAncestor(t *testing.T) {
 		},
 		&TreeNode{
 			2,
-			&TreeNode{7,nil,nil,},
+			&TreeNode{7, nil, nil},
 			q,
 		},
 	}

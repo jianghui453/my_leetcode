@@ -31,7 +31,7 @@ func maxDepth(root *TreeNode) int {
 
 		depth++
 		ret = int(math.Max(float64(ret), float64(depth)))
-		
+
 		f(node.Left, depth)
 		f(node.Right, depth)
 	}

@@ -40,16 +40,16 @@ func solve(board [][]byte) {
 	for i := 1; i < m; i++ {
 		if board[i][n-1] == 'O' {
 			board[i][n-1] = '.'
-			matrix = append(matrix, [2]int{i, n-1})
+			matrix = append(matrix, [2]int{i, n - 1})
 		}
 	}
-	for i := n-2; i >= 0; i-- {
+	for i := n - 2; i >= 0; i-- {
 		if board[m-1][i] == 'O' {
 			board[m-1][i] = '.'
-			matrix = append(matrix, [2]int{m-1, i})
+			matrix = append(matrix, [2]int{m - 1, i})
 		}
 	}
-	for i := m-2; i > 0; i-- {
+	for i := m - 2; i > 0; i-- {
 		if board[i][0] == 'O' {
 			board[i][0] = '.'
 			matrix = append(matrix, [2]int{i, 0})
@@ -61,19 +61,19 @@ func solve(board [][]byte) {
 			x, y := matrix[i][0], matrix[i][1]
 			if x > 0 && board[x-1][y] == 'O' {
 				board[x-1][y] = '.'
-				newMatrix = append(newMatrix, [2]int{x-1, y})
+				newMatrix = append(newMatrix, [2]int{x - 1, y})
 			}
 			if y > 0 && board[x][y-1] == 'O' {
 				board[x][y-1] = '.'
-				newMatrix = append(newMatrix, [2]int{x, y-1})
+				newMatrix = append(newMatrix, [2]int{x, y - 1})
 			}
 			if x < m-1 && board[x+1][y] == 'O' {
 				board[x+1][y] = '.'
-				newMatrix = append(newMatrix, [2]int{x+1, y})
+				newMatrix = append(newMatrix, [2]int{x + 1, y})
 			}
 			if y < n-1 && board[x][y+1] == 'O' {
 				board[x][y+1] = '.'
-				newMatrix = append(newMatrix, [2]int{x, y+1})
+				newMatrix = append(newMatrix, [2]int{x, y + 1})
 			}
 		}
 		matrix = newMatrix

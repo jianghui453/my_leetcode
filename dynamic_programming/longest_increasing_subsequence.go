@@ -3,7 +3,7 @@
 // 示例:
 
 // 输入: [10,9,2,5,3,7,101,18]
-// 输出: 4 
+// 输出: 4
 // 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
 // 说明:
 
@@ -29,11 +29,11 @@ func lengthOfLIS(nums []int) int {
 		min, max := 0, ret-1
 
 		for min <= max {
-			mid := (min+max)/2
+			mid := (min + max) / 2
 			if tails[mid] > nums[i] {
-				max = mid-1
+				max = mid - 1
 			} else if tails[mid] < nums[i] {
-				min = mid+1
+				min = mid + 1
 			} else {
 				tails[mid] = nums[i]
 				break
@@ -84,7 +84,7 @@ func lengthOfLIS(nums []int) int {
 
 // 		ret = max(ret, dp[i])
 // 	}
-	
+
 // 	return ret
 // }
 

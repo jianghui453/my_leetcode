@@ -30,13 +30,13 @@
 package bit
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func validUtf8(data []int) bool {
 	l := len(data)
 	for i := 0; i < l; i++ {
-		if data[i] & (1 << 7) == 0 {
+		if data[i]&(1<<7) == 0 {
 			continue
 		}
 
@@ -56,18 +56,18 @@ func validUtf8(data []int) bool {
 }
 
 func getCnt(num int) int {
-	bit := 1 << 7 | 1 << 6
-	if num & bit == bit && num & (1 << 5) == 0 {
+	bit := 1<<7 | 1<<6
+	if num&bit == bit && num&(1<<5) == 0 {
 		return 1
 	}
 
 	bit |= (1 << 5)
-	if num & bit == bit && num & (1 << 4) == 0 {
+	if num&bit == bit && num&(1<<4) == 0 {
 		return 2
 	}
 
 	bit |= (1 << 4)
-	if num & bit == bit && num & (1 << 3) == 0 {
+	if num&bit == bit && num&(1<<3) == 0 {
 		return 3
 	}
 
@@ -76,7 +76,7 @@ func getCnt(num int) int {
 
 func _validUtf8(max, i int, data []int) bool {
 	for ; i < max; i++ {
-		if data[i] & (1 << 7) != (1 << 7) || data[i] & (1 << 6) != 0 {
+		if data[i]&(1<<7) != (1<<7) || data[i]&(1<<6) != 0 {
 			return false
 		}
 	}

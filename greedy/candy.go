@@ -30,14 +30,14 @@ func candy(ratings []int) int {
 		if i == 0 || ratings[i] <= ratings[i-1] {
 			rcd[i] = 1
 		} else {
-			rcd[i] = rcd[i-1]+1
+			rcd[i] = rcd[i-1] + 1
 		}
 	}
 
 	ret := rcd[l-1]
-	for i := l-2; i >= 0; i-- {
+	for i := l - 2; i >= 0; i-- {
 		if ratings[i] > ratings[i+1] && rcd[i] <= rcd[i+1] {
-			rcd[i] = rcd[i+1]+1
+			rcd[i] = rcd[i+1] + 1
 		}
 		ret += rcd[i]
 	}

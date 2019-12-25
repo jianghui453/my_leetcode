@@ -14,11 +14,11 @@
 package linked_list
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func isPalindrome(head *ListNode) bool {
-    if head == nil || head.Next == nil {
+	if head == nil || head.Next == nil {
 		return true
 	}
 
@@ -33,7 +33,7 @@ func isPalindrome(head *ListNode) bool {
 			h, slow.Next, slow = slow, h, slow.Next.Next
 			break
 		}
-		
+
 		slow, fast, h, slow.Next = slow.Next, fast.Next.Next, slow, h
 	}
 

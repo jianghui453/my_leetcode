@@ -9,7 +9,7 @@
 package math_algorithm
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func lexicalOrder(n int) []int {
@@ -21,7 +21,7 @@ func lexicalOrder(n int) []int {
 			num *= 10
 		} else {
 			num /= 10
-			for num % 10 == 9 {
+			for num%10 == 9 {
 				num /= 10
 			}
 			if num == 0 {

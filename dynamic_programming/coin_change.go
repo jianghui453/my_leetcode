@@ -3,7 +3,7 @@
 // 示例 1:
 
 // 输入: coins = [1, 2, 5], amount = 11
-// 输出: 3 
+// 输出: 3
 // 解释: 11 = 5 + 5 + 1
 // 示例 2:
 
@@ -24,7 +24,7 @@ func coinChange(coins []int, amount int) int {
 	dp := make([]int, amount+1)
 	coinsLen := len(coins)
 	for i := 1; i <= amount; i++ {
-		dp[i] = amount+1
+		dp[i] = amount + 1
 		for j := 0; j < coinsLen; j++ {
 			if coins[j] <= amount && coins[j] <= i {
 				dp[i] = min(dp[i], dp[i-coins[j]]+1)

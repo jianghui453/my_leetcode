@@ -14,7 +14,7 @@
 package dynamic_programming
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func maxProduct(nums []int) int {
@@ -38,7 +38,7 @@ func maxProduct(nums []int) int {
 			if dp[i-1][1] > 0 {
 				dp[i][1] *= dp[i-1][1]
 			}
-			dp[i][0] = dp[i-1][0]*nums[i]
+			dp[i][0] = dp[i-1][0] * nums[i]
 		} else {
 			if dp[i-1][0] < 0 {
 				dp[i][1] = dp[i-1][0] * nums[i]

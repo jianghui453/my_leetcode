@@ -10,7 +10,7 @@ func TestGetRow(t *testing.T) {
 
 	rowIndex = 4
 	ret = getRow(rowIndex)
-	hope = []int{1,4,6,4,1}
+	hope = []int{1, 4, 6, 4, 1}
 	t.Logf("\nhope=%v \n ret=%v", hope, ret)
 
 	rowIndex = 0

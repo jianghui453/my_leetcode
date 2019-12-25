@@ -31,7 +31,7 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 
 		for i := 0; i < sLen; i++ {
 			retItem = append(retItem, s[i].Val)
-			
+
 			if s[i].Left != nil {
 				newS = append(newS, s[i].Left)
 			}
@@ -46,7 +46,7 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 				retItem[i], retItem[retItemLen-1-i] = retItem[retItemLen-1-i], retItem[i]
 			}
 		}
-		
+
 		s = newS
 		ret = append(ret, retItem)
 	}

@@ -31,7 +31,7 @@ func TestIsBalanced(t *testing.T) {
 	}
 	hope = true
 	ret = isBalanced(root)
-	t.Logf("%t hope=%t ret=%t", ret==hope, hope, ret)
+	t.Logf("%t hope=%t ret=%t", ret == hope, hope, ret)
 
 	root = &TreeNode{
 		1,
@@ -64,5 +64,5 @@ func TestIsBalanced(t *testing.T) {
 	}
 	hope = false
 	ret = isBalanced(root)
-	t.Logf("%t hope=%t ret=%t", ret==hope, hope, ret)
+	t.Logf("%t hope=%t ret=%t", ret == hope, hope, ret)
 }

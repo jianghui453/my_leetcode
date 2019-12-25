@@ -34,17 +34,17 @@
 package backtracking
 
 import (
-	// "math"
-	// "fmt"
+// "math"
+// "fmt"
 )
 
 func ladderLength(beginWord string, endWord string, wordList []string) int {
 	for i := range wordList {
 		if wordList[i] == beginWord {
 			if i == len(wordList)-1 {
-				wordList = wordList[: i]
+				wordList = wordList[:i]
 			} else {
-				wordList = append(wordList[: i], wordList[i+1: ]...)
+				wordList = append(wordList[:i], wordList[i+1:]...)
 			}
 			break
 		}
@@ -65,9 +65,9 @@ func dfs(words, wordList []string, endWord string, cnt int) int {
 		for j := range wordList {
 			if isNext(words[i], wordList[j]) {
 				if wordList[j] == endWord {
-					return cnt+1
+					return cnt + 1
 				}
-				wordListHash[wordList[j]] = true	
+				wordListHash[wordList[j]] = true
 			} else if _, ok := wordListHash[wordList[j]]; !ok {
 				wordListHash[wordList[j]] = false
 			}

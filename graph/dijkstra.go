@@ -30,7 +30,7 @@ func dijkstra(V int, graph [][]int) []int {
 
 			for j := 1; j < V; j++ {
 				if spt[j] == 0 && graph[i][j] > 0 && (min == 0 || spt[i]+graph[i][j] < min) {
-					min = spt[i]+graph[i][j]
+					min = spt[i] + graph[i][j]
 					idx = j
 				}
 			}

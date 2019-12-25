@@ -16,7 +16,7 @@ func singleNumber(nums []int) []int {
 	if l == 0 {
 		return []int{}
 	}
-	
+
 	bits := 0
 	for i := 0; i < l; i++ {
 		bits ^= nums[i]
@@ -26,7 +26,7 @@ func singleNumber(nums []int) []int {
 
 	var num1, num2 int
 	for i := 0; i < l; i++ {
-		if nums[i] & bits == 0 {
+		if nums[i]&bits == 0 {
 			num1 ^= nums[i]
 		} else {
 			num2 ^= nums[i]

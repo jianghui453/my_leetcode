@@ -9,7 +9,7 @@
 // MyQueue queue = new MyQueue();
 
 // queue.push(1);
-// queue.push(2);  
+// queue.push(2);
 // queue.peek();  // 返回 1
 // queue.pop();   // 返回 1
 // queue.empty(); // 返回 false
@@ -22,13 +22,12 @@
 package stack
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 type MyQueue struct {
-    s []int
+	s []int
 }
-
 
 /** Initialize your data structure here. */
 func Constructor() MyQueue {
@@ -37,65 +36,60 @@ func Constructor() MyQueue {
 	return q
 }
 
-
 /** Push element x to the back of queue. */
-func (this *MyQueue) Push(x int)  {
-    this.s = append(this.s, x)
+func (this *MyQueue) Push(x int) {
+	this.s = append(this.s, x)
 }
-
 
 /** Removes the element from in front of queue and returns that element. */
 func (this *MyQueue) Pop() int {
 	l := len(this.s)
-	
+
 	if l == 0 {
 		return 0
 	}
 
 	news := make([]int, 0)
-	for i := l-1; i > 0; i-- {
+	for i := l - 1; i > 0; i-- {
 		news = append(news, this.s[i])
-		this.s = this.s[: i]
+		this.s = this.s[:i]
 	}
 
 	ret := this.s[0]
 
-	this.s = this.s[: 0]
-	for i := l-2; i >= 0; i-- {
+	this.s = this.s[:0]
+	for i := l - 2; i >= 0; i-- {
 		this.s = append(this.s, news[i])
 	}
 	return ret
 }
 
-
 /** Get the front element. */
 func (this *MyQueue) Peek() int {
-    l := len(this.s)
-	
+	l := len(this.s)
+
 	if l == 0 {
 		return 0
 	}
 
 	news := make([]int, 0)
-	for i := l-1; i >= 0; i-- {
+	for i := l - 1; i >= 0; i-- {
 		news = append(news, this.s[i])
-		this.s = this.s[: i]
+		this.s = this.s[:i]
 	}
 
 	ret := news[l-1]
-	
-	for i := l-1; i >= 0; i-- {
+
+	for i := l - 1; i >= 0; i-- {
 		this.s = append(this.s, news[i])
 	}
 	return ret
 }
 
-
 /** Returns whether the queue is empty. */
 func (this *MyQueue) Empty() bool {
-    return len(this.s) == 0
+	return len(this.s) == 0
 }
-
 
 /**
  * Your MyQueue object will be instantiated and called as such:

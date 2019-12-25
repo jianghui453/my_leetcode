@@ -30,10 +30,10 @@ func minCut(s string) int {
 			return memo[str]
 		}
 
-		ret := math.MaxInt64-1
-		for i := l-1; i > 0; i-- {
-			if isParlindrome(str[: i]) {
-				ret = int(math.Min(float64(ret), float64(backtracking(str[i: ])+1)))
+		ret := math.MaxInt64 - 1
+		for i := l - 1; i > 0; i-- {
+			if isParlindrome(str[:i]) {
+				ret = int(math.Min(float64(ret), float64(backtracking(str[i:])+1)))
 			}
 		}
 		memo[str] = ret

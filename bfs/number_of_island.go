@@ -44,19 +44,19 @@ func numIslands(grid [][]byte) int {
 					for k := range eles {
 						x, y := eles[k][0], eles[k][1]
 						if x > 0 && grid[x-1][y] == '1' {
-							newEles = append(newEles, [2]int{x-1, y})
+							newEles = append(newEles, [2]int{x - 1, y})
 							grid[x-1][y] = '2'
 						}
 						if x < m-1 && grid[x+1][y] == '1' {
-							newEles = append(newEles, [2]int{x+1, y})
+							newEles = append(newEles, [2]int{x + 1, y})
 							grid[x+1][y] = '2'
 						}
 						if y > 0 && grid[x][y-1] == '1' {
-							newEles = append(newEles, [2]int{x, y-1})
+							newEles = append(newEles, [2]int{x, y - 1})
 							grid[x][y-1] = '2'
 						}
 						if y < n-1 && grid[x][y+1] == '1' {
-							newEles = append(newEles, [2]int{x, y+1})
+							newEles = append(newEles, [2]int{x, y + 1})
 							grid[x][y+1] = '2'
 						}
 					}

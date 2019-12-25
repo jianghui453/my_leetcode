@@ -20,7 +20,7 @@ import (
 
 func findKthLargest(nums []int, k int) int {
 	s := make([]int, k)
-	copy(s, nums[: k])
+	copy(s, nums[:k])
 	sort.Ints(s)
 	l := len(nums)
 	for i := k; i < l; i++ {

@@ -3,7 +3,7 @@
 // 示例 1:
 
 // 输入: n = 12
-// 输出: 3 
+// 输出: 3
 // 解释: 12 = 4 + 4 + 4.
 // 示例 2:
 
@@ -14,7 +14,7 @@
 package dynamic_programming
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func numSquares(n int) int {
@@ -22,7 +22,7 @@ func numSquares(n int) int {
 
 	for i := 0; i <= n; i++ {
 		dp[i] = i
-		for j := 1; j*j <= i ; j++ {
+		for j := 1; j*j <= i; j++ {
 			dp[i] = min(dp[i], dp[i-j*j]+1)
 		}
 	}

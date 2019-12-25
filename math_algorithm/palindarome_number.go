@@ -21,7 +21,7 @@
 package leet_code
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func isPalindrome(x int) bool {
@@ -32,7 +32,7 @@ func isPalindrome(x int) bool {
 	x1, x2 := x, 0
 	for x1 > 0 {
 		x2 = x2*10 + x1%10
-		x1 = x1/10
+		x1 = x1 / 10
 	}
 
 	return x2 == x

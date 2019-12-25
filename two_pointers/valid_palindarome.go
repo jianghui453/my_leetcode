@@ -22,7 +22,7 @@ func isPalindrome(s string) bool {
 	if l < 2 {
 		return true
 	}
-	left, right := 0, l - 1
+	left, right := 0, l-1
 	s = strings.ToLower(s)
 	for left <= right {
 		if (s[left] < 'a' || s[left] > 'z') && (s[left] < '0' || s[left] > '9') {

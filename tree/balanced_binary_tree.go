@@ -48,7 +48,7 @@ func isBalanced(root *TreeNode) bool {
 		if node == nil {
 			return 0
 		}
-		return int(math.Max(float64(f(node.Left)), float64(f(node.Right))))+1
+		return int(math.Max(float64(f(node.Left)), float64(f(node.Right)))) + 1
 	}
 
 	if math.Abs(float64(f(root.Left)-f(root.Right))) > 1 {

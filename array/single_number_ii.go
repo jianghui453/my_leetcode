@@ -16,7 +16,7 @@
 package array
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 // 	// a b  nums[i]  a b
@@ -31,7 +31,7 @@ import (
 func singleNumber(nums []int) int {
 	l, a, b := len(nums), 0, 0
 	for i := 0; i < l; i++ {
-		a, b = (a ^ b) & (a ^ nums[i]), (b ^ nums[i]) & (a ^ -1)
+		a, b = (a^b)&(a^nums[i]), (b^nums[i])&(a^-1)
 	}
 	return b
 }

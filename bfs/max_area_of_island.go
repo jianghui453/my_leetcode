@@ -32,7 +32,7 @@ func maxAreaOfIsland(grid [][]int) int {
 	if n == 0 {
 		return 0
 	}
-	
+
 	ret := 0
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
@@ -48,22 +48,22 @@ func maxAreaOfIsland(grid [][]int) int {
 						x, y := eles[k][0], eles[k][1]
 
 						if x > 0 && grid[x-1][y] == 1 {
-							newEles = append(newEles, [2]int{x-1, y})
+							newEles = append(newEles, [2]int{x - 1, y})
 							grid[x-1][y] = 2
 						}
 
 						if y > 0 && grid[x][y-1] == 1 {
-							newEles = append(newEles, [2]int{x, y-1})
+							newEles = append(newEles, [2]int{x, y - 1})
 							grid[x][y-1] = 2
 						}
 
 						if x < m-1 && grid[x+1][y] == 1 {
-							newEles = append(newEles, [2]int{x+1, y})
+							newEles = append(newEles, [2]int{x + 1, y})
 							grid[x+1][y] = 2
 						}
 
 						if y < n-1 && grid[x][y+1] == 1 {
-							newEles = append(newEles, [2]int{x, y+1})
+							newEles = append(newEles, [2]int{x, y + 1})
 							grid[x][y+1] = 2
 						}
 					}
@@ -74,7 +74,7 @@ func maxAreaOfIsland(grid [][]int) int {
 			}
 		}
 	}
-	
+
 	return ret
 }
 

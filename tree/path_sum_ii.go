@@ -21,7 +21,7 @@
 package tree
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func pathSum(root *TreeNode, sum int) [][]int {
@@ -33,7 +33,7 @@ func pathSum(root *TreeNode, sum int) [][]int {
 	var f func(node *TreeNode, nums []int, target int)
 	f = func(node *TreeNode, nums []int, target int) {
 		nums = append(nums, node.Val)
-		
+
 		if node.Left == nil && node.Right == nil {
 			if node.Val == target {
 				ret = append(ret, nums)

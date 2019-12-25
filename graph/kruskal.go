@@ -16,10 +16,10 @@ func kruskal(g Graph) Graph {
 
 	var retg Graph
 	retg.V = g.V
-	
+
 	disjointset := new(DisjointSet)
 	disjointset.Constructor(g.V)
-	
+
 	for i := 0; i < g.E; i++ {
 		roots := disjointset.Find(g.Edges[i].src)
 		rootd := disjointset.Find(g.Edges[i].dst)
@@ -58,9 +58,9 @@ func sortEdges(edges []Edge) {
 	}
 
 	copy(edges, newedges)
-	sortEdges(edges[: left])
+	sortEdges(edges[:left])
 	if right < l-1 {
-		sortEdges(edges[right+1: ])
+		sortEdges(edges[right+1:])
 	}
 }
 
@@ -86,13 +86,12 @@ func sortEdges(edges []Edge) {
 // 			continue
 // 		}
 
-
 // 		union(parents, rank, rootSrc, rootDst)
 
 // 		mst.Edges = append(mst.Edges, edges[i])
 // 		mst.E++
 // 	}
-	
+
 // 	eLen = len(mst.Edges)
 // 	sVertex := make([]int, g.V)
 // 	for i := 0; i < eLen; i++ {

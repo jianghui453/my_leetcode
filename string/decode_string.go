@@ -15,7 +15,7 @@
 package string
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func decodeString(s string) string {
@@ -41,16 +41,16 @@ func decodeString(s string) string {
 					mbrackets--
 					if mbrackets == 0 {
 						if i == l-1 {
-							ret = append(ret, _decodeString(s[start: ])...)
+							ret = append(ret, _decodeString(s[start:])...)
 						} else {
-							ret = append(ret, _decodeString(s[start: i+1])...)
+							ret = append(ret, _decodeString(s[start:i+1])...)
 						}
 						break
 					}
 				}
 			}
 		}
-	} 
+	}
 	return string(ret)
 }
 
@@ -68,21 +68,21 @@ func _decodeString(s string) []byte {
 			bytes = append(bytes, s[i])
 		} else if s[i] >= '0' && s[i] <= '9' {
 			start := i
-			for i = i+1; i < l && s[i] != '['; i++ {
+			for i = i + 1; i < l && s[i] != '['; i++ {
 				continue
 			}
 
 			mbrackets := 1
-			for i = i+1; i < l; i++ {
+			for i = i + 1; i < l; i++ {
 				if s[i] == '[' {
 					mbrackets++
 				} else if s[i] == ']' {
 					mbrackets--
 					if mbrackets == 0 {
 						if i == l-1 {
-							bytes = append(bytes, _decodeString(s[start: ])...)
+							bytes = append(bytes, _decodeString(s[start:])...)
 						} else {
-							bytes = append(bytes, _decodeString(s[start: i+1])...)
+							bytes = append(bytes, _decodeString(s[start:i+1])...)
 						}
 						break
 					}

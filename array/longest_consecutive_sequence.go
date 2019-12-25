@@ -26,12 +26,12 @@ func longestConsecutive(nums []int) int {
 				break
 			}
 		}
-		
+
 		bigger[nums[i]] = num
 
 		num = nums[i]
 		for {
-			if  _, ok := littler[num-1]; ok {
+			if _, ok := littler[num-1]; ok {
 				num = littler[num-1]
 			} else {
 				break

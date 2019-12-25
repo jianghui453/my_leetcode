@@ -12,7 +12,7 @@ func Test_coinChange(t *testing.T) {
 	hope, ret = 3, coinChange(coins, amount)
 	t.Logf("%t coins=%v amount=%d hope=%d ret=%d", ret == hope, coins, amount, hope, ret)
 
-	coins, amount = []int{186,419,83,408}, 6249
+	coins, amount = []int{186, 419, 83, 408}, 6249
 	hope, ret = 20, coinChange(coins, amount)
 	t.Logf("%t coins=%v amount=%d hope=%d ret=%d", ret == hope, coins, amount, hope, ret)
 }

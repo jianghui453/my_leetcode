@@ -7,7 +7,7 @@ import (
 func Test_findDuplicate(t *testing.T) {
 	var nums []int
 	var hope, ret int
-	
+
 	// nums = []int{1, 1}
 	// hope = 1
 	// ret = findDuplicate(nums)
@@ -28,7 +28,7 @@ func Test_findDuplicate(t *testing.T) {
 	// ret = findDuplicate(nums)
 	// t.Log(ret == hope, nums, hope, ret)
 
-	nums = []int{2,5,9,6,9,3,8,9,7,1}
+	nums = []int{2, 5, 9, 6, 9, 3, 8, 9, 7, 1}
 	hope = 9
 	ret = findDuplicate(nums)
 	t.Log(ret == hope, nums, hope, ret)

@@ -16,15 +16,15 @@
 package math_algorithm
 
 import (
-	// "fmt"
-	// "math"
+// "fmt"
+// "math"
 )
 
 func findKthNumber(n int, k int) int {
 	num := 1
 	for k > 1 {
 		cnt := calCnt(num, n)
-		
+
 		if k > cnt {
 			num++
 			k -= cnt

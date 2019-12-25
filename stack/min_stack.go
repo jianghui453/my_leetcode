@@ -18,11 +18,10 @@
 package stack
 
 type MinStack struct {
-	mainStack []int
+	mainStack  []int
 	trackStack []int
-	length int
+	length     int
 }
-
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
@@ -31,7 +30,6 @@ func Constructor() MinStack {
 	m.trackStack = make([]int, 0)
 	return m
 }
-
 
 func (this *MinStack) Push(x int) {
 	this.mainStack = append(this.mainStack, x)
@@ -42,15 +40,13 @@ func (this *MinStack) Push(x int) {
 	this.length++
 }
 
-
-func (this *MinStack) Pop()  {
-    if this.length > 0 {
-		this.mainStack = this.mainStack[: this.length-1]
-		this.trackStack = this.trackStack[: this.length-1]
+func (this *MinStack) Pop() {
+	if this.length > 0 {
+		this.mainStack = this.mainStack[:this.length-1]
+		this.trackStack = this.trackStack[:this.length-1]
 		this.length--
 	}
 }
-
 
 func (this *MinStack) Top() int {
 	if this.length == 0 {
@@ -60,14 +56,12 @@ func (this *MinStack) Top() int {
 	}
 }
 
-
 func (this *MinStack) GetMin() int {
-    if this.length == 0 {
+	if this.length == 0 {
 		return 0
 	}
 	return this.trackStack[this.length-1]
 }
-
 
 /**
  * Your MinStack object will be instantiated and called as such:

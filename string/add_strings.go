@@ -22,28 +22,28 @@ func addStrings(num1 string, num2 string) string {
 		l1, l2, num1, num2 = l2, l1, num2, num1
 	}
 
-	ret := make([]byte, l1 + 1)
+	ret := make([]byte, l1+1)
 	i := 1
 	carry := 0
-	
+
 	for i <= l1 && i <= l2 {
-		sum := int(num1[l1-i]-'0' + num2[l2-i]-'0') + carry
-		ret[l1+1-i] = byte(sum%10+'0')
+		sum := int(num1[l1-i]-'0'+num2[l2-i]-'0') + carry
+		ret[l1+1-i] = byte(sum%10 + '0')
 		carry, i = sum/10, i+1
 	}
 
 	for i <= l1 {
 		sum := int(num1[l1-i]-'0') + carry
-		ret[l1+1-i] = byte(sum%10+'0')
+		ret[l1+1-i] = byte(sum%10 + '0')
 		carry, i = sum/10, i+1
 	}
 
 	if carry > 0 {
-		ret[0] = byte(carry+'0')
+		ret[0] = byte(carry + '0')
 	}
 
 	if ret[0] == 0 {
-		ret = ret[1: ]
+		ret = ret[1:]
 	}
 
 	return string(ret)

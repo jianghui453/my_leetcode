@@ -34,8 +34,7 @@
 
 package backtracking
 
-import (
-)
+import ()
 
 func findLadders(beginWord string, endWord string, wordList []string) [][]string {
 	words := [][]string{{beginWord}}
@@ -43,9 +42,9 @@ func findLadders(beginWord string, endWord string, wordList []string) [][]string
 		if wordList[i] == beginWord {
 			var r [][]string
 			if i == len(wordList)-1 {
-				r = bfs(words, wordList[: len(wordList)-1], endWord)
+				r = bfs(words, wordList[:len(wordList)-1], endWord)
 			} else {
-				r = bfs(words, append(wordList[: i], wordList[i+1: ]...), endWord)
+				r = bfs(words, append(wordList[:i], wordList[i+1:]...), endWord)
 			}
 			return r
 		}

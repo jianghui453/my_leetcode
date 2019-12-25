@@ -9,18 +9,18 @@ func Test_longestIncreasingPath(t *testing.T) {
 	var hope, ret int
 
 	matrix = [][]int{
-		{3,4,5},
-		{3,2,6},
-		{2,2,1},
+		{3, 4, 5},
+		{3, 2, 6},
+		{2, 2, 1},
 	}
 	hope = 4
 	ret = longestIncreasingPath(matrix)
 	t.Log(ret == hope, matrix, hope, ret)
 
 	matrix = [][]int{
-  		{9,9,4},
-  		{6,6,8},
-  		{2,1,1},
+		{9, 9, 4},
+		{6, 6, 8},
+		{2, 1, 1},
 	}
 	hope = 4
 	ret = longestIncreasingPath(matrix)

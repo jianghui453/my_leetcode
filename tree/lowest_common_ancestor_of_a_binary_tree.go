@@ -4,9 +4,7 @@
 
 // 例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
 
-
-
-//  
+//
 
 // 示例 1:
 
@@ -18,7 +16,7 @@
 // 输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
 // 输出: 5
 // 解释: 节点 5 和节点 4 的最近公共祖先是节点 5。因为根据定义最近公共祖先节点可以为节点本身。
-//  
+//
 
 // 说明:
 
@@ -44,11 +42,11 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 
 		if node.Left != nil {
 			n1, n2 := f(node.Left, depth+1)
-			node1, node2 = node1||n1, node2||n2
+			node1, node2 = node1 || n1, node2 || n2
 		}
 		if node.Right != nil {
 			n1, n2 := f(node.Right, depth+1)
-			node1, node2 = node1||n1, node2||n2
+			node1, node2 = node1 || n1, node2 || n2
 		}
 
 		if node1 && node2 && depth > maxDepth {

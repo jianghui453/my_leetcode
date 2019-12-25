@@ -28,9 +28,9 @@ func buildTree(inorder []int, postorder []int) *TreeNode {
 	inorderLen := len(inorder)
 	for i := 0; i < inorderLen; i++ {
 		if inorder[i] == node.Val {
-			node.Left = buildTree(inorder[: i], postorder[: i])
+			node.Left = buildTree(inorder[:i], postorder[:i])
 			if i < inorderLen-1 {
-				node.Right = buildTree(inorder[i+1: ], postorder[i: postorderLen-1])
+				node.Right = buildTree(inorder[i+1:], postorder[i:postorderLen-1])
 			}
 
 			break

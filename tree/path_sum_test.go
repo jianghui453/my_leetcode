@@ -51,5 +51,5 @@ func TestPathSum(t *testing.T) {
 	sum = 22
 	h = true
 	r = pathSum(root, sum)
-	t.Logf("%t h=%t r=%t", r==h, h, r)
+	t.Logf("%t h=%t r=%t", r == h, h, r)
 }

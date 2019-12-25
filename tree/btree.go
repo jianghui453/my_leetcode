@@ -1,15 +1,13 @@
 package tree
 
-import (
-
-)
+import ()
 
 type BTreeNode struct {
-	Keys []int
-	KeysCnt int
-	Children    []*BTreeNode
-	M int // order of btree
-	IsLeaf bool
+	Keys     []int
+	KeysCnt  int
+	Children []*BTreeNode
+	M        int // order of btree
+	IsLeaf   bool
 }
 
 func (n *BTreeNode) Constructor(m int, isLeaf bool) {
@@ -74,7 +72,7 @@ func (n *BTreeNode) Insert(k int) {
 		if n.Keys[i] == k {
 			return
 		} else if n.Keys[i] > k {
-			n.Keys = append(n.Keys[: i], append([]int{k}, n.Keys[i: ]...)...)
+			n.Keys = append(n.Keys[:i], append([]int{k}, n.Keys[i:]...)...)
 			break
 		}
 	}
@@ -91,7 +89,7 @@ func (n *BTreeNode) SplitChild(i int) {
 	child2.Constructor(n.M, n.Children[i].IsLeaf)
 
 	child := n.Children[i]
-	mid := child.KeysCnt/2
+	mid := child.KeysCnt / 2
 	for j := 0; j < mid; j++ {
 		child1.Keys = append(child1.Keys, child.Keys[j])
 		child1.KeysCnt++
@@ -103,7 +101,7 @@ func (n *BTreeNode) SplitChild(i int) {
 		child1.Children = append(child1.Children, child.Children[mid])
 	}
 
-	for j := mid+1; j < child.KeysCnt; j++ {
+	for j := mid + 1; j < child.KeysCnt; j++ {
 		child2.Keys = append(child2.Keys, child.Keys[j])
 		child2.KeysCnt++
 		if !child.IsLeaf {
@@ -117,15 +115,15 @@ func (n *BTreeNode) SplitChild(i int) {
 	n.Keys = append(n.Keys, child.Keys[mid])
 	n.KeysCnt++
 	if i == len(n.Children) {
-		n.Children = append(n.Children[: i], []*BTreeNode{child1, child2}...)
+		n.Children = append(n.Children[:i], []*BTreeNode{child1, child2}...)
 	} else {
-		n.Children = append(n.Children[: i], append([]*BTreeNode{child1, child2}, n.Children[i+1: ]...)...)
+		n.Children = append(n.Children[:i], append([]*BTreeNode{child1, child2}, n.Children[i+1:]...)...)
 	}
 }
 
 type BTree struct {
 	Root *BTreeNode
-	M int
+	M    int
 }
 
 func (b *BTree) Constructor(m int) {

@@ -18,10 +18,10 @@ func quickSort(nums []int) {
 	for i := left; i <= right; i++ {
 		newnums[i] = nums[0]
 	}
-	
+
 	copy(nums, newnums)
-	quickSort(nums[: left])
+	quickSort(nums[:left])
 	if right < l-1 {
-		quickSort(nums[right+1: ])
+		quickSort(nums[right+1:])
 	}
 }

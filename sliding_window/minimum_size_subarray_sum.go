@@ -1,6 +1,6 @@
 // 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。
 
-// 示例: 
+// 示例:
 
 // 输入: s = 7, nums = [2,3,1,2,4,3]
 // 输出: 2
@@ -35,15 +35,15 @@ func minSubArrayLen(s int, nums []int) int {
 		for sums[i] >= s && min <= max {
 			mid := (min + max) / 2
 
-			if mid > 0 && sums[i] - sums[mid-1] < s {
-				max = mid-1
+			if mid > 0 && sums[i]-sums[mid-1] < s {
+				max = mid - 1
 			} else {
 				if ret == 0 || ret > (i+1-mid) {
-					ret = i+1-mid
+					ret = i + 1 - mid
 				}
 
 				if sums[i] > s {
-					min = mid+1
+					min = mid + 1
 				} else {
 					break
 				}

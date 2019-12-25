@@ -41,7 +41,7 @@ func kruskal(g Graph) Graph {
 		mst.Edges = append(mst.Edges, edges[i])
 		mst.E++
 	}
-	
+
 	eLen = len(mst.Edges)
 	sVertex := make([]int, g.V)
 	for i := 0; i < eLen; i++ {

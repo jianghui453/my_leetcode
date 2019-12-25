@@ -34,7 +34,7 @@ func generate(numRows int) [][]int {
 			retItem = append(retItem, ret[retLen-1][i]+ret[retLen-1][i+1])
 		}
 		retItem = append(retItem, ret[retLen-1][retILen-1])
-		
+
 		ret = append(ret, retItem)
 	}
 

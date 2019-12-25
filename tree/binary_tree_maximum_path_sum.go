@@ -42,7 +42,7 @@ func maxPathSum(root *TreeNode) int {
 		right := f(node.Right)
 		ret = int(math.Max(float64(ret), float64(r+left+right)))
 
-		r = int(math.Max(float64(r), float64(r) + math.Max(float64(left), float64(right))))
+		r = int(math.Max(float64(r), float64(r)+math.Max(float64(left), float64(right))))
 		ret = int(math.Max(float64(ret), float64(r)))
 		return r
 	}

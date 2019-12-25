@@ -29,7 +29,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 	if n == 0 {
 		return false
 	}
-	
+
 	for i := 0; i < m; i++ {
 		if matrix[i][0] > target {
 			break
@@ -40,11 +40,11 @@ func searchMatrix(matrix [][]int, target int) bool {
 
 		min, max := 0, n-1
 		for min <= max {
-			mid := (min+max)/2
+			mid := (min + max) / 2
 			if matrix[i][mid] > target {
-				max = mid-1
+				max = mid - 1
 			} else if matrix[i][mid] < target {
-				min = mid+1
+				min = mid + 1
 			} else {
 				return true
 			}

@@ -6,8 +6,8 @@
 //           1
 //          / \
 //         2   3
-//        / \     
-//       4   5    
+//        / \
+//       4   5
 
 // 返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。
 
@@ -29,7 +29,7 @@ func diameterOfBinaryTree(root *TreeNode) int {
 
 		ret = max(ret, leftDepth+rightDepth)
 
-		return max(leftDepth, rightDepth)+1
+		return max(leftDepth, rightDepth) + 1
 	}
 
 	f(root)

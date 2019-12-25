@@ -1,11 +1,11 @@
 package graph
 
 type DisjointSet struct {
-	ranks []int
+	ranks   []int
 	subsets []int
 }
 
-func (d *DisjointSet) Constructor (cnt int) {
+func (d *DisjointSet) Constructor(cnt int) {
 	d.ranks = make([]int, cnt)
 	d.subsets = make([]int, cnt)
 	for i := 0; i < cnt; i++ {

@@ -22,7 +22,7 @@ func Test_findKthNumber(t *testing.T) {
 	n, k = 100, 10
 	hope, ret = 17, findKthNumber(n, k)
 	t.Logf("%t n=%d k=%d hope=%d ret=%d", ret == hope, n, k, hope, ret)
-	
+
 	n, k = 100, 90
 	hope, ret = 9, findKthNumber(n, k)
 	t.Logf("%t n=%d k=%d hope=%d ret=%d", ret == hope, n, k, hope, ret)

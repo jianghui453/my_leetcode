@@ -1,8 +1,8 @@
 package sort
 
 import (
-	// "fmt"
-	// "math"
+// "fmt"
+// "math"
 )
 
 func radioSort(nums []int) {
@@ -22,7 +22,7 @@ func radioSort(nums []int) {
 		if len(bucket[0]) == nLen {
 			break
 		}
-		
+
 		idx := 0
 		for x := 0; x < cntBucket; x++ {
 			lenBucket := len(bucket[x])
@@ -31,7 +31,7 @@ func radioSort(nums []int) {
 				idx++
 			}
 		}
-		
+
 		i *= 10
 	}
 }

@@ -35,7 +35,7 @@ func mergeSort(nums []int) {
 			if off2 < _len-i {
 				_nums = append(_nums, nums2[off2:]...)
 			}
-			
+
 			for x := j; x < j+_len; x++ {
 				nums[x] = _nums[x-j]
 			}

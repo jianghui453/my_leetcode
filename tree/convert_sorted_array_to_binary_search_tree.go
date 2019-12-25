@@ -23,11 +23,11 @@ func sortedArrayToBST(nums []int) *TreeNode {
 	}
 
 	node := new(TreeNode)
-	mid := (numsLen-1)/2
+	mid := (numsLen - 1) / 2
 	node.Val = nums[mid]
-	node.Left = sortedArrayToBST(nums[: mid])
+	node.Left = sortedArrayToBST(nums[:mid])
 	if mid < numsLen-1 {
-		node.Right = sortedArrayToBST(nums[mid+1: ])
+		node.Right = sortedArrayToBST(nums[mid+1:])
 	}
 
 	return node

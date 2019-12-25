@@ -26,15 +26,15 @@
 package array
 
 import (
-	// "math"
+// "math"
 )
 
 func maxProfit(prices []int) int {
 	l := len(prices)
 	maxp := 0
-	for i := 1; i < l; i ++ {
+	for i := 1; i < l; i++ {
 		if prices[i] > prices[i-1] {
-			maxp += prices[i]-prices[i-1]
+			maxp += prices[i] - prices[i-1]
 		}
 	}
 	return maxp

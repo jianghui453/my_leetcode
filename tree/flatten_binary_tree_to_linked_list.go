@@ -23,7 +23,7 @@
 
 package tree
 
-func flatten(root *TreeNode)  {
+func flatten(root *TreeNode) {
 	if root == nil {
 		return
 	}
