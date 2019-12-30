@@ -2,7 +2,7 @@
 
 // 如果没有和至少为 K 的非空子数组，返回 -1 。
 
-//  
+//
 
 // 示例 1：
 
@@ -16,7 +16,7 @@
 
 // 输入：A = [2,-1,2], K = 3
 // 输出：3
-//  
+//
 
 // 提示：
 
@@ -24,61 +24,79 @@
 // -10 ^ 5 <= A[i] <= 10 ^ 5
 // 1 <= K <= 10 ^ 9
 
+// 解法：
+// 如果 x1 < x2 且 P[x2] <= P[x1]，那么 opt(y) 的值不可能为 x1，这是因为 x2 比 x1 大，并且如果 x1 满足了 P[x1] <= P[y] - K，那么 P[x2] <= P[x1] <= P[y] - K，即 x2 同样满足 P[x2] <= P[y] - K。
+// 如果 opt(y1) 的值为 x，那么我们以后就不用再考虑 x 了。这是因为如果有 y2 > y1 且 opt(y2) 的值也为 x，但此时 y2 - x 显然大于 y1 - x，不会作为所有 y - opt(y) 中的最小值。
+
 package sliding_window
 
 import (
-	// "fmt"
+// "fmt"
 )
 
-// class Solution(object):
-//     def shortestSubarray(self, A, K):
-//         N = len(A)
-//         P = [0]
-//         for x in A:
-//             P.append(P[-1] + x)
+// class Solution {
+//     public int shortestSubarray(int[] A, int K) {
+//         int N = A.length;
+//         long[] P = new long[N+1];
+//         for (int i = 0; i < N; ++i)
+//             P[i+1] = P[i] + (long) A[i];
 
-//         #Want smallest y-x with Py - Px >= K
-//         ans = N+1 # N+1 is impossible
-//         monoq = collections.deque() #opt(y) candidates, represented as indices of P
-//         for y, Py in enumerate(P):
-//             #Want opt(y) = largest x with Px <= Py - K
-//             while monoq and Py <= P[monoq[-1]]:
-//                 monoq.pop()
+//         // Want smallest y-x with P[y] - P[x] >= K
+//         int ans = N+1; // N+1 is impossible
+//         Deque<Integer> monoq = new LinkedList(); //opt(y) candidates, as indices of P
 
-//             while monoq and Py - P[monoq[0]] >= K:
-//                 ans = min(ans, y - monoq.popleft())
+//         for (int y = 0; y < P.length; ++y) {
+//             // Want opt(y) = largest x with P[x] <= P[y] - K;
+//             while (!monoq.isEmpty() && P[y] <= P[monoq.getLast()])
+//                 monoq.removeLast();
+//             while (!monoq.isEmpty() && P[y] >= P[monoq.getFirst()] + K)
+//                 ans = Math.min(ans, y - monoq.removeFirst());
 
-//             monoq.append(y)
+//             monoq.addLast(y);
+//         }
 
-//         return ans if ans < N+1 else -1
+//         return ans < N+1 ? ans : -1;
+//     }
+// }
 
 func shortestSubarray(A []int, K int) int {
 	var (
-		N int = len(A)
-		P []int = make([]int, 0)
-		ans int
-		monoq []int = make([])
+		l         int   = len(A)
+		prefixSum []int = make([]int, l+1)
+		ret       int   = l + 1
+		dqueue          = make([]int, 0)
 	)
 
-	for i := range A {
-		if i == 0 {
-			P = append(P, 0)
-		} else {
-			P = append(P, P[i-1]+A[i-1])
-		}
+	for i := 1; i <= l; i++ {
+		prefixSum[i] = prefixSum[i-1] + A[i-1]
 	}
 
-	ans = N+1
-	monoq = 
+	for i := 0; i <= l; i++ {
+		for len(dqueue) > 0 && prefixSum[i] <= prefixSum[dqueue[len(dqueue)-1]] {
+			dqueue = dqueue[:len(dqueue)-1]
+		}
 
-	if ans == l+1 {
+		for len(dqueue) > 0 && prefixSum[i]-prefixSum[dqueue[0]] >= K {
+			ret = min(ret, i-dqueue[0])
+			if len(dqueue) > 1 {
+				dqueue = dqueue[1:]
+			} else {
+				dqueue = dqueue[:0]
+			}
+		}
+
+		dqueue = append(dqueue, i)
+	}
+
+	if ret == l+1 {
 		return -1
 	}
-	return ans
+	return ret
 }
 
-func setAns(ans, length int) int {
-	if ans == -1 || ans > length {
-		ans = length
+func min(x, y int) int {
+	if x < y {
+		return x
 	}
+	return y
 }
