@@ -18,20 +18,25 @@
 package two_pointers
 
 import (
-	"fmt"
+	// "fmt"
 )
 
+// 1、因为值在 1 到 n 之间，所以 nums[0] 的值不会是 0，所以 nums[nums[0]] 的值不会和键相同，以此类推，不存在自循环。
+// 2、因为其中有重复的值，所以当第二个重复的值出现的时候就指向了之前出现过的数，此时出现了环。
+// 3、通过快慢指针法找到环的入口，入口键就是重复的值。
 func findDuplicate(nums []int) int {
-	slow, fast := 0, 0
-	for {
-		fmt.Println("slow =", slow, "fast =", fast)
-		if slow != fast && (nums[slow] == nums[fast] || nums[slow] == nums[0]) {
-			break
-		}
-
+	slow := nums[nums[0]]
+	fast := nums[slow]
+	for slow != fast {
 		slow = nums[slow]
 		fast = nums[nums[fast]]
 	}
 
-	return nums[slow]
+	ptr := nums[0]
+	for slow != ptr {
+		slow = nums[slow]
+		ptr = nums[ptr]
+	}
+
+	return slow
 }
