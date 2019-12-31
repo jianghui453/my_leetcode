@@ -12,7 +12,7 @@
 
 // 输入: [-1,-100,3,99] 和 k = 2
 // 输出: [3,99,-1,-100]
-// 解释: 
+// 解释:
 // 向右旋转 1 步: [99,-1,-100,3]
 // 向右旋转 2 步: [3,99,-1,-100]
 // 说明:
@@ -22,16 +22,16 @@
 
 package array
 
-func rotate(nums []int, k int)  {
+func rotate(nums []int, k int) {
 	var (
 		l int = len(nums)
 	)
 
-	k = k%l
+	k = k % l
 	if k > 0 {
 		_nums := make([]int, k)
-		copy(_nums, nums[l-k: ])
-		copy(nums[k: ], nums[: l-k])
-		copy(nums[: k], _nums)
+		copy(_nums, nums[l-k:])
+		copy(nums[k:], nums[:l-k])
+		copy(nums[:k], _nums)
 	}
 }

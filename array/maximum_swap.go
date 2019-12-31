@@ -17,12 +17,12 @@
 package array
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func maximumSwap(num int) int {
 	var (
-		nums []int = make([]int, 0)
+		nums   []int = make([]int, 0)
 		l, ret int
 	)
 
@@ -31,14 +31,14 @@ func maximumSwap(num int) int {
 		l++
 	}
 
-	for i := l-1; i >= 0; i-- {
+	for i := l - 1; i >= 0; i-- {
 		if nums[i] == 9 {
 			ret = ret*10 + nums[i]
 			continue
 		}
 
 		idx := i
-		for j := i-1; j >= 0; j-- {
+		for j := i - 1; j >= 0; j-- {
 			if nums[j] >= nums[idx] {
 				idx = j
 			}
@@ -47,10 +47,10 @@ func maximumSwap(num int) int {
 		if nums[idx] > nums[i] {
 			nums[i], nums[idx] = nums[idx], nums[i]
 			for ; i >= 0; i-- {
-				ret = ret * 10 + nums[i]
+				ret = ret*10 + nums[i]
 			}
 		} else {
-			ret = ret * 10 + nums[i]
+			ret = ret*10 + nums[i]
 		}
 	}
 

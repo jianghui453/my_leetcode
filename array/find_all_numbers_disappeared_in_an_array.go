@@ -15,14 +15,14 @@
 package array
 
 func findDisappearedNumbers(nums []int) []int {
-    var (
-		l int = len(nums)
+	var (
+		l   int   = len(nums)
 		ret []int = make([]int, l)
-		idx int = 0
+		idx int   = 0
 	)
 
 	for i := 0; i < l; i++ {
-		ret[i] = i+1
+		ret[i] = i + 1
 	}
 
 	for i := 0; i < l; i++ {
@@ -40,5 +40,5 @@ func findDisappearedNumbers(nums []int) []int {
 		return ret
 	}
 
-	return ret[: idx]
+	return ret[:idx]
 }
