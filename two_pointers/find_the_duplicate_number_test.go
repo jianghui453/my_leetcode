@@ -13,17 +13,17 @@ func Test_findDuplicate(t *testing.T) {
 	ret = findDuplicate(nums)
 	t.Log(ret == hope, nums, hope, ret)
 
-	nums = []int{3,1,2,2}
+	nums = []int{3, 1, 2, 2}
 	hope = 2
 	ret = findDuplicate(nums)
 	t.Log(ret == hope, nums, hope, ret)
 
-	nums = []int{1,3,4,2,2}
+	nums = []int{1, 3, 4, 2, 2}
 	hope = 2
 	ret = findDuplicate(nums)
 	t.Log(ret == hope, nums, hope, ret)
 
-	nums = []int{3,1,3,4,2}
+	nums = []int{3, 1, 3, 4, 2}
 	hope = 3
 	ret = findDuplicate(nums)
 	t.Log(ret == hope, nums, hope, ret)

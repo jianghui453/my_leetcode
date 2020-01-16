@@ -3,25 +3,25 @@
 // 示例 1:
 
 // 输入: "Let's take LeetCode contest"
-// 输出: "s'teL ekat edoCteeL tsetnoc" 
+// 输出: "s'teL ekat edoCteeL tsetnoc"
 // 注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。
 
 package string
 
 func reverseWords(s string) string {
-    var (
-		ret []byte
+	var (
+		ret  []byte
 		word []byte
-		l int = len(s)
+		l    int = len(s)
 	)
 
 	for i := 0; i < l; i++ {
 		if s[i] == ' ' {
 			if len(word) > 0 {
-				for i := len(word)-1; i >= 0; i-- {
+				for i := len(word) - 1; i >= 0; i-- {
 					ret = append(ret, word[i])
 				}
-				word = word[: 0]
+				word = word[:0]
 			}
 			ret = append(ret, ' ')
 		} else {
@@ -29,7 +29,7 @@ func reverseWords(s string) string {
 		}
 	}
 
-	for i := len(word)-1; i >= 0; i-- {
+	for i := len(word) - 1; i >= 0; i-- {
 		ret = append(ret, word[i])
 	}
 

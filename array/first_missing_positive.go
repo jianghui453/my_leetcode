@@ -18,9 +18,7 @@
 
 package array
 
-import (
-	
-)
+import ()
 
 // class Solution {
 // 	public int firstMissingPositive(int[] nums) {
@@ -121,11 +119,11 @@ func firstMissingPositive(nums []int) int {
 
 	for i := 0; i < l; i++ {
 		if nums[i] != 0 {
-			return i+1
+			return i + 1
 		}
 	}
 
-	return l+1
+	return l + 1
 }
 
 func mark(nums []int, idx, l int) {

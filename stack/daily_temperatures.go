@@ -12,9 +12,9 @@ import (
 
 func dailyTemperatures(T []int) []int {
 	var (
-		l int = len(T)
+		l   int   = len(T)
 		ret []int = make([]int, l)
-		s []int = make([]int, 0)
+		s   []int = make([]int, 0)
 	)
 
 	for i := 0; i < l; i++ {
@@ -23,16 +23,16 @@ func dailyTemperatures(T []int) []int {
 			ret[i] = 0
 			s = append(s, i)
 		} else {
-			sl := len(s)-1
+			sl := len(s) - 1
 			for sl >= 0 && T[i] > T[s[sl]] {
-				ret[s[sl]] = i-s[sl]
+				ret[s[sl]] = i - s[sl]
 				sl--
 			}
 
 			if sl == len(s)-1 {
 				s = append(s, i)
 			} else if sl >= 0 {
-				s = append(s[: sl+1], i)
+				s = append(s[:sl+1], i)
 			} else {
 				s = []int{i}
 			}

@@ -15,13 +15,12 @@
 
 package array
 
-import (
-)
+import ()
 
 func topKFrequent(nums []int, k int) []int {
-    var (
-		l int = len(nums)
-		ret []int
+	var (
+		l    int = len(nums)
+		ret  []int
 		hash map[int]int = make(map[int]int)
 	)
 
@@ -39,7 +38,7 @@ func topKFrequent(nums []int, k int) []int {
 
 	quicksort(hash, ret)
 
-	return ret[: k]
+	return ret[:k]
 }
 
 func quicksort(hash map[int]int, ret []int) {
@@ -57,23 +56,22 @@ func quicksort(hash map[int]int, ret []int) {
 	left, right := 0, l-1
 	for i := 0; i < l; i++ {
 		if hash[_ret[i]] > hash[_ret[0]] {
-	
+
 			ret[left] = _ret[i]
 			left++
 		} else if hash[_ret[i]] < hash[_ret[0]] {
-	
+
 			ret[right] = _ret[i]
-			right-- 
+			right--
 		} else {
 			equal_ret = append(equal_ret, _ret[i])
 		}
 	}
 
-	quicksort(hash, ret[: left])
+	quicksort(hash, ret[:left])
 	if right < l-1 {
-		quicksort(hash, ret[right+1: ])
+		quicksort(hash, ret[right+1:])
 	}
-
 
 	for i := left; i <= right; i++ {
 		ret[i] = equal_ret[i-left]

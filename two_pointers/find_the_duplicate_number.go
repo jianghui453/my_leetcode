@@ -18,7 +18,7 @@
 package two_pointers
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 // 1、因为值在 1 到 n 之间，所以 nums[0] 的值不会是 0，所以 nums[nums[0]] 的值不会和键相同，以此类推，不存在自循环。

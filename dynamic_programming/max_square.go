@@ -2,7 +2,7 @@
 
 // 示例:
 
-// 输入: 
+// 输入:
 
 // 1 0 1 0 0
 // 1 0 1 1 1
@@ -14,7 +14,7 @@
 package dynamic_programming
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func maximalSquare(matrix [][]byte) int {
@@ -45,17 +45,17 @@ func maximalSquare(matrix [][]byte) int {
 			if i > 0 && j > 0 {
 				for k := 1; k <= i && k <= j && k <= dp[i-1][j-1]; k++ {
 					if matrix[i-k][j] == '1' && matrix[i][j-k] == '1' {
-						dp[i][j] = k+1
+						dp[i][j] = k + 1
 					} else {
 						break
 					}
 				}
 			}
-			
-			ret = max(ret, dp[i][j] * dp[i][j])
+
+			ret = max(ret, dp[i][j]*dp[i][j])
 		}
 	}
-	
+
 	return ret
 }
 

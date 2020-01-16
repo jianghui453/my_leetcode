@@ -8,7 +8,7 @@
 // 输出: 1->3->5->2->4->NULL
 // 示例 2:
 
-// 输入: 2->1->3->5->6->4->7->NULL 
+// 输入: 2->1->3->5->6->4->7->NULL
 // 输出: 2->3->6->7->1->5->4->NULL
 // 说明:
 
@@ -18,11 +18,11 @@
 package linked_list
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 func oddEvenList(head *ListNode) *ListNode {
-    if head == nil || head.Next == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 

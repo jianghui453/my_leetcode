@@ -18,7 +18,7 @@ func Test_reverseWords(t *testing.T) {
 	hope = ""
 	ret = reverseWords(s)
 	t.Log(ret == hope, s, hope, ret)
-	
+
 	s = "L"
 	hope = "L"
 	ret = reverseWords(s)

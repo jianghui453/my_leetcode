@@ -6,7 +6,7 @@ import (
 
 func TestOddEvenList(t *testing.T) {
 	var (
-		head *ListNode
+		head      *ListNode
 		hope, ret []int
 	)
 

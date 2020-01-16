@@ -1,8 +1,8 @@
 package tree
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func Test_trie(t *testing.T) {

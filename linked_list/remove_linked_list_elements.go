@@ -8,7 +8,7 @@
 package linked_list
 
 func removeElements(head *ListNode, val int) *ListNode {
-    var (
+	var (
 		tail, h *ListNode = head, head
 	)
 

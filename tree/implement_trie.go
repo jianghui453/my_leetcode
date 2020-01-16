@@ -8,7 +8,7 @@
 // trie.search("apple");   // 返回 true
 // trie.search("app");     // 返回 false
 // trie.startsWith("app"); // 返回 true
-// trie.insert("app");   
+// trie.insert("app");
 // trie.search("app");     // 返回 true
 // 说明:
 
@@ -18,11 +18,11 @@
 package tree
 
 import (
-	// "fmt"
+// "fmt"
 )
 
 type TrieNode struct {
-	Val byte
+	Val      byte
 	Children []*TrieNode
 }
 
@@ -34,9 +34,8 @@ func NewTrieNode(v byte) *TrieNode {
 }
 
 type Trie struct {
-    Root *TrieNode
+	Root *TrieNode
 }
-
 
 /** Initialize your data structure here. */
 func Constructor() Trie {
@@ -46,9 +45,8 @@ func Constructor() Trie {
 	return t
 }
 
-
 /** Inserts a word into the trie. */
-func (this *Trie) Insert(word string)  {
+func (this *Trie) Insert(word string) {
 	l := len(word)
 	node := this.Root
 loop:
@@ -74,7 +72,6 @@ loop:
 	node.Children = append(node.Children, NewTrieNode('0'))
 }
 
-
 /** Returns if the word is in the trie. */
 func (this *Trie) Search(word string) bool {
 	r := this.traversal(word)
@@ -90,7 +87,6 @@ func (this *Trie) Search(word string) bool {
 
 	return false
 }
-
 
 /** Returns if there is any word in the trie that starts with the given prefix. */
 func (this *Trie) StartsWith(prefix string) bool {
@@ -116,7 +112,6 @@ loop:
 
 	return node
 }
-
 
 /**
  * Your Trie object will be instantiated and called as such:
