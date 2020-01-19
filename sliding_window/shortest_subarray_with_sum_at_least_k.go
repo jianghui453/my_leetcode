@@ -72,10 +72,12 @@ func shortestSubarray(A []int, K int) int {
 	}
 
 	for i := 0; i <= l; i++ {
+		// 如果该位置的前缀和小于前面某个位置的前缀和则说明中间这一段的和为负数，后续没必要再对这几个位置进行比较
 		for len(dqueue) > 0 && prefixSum[i] <= prefixSum[dqueue[len(dqueue)-1]] {
 			dqueue = dqueue[:len(dqueue)-1]
 		}
 
+		// 如果左右指针的前缀和差大于k则记录并把左指针往右移一位
 		for len(dqueue) > 0 && prefixSum[i]-prefixSum[dqueue[0]] >= K {
 			ret = min(ret, i-dqueue[0])
 			if len(dqueue) > 1 {
