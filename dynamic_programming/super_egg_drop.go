@@ -38,84 +38,58 @@
 
 package dynamic_programming
 
-//func superEggDrop(K int, N int) int {
-//   dp := make([][]int, K+1)
-//   for k := 0; k <= K; k ++ {
-//       dp[k] = make([]int, N+1)
-//       for n := 0; n <= N; n ++ {
-//           dp[k][n] = n
-//       }
-//   }
-//   for k := 2; k <= K; k ++ {
-//       for n := 2; n <= N; n ++ {
-//           min := dp[k][n]
-//           for n0 := 1; n0 < n; n0 ++ {
-//               max := dp[k-1][n-n0]+1
-//               if dp[k][n0-1]+1 > max {
-//                   max = dp[k][n0-1]+1
-//               }
-//               if max < min {
-//                   min = max
-//               }
-//           }
-//           dp[k][n] = min
-//       }
-//   }
-//   return dp[K][N]
-//}
-
-//func superEggDrop(K int, N int) int {
-//  dp := make([][]int, K+1)
-//  for k := 0; k <= K; k ++ {
-//      dp[k] = make([]int, N+1)
-//      for n := 0; n <= N; n ++ {
-//          dp[k][n] = n
-//      }
-//  }
-//  for k := 2; k <= K; k ++ {
-//      for n := 2; n <= N; n ++ {
-//          lo := 1
-//          hi := n-1
-//          mi := (lo+hi)/2
-//          for lo <= hi {
-//              mi = (lo+hi)/2
-//              if dp[k-1][mi-1] > dp[k][n-mi] {
-//                  if hi == mi {
-//                      hi--
-//                  } else {
-//                      hi = mi
-//                  }
-//              } else {
-//                  lo = mi+1
-//              }
-//          }
-//          max1 := dp[k-1][hi-1]+1
-//          if dp[k][n-hi]+1 > max1 {
-//             max1 = dp[k][n-hi] + 1
-//          }
-//          max2 := dp[k-1][lo-1]+1
-//          if dp[k][n-lo]+1 > max2 {
-//             max2 = dp[k][n-lo]+1
-//          }
-//          dp[k][n] = max1
-//          if max2 < max1 {
-//             dp[k][n] = max2
-//          }
-//      }
-//  }
-//  return dp[K][N]
-//}
+import (
+	// "fmt"
+)
 
 func superEggDrop(K int, N int) int {
-	if K == 1 || N < 2 {
-		return N
-	}
-	if K == 0 {
-		return 0
-	}
 	dp := make([][]int, K+1)
-	for i := 0; i <= K; i++ {
-		dp[i] = make([]int, N+1)
+	for k := 0; k <= K; k++ {
+		dp[k] = make([]int, N+1)
+		for n := 1; n <= N; n++ {
+			dp[k][n] = n
+		}
 	}
+	
+	for n := 2; n <= N; n++ {
+		for k := 2; k <= K; k++ {
+			var (
+				l, h, m, t1, t2 int
+			)
 
+			l, h = 0, n
+			for l <= h {
+				m = (l+h)/2
+				// 两种情况：鸡蛋碎掉和没碎，取其中最大的一种情况（因为都是考虑最坏的情况）
+				// 因为这两种情况一个是递增一个是递减，最大情况中的最小值就是它们的相交处，这里可以用二分法来优化查找过程
+				t1, t2 = dp[k][n-m], dp[k-1][m-1] // 如果鸡蛋碎了，这一层就不需要继续查找了，如果没碎则需要继续查找
+				if t1 > t2 {
+					l = m + 1
+				} else if t1 < t2 {
+					h = m - 1
+				} else {
+					l, h = m, m
+					break
+				}
+			}
+			
+			dp[k][n] = min(max(dp[k][n-h], dp[k-1][h-1]), max(dp[k][n-l], dp[k-1][l-1])) + 1
+		}
+	}
+	
+	return dp[K][N]
+}
+
+func min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+func max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
 }
