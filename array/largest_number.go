@@ -12,45 +12,98 @@
 
 package array
 
-func largestNumber(nums []int) string {
-	if len(nums) == 0 {
-		return ""
-	}
+import (
+	"strconv"
+	// "fmt"
+)
 
+func largestNumber(nums []int) string {
 	var (
-		lag []int
+		l = len(nums)
+		strs []string
+		ret string
+		allZero = true
 	)
 
-	for i := range nums {
-		num := nums[i]
-		numAry := make([]int, 0)
-		for num > 0 {
-			numAry = append(numAry, num%10)
-			num /= 10
-		}
-
-		if len(lag) == 0 {
-			lag = numAry
-		} else {
-			nIdx, lagIdx := len(numAry)-1, len(lag)-1
-			for nIdx >= 0 || lagIdx >= 0 {
-				if nIdx < 0 {
-					if lag[lagIdx] < lag[lagIdx+1] {
-						lag = numAry
-					}
-				} else if lagIdx < 0 {
-					if numAry[nIdx] >= numAry[nIdx+1] {
-						lag = numAry
-					}
-				} else if numAry[nIdx] > lag[lagIdx] {
-					lag = numAry
-				} else {
-					nIdx--
-					lagIdx--
-					continue
-				}
-				break
-			}
+	for i := 0; i < l; i++ {
+		strs = append(strs, strconv.Itoa(nums[i]))
+		if nums[i] > 0 {
+			allZero = false
 		}
 	}
+	if allZero {
+		return "0"
+	}
+	
+	quicksort(strs)
+	
+	for i := l-1; i >= 0; i-- {
+		ret += strs[i]
+	}
+	
+	return ret
+}
+
+func quicksort(strs []string) {
+	var (
+		l = len(strs)
+		strsCopy = make([]string, l)
+		left, right = 0, l-1
+	)
+
+	if l <= 1 {
+		return
+	}
+
+	copy(strsCopy, strs)
+
+	for i := 1; i < l; i++ {
+		if strsCopy[i] == strsCopy[0] {
+			continue
+		}
+
+		if bigger(strsCopy[0], strsCopy[i]) {
+			strs[left] = strsCopy[i]
+			left++
+		} else {
+			strs[right] = strsCopy[i]
+			right--
+		}
+	}
+
+	for i := left; i <= right; i++ {
+		strs[i] = strsCopy[0]
+	}
+	
+	quicksort(strs[:left])
+	if right < l-1 {
+		quicksort(strs[right+1:])
+	}
+}
+
+func bigger(x, y string) bool {
+	if x == y {
+		return true
+	}
+	
+	var (
+		xLen, yLen = len(x), len(y)
+		i = 0
+	)
+
+	for ; i < xLen && i < yLen; i++ {
+		if x[i] > y[i] {
+			return true
+		}
+
+		if x[i] < y[i] {
+			return false
+		}
+	}
+	
+	if i < xLen {
+		return bigger(x[i:], y)
+	}
+	
+	return bigger(x, y[i:])
 }
