@@ -1,36 +1,36 @@
 package sort
 
-import "fmt"
+import (
+	// "fmt"
+)
 
 func heapSort(nums []int) {
-	nLen := len(nums)
-	if nLen < 2 {
-		return
+	for i := len(nums)/2 - 1; i >= 0; i-- {
+		heapify(nums, len(nums)-1, i)
 	}
-	for i := nLen/2 - 1; i >= 0; i-- {
-		heapify(nums, nLen, i)
-	}
-	//heapify(nums, nLen, 0)
-	fmt.Printf("nums=%v\n", nums)
-	nums[nLen-1], nums[0] = nums[0], nums[nLen-1]
-	for i := nLen - 2; i >= 0; i-- {
-		fmt.Printf("nums[:i+1]=%v\n", nums[:i+1])
-		heapify(nums[:i+1], i+1, 0)
+
+	for i := len(nums)-1; i >= 0; i-- {
 		nums[i], nums[0] = nums[0], nums[i]
+		heapify(nums, i, 0)
 	}
 }
 
 // heapify confirm
 func heapify(nums []int, n, i int) {
-	//fmt.Printf("nums=%v n=%d i=%d\n", nums, n, i)
+	largest := i
 	left := 2*i + 1
 	right := 2*i + 2
-	if right < n && nums[right] > nums[i] {
-		nums[right], nums[i] = nums[i], nums[right]
-		heapify(nums, n, right)
+
+	if left < n && nums[left] > nums[largest] {
+		largest = left
 	}
-	if left < n && nums[left] > nums[i] {
-		nums[left], nums[i] = nums[i], nums[left]
-		heapify(nums, n, left)
+
+	if right < n && nums[right] > nums[largest] {
+		largest = right
+	}
+
+	if largest != i {
+		nums[largest], nums[i] = nums[i], nums[largest]
+		heapify(nums, n, largest)
 	}
 }
