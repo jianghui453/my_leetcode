@@ -1,8 +1,8 @@
 package dynamic_programming
 
 import (
-	// "encoding/json"
-	// "fmt"
+	"encoding/json"
+	"fmt"
 )
 
 func maxProfit188(k int, prices []int) int {
@@ -34,7 +34,7 @@ func maxProfit188(k int, prices []int) int {
 			}
 		}
 	}
-	// mJson, _ := json.MarshalIndent(m, "", "\t")
-	// fmt.Println(string(mJson))
+	mJson, _ := json.MarshalIndent(m, "", "\t")
+	fmt.Println(string(mJson))
 	return m[k][0][len(prices)-1]
 }
