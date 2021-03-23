@@ -16,7 +16,7 @@
 package dynamic_programming
 
 import (
-	"fmt"
+	// "fmt"
 )
 
 func findLength(A []int, B []int) int {
@@ -43,11 +43,4 @@ func findLength(A []int, B []int) int {
 	}
 
 	return ret
-}
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
 }

@@ -29,7 +29,7 @@
 package dynamic_programming
 
 import (
-	"fmt"
+	// "fmt"
 )
 
 func maxSlidingWindow(nums []int, k int) []int {
@@ -72,11 +72,4 @@ func maxSlidingWindow(nums []int, k int) []int {
 	}
 
 	return ret
-}
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
 }

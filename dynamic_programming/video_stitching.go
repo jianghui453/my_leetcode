@@ -71,10 +71,3 @@ func videoStitching(clips [][]int, T int) int {
 
 	return dp[T]
 }
-
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}

@@ -58,10 +58,3 @@ func maximalSquare(matrix [][]byte) int {
 
 	return ret
 }
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}

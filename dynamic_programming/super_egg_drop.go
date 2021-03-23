@@ -79,17 +79,3 @@ func superEggDrop(K int, N int) int {
 	
 	return dp[K][N]
 }
-
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}

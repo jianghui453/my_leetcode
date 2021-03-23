@@ -5,7 +5,7 @@ import (
 // "fmt"
 )
 
-func isMatch(s string, p string) bool {
+func isMatch2(s string, p string) bool {
 	sLen := len(s)
 	pLen := len(p)
 

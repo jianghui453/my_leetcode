@@ -29,7 +29,7 @@ import (
 // "math"
 )
 
-func maxProfit(prices []int) int {
+func maxProfit2(prices []int) int {
 	l := len(prices)
 	maxp := 0
 	for i := 1; i < l; i++ {

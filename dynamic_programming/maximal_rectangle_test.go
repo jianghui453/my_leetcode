@@ -1,4 +1,4 @@
-package dynamix_programming
+package dynamic_programming
 
 import "testing"
 

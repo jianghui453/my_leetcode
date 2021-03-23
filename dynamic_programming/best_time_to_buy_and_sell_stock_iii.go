@@ -30,7 +30,7 @@ import (
 	"math"
 )
 
-func maxProfit(prices []int) int {
+func maxProfit3(prices []int) int {
 	pl := len(prices)
 	if pl < 2 {
 		return 0

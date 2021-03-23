@@ -37,7 +37,7 @@ func TestVideoStitching(t *testing.T) {
 
 	clips = [][]int{{1,4},{2,8}}
 	T = 5
-	hope = -1k
+	hope = -1
 	ret = videoStitching(clips, T)
 	t.Log(ret == hope, "clips =", clips, "hope =", hope, "ret =", ret)
 
