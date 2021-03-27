@@ -1,4 +1,4 @@
-package plus_one
+package array
 
 import "testing"
 

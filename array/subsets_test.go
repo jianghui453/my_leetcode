@@ -2,7 +2,7 @@ package array
 
 import "testing"
 
-func TestSubsets(t *testing.T) {
+func TestSubsets1(t *testing.T) {
 	var nums []int
 	var hope, ret [][]int
 
@@ -17,16 +17,16 @@ func TestSubsets(t *testing.T) {
 		{1, 2},
 		{},
 	}
-	ret = subSets(nums)
+	ret = subsets1(nums)
 	t.Logf("\nnums=%v \nhope=%v \n ret=%v\n", nums, hope, ret)
 
 	nums = []int{}
 	hope = [][]int{{}}
-	ret = subSets(nums)
+	ret = subsets1(nums)
 	t.Logf("\nnums=%v \nhope=%v \n ret=%v\n", nums, hope, ret)
 
 	nums = []int{1}
 	hope = [][]int{{}, {1}}
-	ret = subSets(nums)
+	ret = subsets1(nums)
 	t.Logf("\nnums=%v \nhope=%v \n ret=%v\n", nums, hope, ret)
 }

@@ -35,7 +35,7 @@
 
 package array
 
-func removeDuplicates(nums []int) int {
+func removeDuplicates1(nums []int) int {
 	l := len(nums)
 	if l <= 2 {
 		return l

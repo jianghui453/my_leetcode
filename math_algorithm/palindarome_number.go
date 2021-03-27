@@ -18,13 +18,13 @@
 
 // 你能不将整数转为字符串来解决这个问题吗？
 
-package leet_code
+package math_algorithm
 
 import (
 // "fmt"
 )
 
-func isPalindrome(x int) bool {
+func isPalindrome1(x int) bool {
 	if x < 0 {
 		return false
 	}

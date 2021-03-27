@@ -22,7 +22,7 @@
 
 package array
 
-func rotate(nums []int, k int) {
+func rotate1(nums []int, k int) {
 	var (
 		l int = len(nums)
 	)

@@ -2,7 +2,7 @@ package array
 
 import "testing"
 
-func TestMerge(t *testing.T) {
+func TestMerge1(t *testing.T) {
 	var nums1, nums2, hope []int
 	var m, n int
 
@@ -11,6 +11,6 @@ func TestMerge(t *testing.T) {
 	m = 3
 	n = 3
 	hope = []int{1, 2, 2, 3, 5, 6}
-	merge(nums1, m, nums2, n)
+	merge1(nums1, m, nums2, n)
 	t.Logf("\n hope=%v \nnums1=%v", hope, nums1)
 }

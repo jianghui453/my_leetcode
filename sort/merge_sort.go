@@ -1,6 +1,6 @@
 package sort
 
-import "fmt"
+// import "fmt"
 
 func mergeSort(nums []int) {
 	nLen := len(nums)

@@ -18,7 +18,7 @@ import (
 // "fmt"
 )
 
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func merge1(nums1 []int, m int, nums2 []int, n int) {
 	nums := make([]int, m+n)
 	i1, i2 := 0, 0
 	for i1 < m && i2 < n {

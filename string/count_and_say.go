@@ -26,6 +26,10 @@
 
 package string
 
+import (
+	"fmt"
+)
+
 func countAndSay(n int) string {
 	ret := ""
 	if n == 0 {
@@ -42,7 +46,7 @@ func countAndSay(n int) string {
 				continue
 			}
 
-			_ret += string(cnt+'0') + string(ret[j])
+			_ret += fmt.Sprint(cnt+'0') + string(ret[j])
 			cnt = 1
 		}
 

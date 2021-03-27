@@ -1,8 +1,8 @@
 package dynamic_programming
 
 import (
-	"encoding/json"
-	"fmt"
+	// "fmt"
+	// "encoding/json"
 )
 
 func maxProfit188(k int, prices []int) int {
@@ -12,29 +12,24 @@ func maxProfit188(k int, prices []int) int {
 		}
 		return j
 	}
-	// map[k][i][j]
-	m := map[int]map[int]map[int]int{}
+	m := map[int]map[int]int{}
 	for k0 := 1; k0 <= k; k0++ {
-		m[k0] = map[int]map[int]int{}
+		m[k0] = map[int]int{}
 		for i := 0; i < len(prices); i++ {
-			m[k0][i] = map[int]int{}
-			for j := i+1; j < len(prices); j++ {
-				// fmt.Println(k0, i, j)
-				m[k0][i][j] = m[k0][i][j-1]
-				for j0 := j-1; j0 >= i; j0-- {
-					if prices[j0] > prices[j0+1] {
-						m[k0][i][j] = max(m[k0][i][j], m[k0-1][i][j0] + (prices[j] - prices[j0+1]))
-						break
-					}
-					if j0 == i {
-						m[k0][i][j] = max(m[k0][i][j], m[k0-1][i][j0] + (prices[j] - prices[j0]))
-						break
-					}
+			m[k0][i] = m[k0][i-1]
+			for j := i-1; j >= 0; j-- {
+				if prices[j] >= prices[i] {
+					break
 				}
+				if j == 0 {
+					m[k0][i] = max(m[k0][i], prices[i] - prices[j])
+				} else {
+					m[k0][i] = max(m[k0][i], m[k0-1][j-1] + prices[i] - prices[j])
+				}				
 			}
 		}
 	}
-	mJson, _ := json.MarshalIndent(m, "", "\t")
-	fmt.Println(string(mJson))
-	return m[k][0][len(prices)-1]
+	// mJson, _ := json.MarshalIndent(m, "", "\t")
+	// fmt.Println(string(mJson))
+	return m[k][len(prices)-1]
 }

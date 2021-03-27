@@ -11,7 +11,7 @@
 
 package array
 
-func singleNumber(nums []int) []int {
+func singleNumber3(nums []int) []int {
 	l := len(nums)
 	if l == 0 {
 		return []int{}

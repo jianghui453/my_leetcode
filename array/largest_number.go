@@ -18,6 +18,44 @@ import (
 )
 
 func largestNumber(nums []int) string {
+	var quickSort func ([]string)
+	quickSort = func (strs []string) {
+		var (
+			l = len(strs)
+			strsCopy = make([]string, l)
+			left, right = 0, l-1
+		)
+	
+		if l <= 1 {
+			return
+		}
+	
+		copy(strsCopy, strs)
+	
+		for i := 1; i < l; i++ {
+			if strsCopy[i] == strsCopy[0] {
+				continue
+			}
+	
+			if bigger(strsCopy[0], strsCopy[i]) {
+				strs[left] = strsCopy[i]
+				left++
+			} else {
+				strs[right] = strsCopy[i]
+				right--
+			}
+		}
+	
+		for i := left; i <= right; i++ {
+			strs[i] = strsCopy[0]
+		}
+		
+		quickSort(strs[:left])
+		if right < l-1 {
+			quickSort(strs[right+1:])
+		}
+	}
+
 	var (
 		l = len(nums)
 		strs []string
@@ -35,50 +73,13 @@ func largestNumber(nums []int) string {
 		return "0"
 	}
 	
-	quicksort(strs)
+	quickSort(strs)
 	
 	for i := l-1; i >= 0; i-- {
 		ret += strs[i]
 	}
 	
 	return ret
-}
-
-func quicksort(strs []string) {
-	var (
-		l = len(strs)
-		strsCopy = make([]string, l)
-		left, right = 0, l-1
-	)
-
-	if l <= 1 {
-		return
-	}
-
-	copy(strsCopy, strs)
-
-	for i := 1; i < l; i++ {
-		if strsCopy[i] == strsCopy[0] {
-			continue
-		}
-
-		if bigger(strsCopy[0], strsCopy[i]) {
-			strs[left] = strsCopy[i]
-			left++
-		} else {
-			strs[right] = strsCopy[i]
-			right--
-		}
-	}
-
-	for i := left; i <= right; i++ {
-		strs[i] = strsCopy[0]
-	}
-	
-	quicksort(strs[:left])
-	if right < l-1 {
-		quicksort(strs[right+1:])
-	}
 }
 
 func bigger(x, y string) bool {

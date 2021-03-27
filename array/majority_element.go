@@ -11,7 +11,7 @@
 // 输入: [2,2,1,1,1,2,2]
 // 输出: 2
 
-package leet_code
+package array
 
 import (
 // "fmt"

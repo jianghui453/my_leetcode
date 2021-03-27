@@ -28,7 +28,7 @@ import (
 
 // 	// 0 1  0        0 1
 // 	// 0 0  1        0 1
-func singleNumber(nums []int) int {
+func singleNumber2(nums []int) int {
 	l, a, b := len(nums), 0, 0
 	for i := 0; i < l; i++ {
 		a, b = (a^b)&(a^nums[i]), (b^nums[i])&(a^-1)

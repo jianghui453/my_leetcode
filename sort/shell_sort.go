@@ -1,7 +1,7 @@
 package sort
 
 import (
-	"fmt"
+	// "fmt"
 )
 
 func shellSort(nums []int) {

@@ -141,7 +141,7 @@ func getPermutation(n int, k int) string {
 //	return res
 //}
 
-func getPermutation(n int, k int) string {
+func getPermutation2(n int, k int) string {
 	candidate := make([]byte, n)
 	for i := 0; i < n; i++ {
 		candidate[i] = '0' + byte(i+1)

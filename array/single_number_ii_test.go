@@ -2,7 +2,7 @@ package array
 
 import "testing"
 
-func Test_singleNumberMine(t *testing.T) {
+func TestSingleNumberMine(t *testing.T) {
 	var nums []int
 	var h, r int
 
