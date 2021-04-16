@@ -9,53 +9,31 @@ package tree
  * }
  */
 type BSTIterator struct {
-	Root *TreeNode
-	Cur *TreeNode
+	S []*TreeNode
+	Node *TreeNode
 }
 
 
 func Constructor(root *TreeNode) BSTIterator {
 	return BSTIterator{
-		Root root
-		Cur root
+		Node: root,
 	}
 }
 
 
 func (this *BSTIterator) Next() int {
-	node := this.Root
-	for node != nil {
-		if node.Val == Cur.Val {
-			if node.Right != nil {
-				for n := node.Right {
-					if n.Left != nil {
-						n = n.Left
-					} else {
-						this.Cur = n
-						return n.Val
-					}
-				}
-			} else {
-				for i := len(his) - 1; i >= 0; i-- {
-
-				}
-			}			
-		}
+	for n := this.Node; n != nil; n = n.Left {
+		this.S = append(this.S, n)
 	}
+	this.Node, this.S = this.S[len(this.S)-1], this.S[:len(this.S)-1]
+	ret := this.Node.Val
+	this.Node = this.Node.Right
+	return ret
 }
 
 
 func (this *BSTIterator) HasNext() bool {
-	node := this.Root
-	for node != nil {
-		if Cur.Val <= node.Val {
-			return node.Right != nil
-		}
-		if Cur.Val > node.Val {
-			node = node.Right
-		}
-	}
-	return false
+	return this.Node != nil || len(this.S) > 0
 }
 
 
