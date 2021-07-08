@@ -1,6 +1,6 @@
 #include "../solution.h"
 #include <iostream>
-
+#include <math.h>
 
 bool Solution::isHappy(int n)
 {

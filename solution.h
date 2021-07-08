@@ -10,6 +10,7 @@ class Solution {
     int countPrimes(int);
     bool isIsomorphic(string, string);
     bool canFinish(int, vector< vector<int> >&);
+    vector<int> findOrder(int, vector< vector<int> >&);
 
     private:
     int bitSquareSum(int n);
